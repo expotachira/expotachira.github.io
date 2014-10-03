@@ -6,6 +6,22 @@
 	max-width: 1024px;
 	margin-right:auto;margin-left:auto;
 }
+.namewrap{
+   overflow: hidden;
+    text-overflow: ellipsis;
+    /*white-space: nowrap;*/
+    height:2em;
+    display:inline;
+    cursor: pointer;
+}
+.formname{
+	margin:0px;
+	font-size: 1.3em;
+	color: #7f7f7f;
+  	overflow: hidden;
+    text-overflow: ellipsis;
+    display:inline;
+}
 
 .circle{
 	border-radius: 50%;
@@ -25,8 +41,29 @@
 }
 
 .infotitulo{
-
+	padding: 0.7em;
+	background-color: #e73659;
+	color:white;
+	border-bottom: solid 3px #921e35;
 }
+.infobody .row{
+	margin-top:1.3em;
+}
+.infobody .form-control{
+	border:none;
+}
+
+.btn-nigga{
+	padding: 5px 10px;
+	color: #fff;
+	background-color: #3d3d3d;
+}
+.btn-nigga:hover{
+		color: #fff;
+	background-color: #7f7f7f;
+	cursor:pointer;
+}
+
 
 img.patro  {
 	-webkit-transition: all 0.5s ease;
