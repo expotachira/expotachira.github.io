@@ -3,18 +3,19 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta content='registro parawebs' name='description'/>
-	<meta content='Parawebs Registro' name='keywords'/>
+	<meta content='registro stands feria san sebastian expoferia' name='description'/>
+	<meta content='Feria Sebastian expoferia laexpoferia' name='keywords'/>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-select.min.css"/>
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 	<title>ExpoFiss - Exposición Ferias Internacional de San Sabestian.</title>
 </head>
 <body id="bodytop">
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/expofiss.js"></script>
-	<script type="text/javascript" src="js/jquery.scrollTo.min.js"></script>
+
 	<header class="container">
 		<section class="row" style="height:100px;">
 
@@ -23,16 +24,16 @@
 			<img src="images/expo/Preventa.png" width="940" height="303">
 		</section>
 		<section class="row">
-			<div class="col-md-3">
+			<div class="col-md-3 col-xs-6">
 				<img src="images/expo/Ecologica.png" width="220" height="89">
 			</div>
-			<div class="col-md-3">
+			<div class="col-md-3 col-xs-6">
 				<img src="images/expo/Visitantes.png" width="220" height="89">
 			</div>
-			<div class="col-md-3">
+			<div class="col-md-3 col-xs-6">
 				<img src="images/expo/Seguridad.png" width="220" height="89">
 			</div>
-			<div class="col-md-3">
+			<div class="col-md-3 col-xs-6">
 				<img src="images/expo/Expositores.png" width="220" height="89">
 			</div>
 		</section>
@@ -43,19 +44,19 @@
 		<section class="row info">
 			<div class="col-md-6">
 				<section class="row socials">
-					<div class="col-md-2">
+					<div class="col-md-2 col-xs-4">
 						<img src="images/expo/Icono%20Facebook.png" width="60" height="61">
 					</div>
-					<div class="col-md-2">
+					<div class="col-md-2 col-xs-4">
 						<img src="images/expo/Icono%20Instagram.png" width="62" height="61">
 					</div>
-					<div class="col-md-2">
+					<div class="col-md-2 col-xs-4">
 						<img src="images/expo/Icono%20Twitter.png" width="60" height="61">
 					</div>
 				</section>
 				<br>
 				<section class="row services">
-					<p style="font-style: italic;color:#7f7f7f;" >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque alias dignissimos vero molestias, officia sed nesciunt explicabo eius possimus nostrum aspernatur similique. Aut adipisci quia distinctio, aspernatur laudantium, ipsum cupiditate?</p>
+					<p style="font-style: italic;color:#7f7f7f; margin-left:20px;" >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque alias dignissimos vero molestias, officia sed nesciunt explicabo eius possimus nostrum aspernatur similique. Aut adipisci quia distinctio, aspernatur laudantium, ipsum cupiditate?</p>
 					<br>
 					<ul class="media-list">
 						<li class="media">
@@ -94,34 +95,43 @@
 				<section class="infobody" style="background-color:#ececec;padding: 20px 10px 1px 30px;">
 					<div class="row">
 						<div class="col-md-4">
-							<label for="nombre" class="formname">Nombre</label>
+							<label for="nombre" class="pre_con">Nombre</label>
 						</div>
 						<div class="col-md-8">
-							<input  type="text" class="form-control" name="nombre" value="">
+							<input  type="text" class="form-control" name="pre_con" value="">
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-4">
-							<label for="telefono" class="formname">Teléfono</label>
+							<label for="telefono" class="pre_tel">Teléfono</label>
 						</div>
 						<div class="col-md-8">
-							<input  type="text" class="form-control" name="telefono" value="">
+							<input  type="text" class="form-control" name="pre_tel" value="">
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-6">
-							<label for="correo" class="formname">Correo Electrónico</label>
+							<label for="correo" class="pre_ema">Correo Electrónico</label>
 						</div>
 						<div class="col-md-6">
-							<input  type="text" class="form-control" name="correo" value="">
+							<input  type="text" class="form-control" name="pre_ema" value="">
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-4">
-							<label for="empresa" class="formname">Empresa</label>
+							<label for="empresa" class="pre_emp">Empresa</label>
 						</div>
 						<div class="col-md-8">
-							<input  type="text" class="form-control" name="empresa" value="">
+							<input  type="text" class="form-control" name="pre_emp" value="">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4">
+							<label for="empresa" class="pre_tip">Tipo Segmento</label>
+						</div>
+						<div class="col-md-8">
+							<select name="pre_tip" class="selectpicker" data-width="100%">
+							</select>
 						</div>
 					</div>
 					<br>
@@ -136,20 +146,20 @@
 
 			</div>
 		</section>
-	</div>
-
-	<br>
-	<footer class="fin">
+		<footer class="fin">
 		<div class="row"  style="margin-top:1em;">
-			<div class="container-fluid">
-				<ul class="ds-btn">
-					<li><img class="patro" src="images/patrocinantes/pdvsa.PNG" width="207" height="100"></li>
-					<li><img class="patro" src="images/patrocinantes/pepsi.PNG" width="212" height="100"></li>
-					<li><img class="patro" src="images/patrocinantes/showar.png" width="147" height="100"></li>
-					<li><img class="patro" src="images/patrocinantes/silvestre.png" width="240" height="100"></li>
-					<li><img class="patro" src="images/patrocinantes/polar.PNG" width="238" height="100"></li>
-				</ul>
-			</div>
+				<div class="col-md-3 col-xs-6">
+					<img class="patro" src="images/patrocinantes/pdvsa.PNG" width="207" height="100">
+				</div>
+				<div class="col-md-3 col-xs-6">
+					<img class="patro" src="images/patrocinantes/pepsi.PNG" width="212" height="100">
+				</div>
+				<div class="col-md-3 col-xs-6">
+					<img class="patro" src="images/patrocinantes/showar.png" width="140" height="100">
+				</div>
+				<div class="col-md-3 col-xs-6">
+					<img class="patro" src="images/patrocinantes/polar.PNG" width="230" height="100">
+				</div>
 		</div>
 		<div class="row">
 			<h3 style="font-family: 'Open Sans Condensed', sans-serif;font-size:3em;	">Exposición de la "Feria Internacional de San Sebastian" 2015</h3>
@@ -200,5 +210,11 @@
 		<!-- Fin	 -->
 		<span class="close" style="opacity:0.6;margin-top:.5em;margin-bottom:.5em !important;"><a class="volver scroll-top" title="Subir"><i class="glyphicon glyphicon-chevron-up"></i></a></span>
 	</footer>
+	</div> <!-- Container -->
+
+	<br>
+	<script type="text/javascript" src="js/bootstrap-select.min.js"></script>
+	<script type="text/javascript" src="js/jquery.scrollTo.min.js"></script>
+	<script type="text/javascript" src="js/expofiss.js"></script>
 </body>
 </html>
