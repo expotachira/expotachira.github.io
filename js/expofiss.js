@@ -1,8 +1,58 @@
 $(function() {
+	stipo = GetURLParameter('stype')|0;
+	sid = GetURLParameter('sid')|0;
 
-	$('.volver').click(function(e){
+	$(document).keyup(function(e) {
+		if (e.keyCode == 27) {
+			$("[data-required=true]").popover('destroy').removeClass('ms-inv');
+		}
+	});
+
+	$(document).on("click",".volver",function(e){
 		e.preventDefault();
 		$("#bodytop").stop().scrollTo( 0,500);
+	});
+
+	$(document).on("click",".infobody .submit",function(evt){
+		e.preventDefault();
+		var form=$('#infoform');
+		var cont=0;
+		$.each(form.find("[data-required=true]"),function(val,element){
+			if($(element).val().length==0){
+				$(element).popover('destroy');
+				$(element).data('content','Campo obligatorio');
+				$(element).addClass('ms-inv');
+				$(element).popover('show');
+				cont++;
+			}
+			else if($(element).val().length>0){
+
+			}
+
+
+		}
+			if(cont==0){
+				$.post( "http://192.168.1.12/expofiss/index.php/savenew",($(infoform).serialize()+'&pre_ruta='+stipo+'&pre_rutaid='+sid), function( data ) {
+					console.warn("----------Resultado----------");
+					console.log(data);
+				},"json").fail(function(res){
+					console.log("se cago");
+				});
+			}
+		});
+
+	$(document).on("blur","[data-required=true]",function(e){
+		e.preventDefault();
+		if($(this).val().length==0){
+			$(this).popover('destroy');
+			$(this).data('content','Campo obligatorio');
+			$(this).addClass('ms-inv');
+			$(this).popover('show');
+		}
+		else
+		{
+			$(this).popover('destroy').removeClass('ms-inv');
+		}
 	});
 
 	$.getJSON( "http://192.168.1.12/expofiss/index.php/tipoempresa", function( data ) {
@@ -15,10 +65,8 @@ $(function() {
 			select.append(option);
 		});
 		$('.selectpicker').selectpicker();
+		$('.selectpicker.btn').css("border","none");
 	});
-
-	stipo = GetURLParameter('stype')|0;
-	sid = GetURLParameter('sid')|0;
 
 	function GetURLParameter(sParam)
 	{
@@ -33,15 +81,32 @@ $(function() {
 	        }
 	 	}
 	}
-
-	$(document).on("click",".infobody .btn",function(evt){
-		$.post( "http://192.168.1.12/expofiss/index.php/savenew",($(infoform).serialize()+'&pre_ruta='+stipo+'&pre_rutaid='+sid), function( data ) {
-			console.warn("----------Resultado----------");
-			console.log(data);
-		},"json").fail(function(res){
-			console.log("se cago");
-		});
-	});
+function Validador(){
+    //arguments[0] value
+    this.ValidateMonto=  function (){
+      return (/^(-)?\d+([\.,]{1}\d+)?$/g.test(arguments[0]))
+    }
+    //argument [0] value, argument[1] min, arguments[2] max
+    this.ValidateDigits=  function (){
+      return (/^\d+$/g.test(arguments[0][0]))?((arguments[0][1] === undefined && arguments[0][2] === undefined)?true:(Number(arguments[0][0])>=Number(arguments[0][1]) && Number(arguments[0][0])<=Number(arguments[0][2]))):false;
+    }
+    //argument[0] value, arguments[1] maxlength
+    this.ValidateOnlyText= function (){
+      return (/^[a-z]+$/gi.test(arguments[0][0]))?((arguments[0][2]===undefined)?true:(arguments[0][0].length<=arguments[0][2])):false;
+    }
+    //argument[0] value, arguments[1] maxlength
+    this.ValidateTextSize= function (){
+      return (/^.+$/gi.test(arguments[0][0]))?((arguments[0][2]===undefined)?false:(arguments[0][0].length<=arguments[0][2])):false;
+    }
+    //argument[0] value
+    this.ValidateDocumentID= function (){
+      return /^(V|E|v|e)-\d+(-\d+)?$/.test(arguments[0]);
+    }
+    //argument[0] value
+    this.ValidateEmail=function (){
+      return /\S+@\S+\.\S+/.test(arguments[0]);
+    }
+  }
 });
 // 'pre_emp' => $vars['empresa'],
 // 'pre_con' => $vars['contacto'],

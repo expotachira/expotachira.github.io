@@ -1,10 +1,25 @@
+.container{
+	max-width: 1024px;
+	margin-right:auto;margin-left:auto;
+}
 .clear
 {
 	clear: both;
 }
-.container{
-	max-width: 1024px;
-	margin-right:auto;margin-left:auto;
+.textRequired::after{
+	content: " *";
+	color:red;
+}
+
+.popover.right>.arrow {
+	border-right-color:#a94442;
+}
+.popover {
+	border: 1px solid #a94442;
+	color:#a94442;
+}
+.ms-inv{
+    border: 1px solid #CC0000;
 }
 .namewrap{
    overflow: hidden;
@@ -23,23 +38,6 @@
     display:inline;
 }
 
-.circle{
-	border-radius: 50%;
-	width: 60px;
-	height: 60px;
-	line-height:60px;
-	vertical-align: middle;
-	background: #999;
-	color: white;
-	text-align: center;
-	font: 2em Arial, sans-serif;
-	font-weight: 700;
-	padding-top: .45em;
-	text-align:center;
-	vertical-align:middle;
-	display:inline-block;
-}
-
 .infotitulo{
 	padding: 0.7em;
 	background-color: #e73659;
@@ -48,6 +46,7 @@
 }
 .infobody .row{
 	margin-top:1.3em;
+
 }
 .infobody .form-control{
 	border:none;
@@ -147,6 +146,7 @@ div.product-chooser div.product-chooser-item input{
 }
 
 footer.fin {
+	margin-top: 40px;
 	border-top: 1px solid #eee;
 	border-top-width: 3px;
 	text-align: center;
