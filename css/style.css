@@ -18,9 +18,7 @@
 	border: 1px solid #a94442;
 	color:#a94442;
 }
-.ms-inv{
-    border: 1px solid #CC0000;
-}
+
 .namewrap{
    overflow: hidden;
     text-overflow: ellipsis;
