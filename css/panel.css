@@ -2,3 +2,15 @@
 	max-width: 1024px;
 	margin-right:auto;margin-left:auto;
 }
+
+th{
+background: #5bc0de   !important;
+border-bottom: 1px solid #0171a5   !important;
+color: #ffffff  ;
+margin-top: 5px;
+
+}
+
+td{
+font-size: 13px !important;
+}
