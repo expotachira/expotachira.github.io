@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta content='registro stands feria san sebastian expoferia' name='description'/>
+	<meta content='Feria Sebastian expoferia laexpoferia' name='keywords'/>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css"/>
+	<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/fixedheader/2.1.2/css/dataTables.fixedHeader.css"/>
+	<link rel="stylesheet" type="text/css" href="css/panel.css"/>
+
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+	<title>Panel Principal.</title>
+</head>
+<body >
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<div class="row" style="height:2em;">
+
+	</div>
+	<section class="row container">
+		<div class="col-md-6">
+			<div class="row">
+				<div class="col-md-6">
+					<div type="button" style="display: block; width: 100%; font-size:1.2em; padding:10px 0;" class="btn btn-info btnswitch" data-target="#sectab1">Clientes Preventa</div>
+				</div>
+				<div class="col-md-6">
+					<button type="button" style="display: block; width: 100%;font-size:1.2em; padding:10px 0;" class="btn btn-info btnswitch" data-target="#sectab2">Tareas</button>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<section  id="sectab1" class="tables" style="display:none;">
+					<table class="table" id="tab1" >
+						<thead >
+							<tr>
+								<th>Empresa</th>
+								<th>Contácto</th>
+								<th>Ruta</th>
+								<th>Estatus</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</section>
+				<section id="sectab2" class="tables" style="display:none;">
+					<table class="table" id="tab2" >
+						<thead>
+							<tr>
+								<th>Fecha</th>
+								<th>Descripción</th>
+								<th>Tipo</th>
+								<th>Estatus</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</section>
+			</div>
+		</div>
+		<div class="col-md-6">
+
+		</div>
+	</section>
+	<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="http://cdn.datatables.net/fixedheader/2.1.2/js/dataTables.fixedHeader.min.js"></script>
+	<script type="text/javascript" src="js/panel.js"></script>
+</body>
+</html>

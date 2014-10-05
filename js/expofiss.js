@@ -107,22 +107,15 @@ function GetURLParameter(sParam)
 		}
 	}
 }
-function Validador(){
-			//argument[0] value
-			this.ValidateEmail=function (){
-				return /\S+@\S+\.\S+/.test(arguments[0]);
-			}
-		     //argument[0] value
-		     this.ValidatePhone=function (){
-		     	return /^\d{11}$/.test(arguments[0]);
-		     }
-		 }
-		});
-// 'pre_emp' => $vars['empresa'],
-// 'pre_con' => $vars['contacto'],
-// 'pre_tel' => $vars['telefono'],
-// 'pre_ema' => $vars['email'],
-// 'pre_tip' => $vars['tipo'],
-// 'pre_ruta' => $vars['ruta'],
-// 'pre_rutaid' => $vars['rutaid'],
-
+function Validador()
+{
+	//argument[0] value
+	this.ValidateEmail=function (){
+		return /\S+@\S+\.\S+/.test(arguments[0]);
+	}
+	 //argument[0] value
+	 this.ValidatePhone=function (){
+	 	return /^\d{11}$/.test(arguments[0]);
+	 }
+}
+});
