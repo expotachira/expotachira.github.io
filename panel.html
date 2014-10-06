@@ -23,15 +23,15 @@
 		<div class="col-md-6">
 			<div class="row">
 				<div class="col-md-6">
-					<div type="button" style="display: block; width: 100%; font-size:1.2em; padding:10px 0;" class="btn btn-info btnswitch" data-target="#tab1_wrapper" data-conte="#sectionclient">Clientes Preventa</div>
+					<div type="button" style="display: block; width: 100%; font-size:1.2em; padding:10px 0;" class="btn btn-info btnswitch" id="wrapclientes">Clientes Preventa</div>
 				</div>
 				<div class="col-md-6">
-					<button type="button" style="display: block; width: 100%;font-size:1.2em; padding:10px 0;" class="btn btn-info btnswitch" data-target="#tab2_wrapper" data-conte="#sectiontask">Tareas</button>
+					<button type="button" style="display: block; width: 100%;font-size:1.2em; padding:10px 0;" class="btn btn-info btnswitch" id="wraptask">Tareas</button>
 				</div>
 			</div>
 			<hr>
-			<div class="row">
-				<table class="table table-hover" id="tab1" >
+			<div class="row" >
+				<table class="table table-hover" id="tab1">
 					<thead >
 						<tr>
 							<th>Empresa</th>
@@ -117,6 +117,23 @@
 			</div>
 		</div>
 	</section>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+        <h4 class="modal-title" id="myModalLabel">Agregar Tarea</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
+        <button type="button" class="btn btn-primary">Agregar</button>
+      </div>
+    </div>
+  </div>
+</div>
 	<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="http://cdn.datatables.net/fixedheader/2.1.2/js/dataTables.fixedHeader.min.js"></script>
 	<script type="text/javascript" src="js/panel.js"></script>
