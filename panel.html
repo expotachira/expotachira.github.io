@@ -7,7 +7,7 @@
 	<meta content='Feria Sebastian expoferia laexpoferia' name='keywords'/>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
 	<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css"/>
-	<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/fixedheader/2.1.2/css/dataTables.fixedHeader.css"/>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-select.min.css"/>
 	<link rel="stylesheet" type="text/css" href="css/panel.css"/>
 
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
@@ -117,25 +117,67 @@
 			</div>
 		</div>
 	</section>
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
-        <h4 class="modal-title" id="myModalLabel">Agregar Tarea</h4>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
-        <button type="button" class="btn btn-primary">Agregar</button>
-      </div>
-    </div>
-  </div>
-</div>
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+					<header class="infotitulo modal-title" id="myModalLabel">
+							<h2 style="margin:0px;font-size:1.85em;font-weight: bold;" class="namewrap">
+								AGREGAR TAREA
+							</h2>
+					</header>
+
+				</div>
+				<div class="modal-body">
+					<form id="taskform" class="form-horizontal" role="form">
+						<section class="infobody" style="background-color:#ececec;padding: 20px 10px 1px 30px;">
+							<div class="row">
+								<div class="col-md-3">
+									<label for="nombre" class="textRequired">Tipo de Tarea</label>
+								</div>
+								<div class="col-md-9">
+									<select data-required="true" type="text" class="selectpicker" name="tar_tip" value="">
+										<option value="1">Normal</option>
+										<option value="2">Rapida</option>
+										<option value="3">Urgente</option>
+									</select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-4">
+									<label for="empresa" class="textRequired" >Descripción</label>
+								</div>
+								<div class="col-md-8">
+									<textarea data-required="true" type="text" class="form-control" name="tar_des"  data-placement="right" data-trigger="manual" data-container="body" data-content="" >
+									</textarea>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-5">
+									<label for="correo" class="textRequired">Fecha</label>
+								</div>
+								<div class="col-md-7">
+									<input data-required="true" type="text" class="form-control"  name="tar_fechrea" value="" data-placement="right" data-trigger="manual" data-container="body" data-content="">
+								</div>
+							</div>
+
+							<div class="row form-group">
+								<div class="col-sm-12">
+									<a  class="btn btn-nigga pull-right submit" >SOLICITAR INFORMACIÓN </a>
+								</div>
+								<div class="col-sm-12" style="font-size:11px;">Campos obligatorios <span style="color:red;">*</span></div>
+							</div>
+
+						</section>
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</div>
 	<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" src="http://cdn.datatables.net/fixedheader/2.1.2/js/dataTables.fixedHeader.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap-select.min.js"></script>
 	<script type="text/javascript" src="js/panel.js"></script>
 </body>
 </html>

@@ -9,7 +9,7 @@ $(function() {
 		$("#val_tel").html(estruct.pre_tel);
 		$("#tab1 tbody>tr").removeClass('active');
 		$(this).addClass('active');
-		localStorage.setItem("idclient",estruct.pre_id);
+		localStorage.setItem("client",estruct);
 	});
 	$(document).on('click','#wrapclientes',function(evt){
 		$(".btnswitch").removeClass('active');
