@@ -1,6 +1,12 @@
 $(function() {
 
-	$('#tar_fechrea').datetimepicker( {language: 'es',showToday: true, sideBySide: true, ampm: true});
+	$('#tar_fechrea').datetimepicker( {language: 'es',
+		showToday: true,
+		sideBySide: true,
+		 ampm: true,
+		 useStrict:true,
+
+		});
 	$('#tar_fechrea').data("DateTimePicker").setMinDate(moment());
 	$(document).on('click','#tab1 tbody>tr',function(evt){
 		var estruct=$(this).data('info');
