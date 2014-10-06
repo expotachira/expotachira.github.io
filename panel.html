@@ -124,13 +124,13 @@
 				<div class="modal-header" style="padding:0px;">
 					<button type="button" class="close" style="margin-top:30px;margin-right:20px;" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
 					<header class="infotitulo modal-title" id="myModalLabel">
-							<h2 style="margin-left:20px;font-size:1.85em;font-weight: bold;" class="namewrap">
-								AGREGAR TAREA
-							</h2>
+						<h2 style="margin-left:20px;font-size:1.85em;font-weight: bold;" class="namewrap">
+							AGREGAR TAREA
+						</h2>
 					</header>
 
 				</div>
-				<div class="modal-body">
+				<div class="modal-body" style="padding-top:0px;">
 					<form id="taskform" class="form-horizontal" role="form">
 						<section class="infobody" style="background-color:#ececec;padding: 20px 10px 1px 30px;">
 							<div class="row">
@@ -151,7 +151,7 @@
 									<label for="empresa" class="textRequired" >Descripción</label>
 								</div>
 								<div class="col-md-9">
-				<textarea data-required="true" type="text" class="form-control" id="tar_des" name="tar_des"></textarea>
+									<textarea data-required="true" type="text" class="form-control" id="tar_des" name="tar_des"></textarea>
 								</div>
 							</div>
 							<br>
@@ -160,12 +160,10 @@
 									<label for="correo" class="textRequired">Fecha</label>
 								</div>
 								<div class="col-sm-9">
-						                <div class=' date' >
-						                    <input type='text' id="tar_fechrea" class="form-control"  name="tar_fechrea"  data-date-format="MM/DD/YYYY hh:mm:ss" readonly="readonly"/>
-						                    </span>
-						                </div>
-						        </div>
-
+									<div class=' date' >
+										<input type='text' id="tar_fechrea" class="form-control"  name="tar_fechrea"  data-date-format="MM/DD/YYYY hh:mm:ss" readonly="readonly"/>
+									</div>
+								</div>
 							</div>
 							<br>
 							<div class="row form-group">
@@ -174,16 +172,153 @@
 								</div>
 								<div class="col-sm-12" style="font-size:11px;">Campos obligatorios <span style="color:red;">*</span></div>
 							</div>
-							<div style="display:none;" class="alert alert-danger" role="alert" id="alertmsg"></div>
-
-
+							<div style="display:none;" class="alert alert-danger" role="alert" id="alertmsg">
+							</div>
 						</section>
 					</form>
 				</div>
 
 			</div>
 		</div>
-	</div>
+	</div> <!-- Modal -->
+
+	<div class="modal fade " id="modal2" tabindex="-1" role="dialog" aria-labelledby="myLabel2" aria-hidden="true">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h4 class="modal-title" id="myLabel2">Mensaje Informativo</h4>
+				</div>
+				<div class="modal-body">
+					<div class="alert alert-danger" role="alert">Debe seleccionar un cliente antes de agregar una nueva tarea.</div>
+				</div>
+			</div>
+		</div>
+	</div><!-- modal  -->
+
+	<div class="modal fade" id="modal3" data-backdrop='static' tabindex="-1" role="dialog" aria-labelledby="myModalLabel3" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header" style="padding:0px;">
+					<button type="button" class="close" style="margin-top:30px;margin-right:20px;" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+					<header class="infotitulo modal-title" id="myModalLabel3">
+						<h2 style="margin-left:20px;font-size:1.85em;font-weight: bold;" class="namewrap">
+							MODIFICAR TAREA
+						</h2>
+					</header>
+				</div>
+				<div class="modal-body" style="padding-top:0px;">
+					<section  style="background-color:#ececec;padding: 10px 10px 1px 30px;">
+						<header style="border-bottom: 1px solid grey;">
+							<h2 style="margin:0px 0px 10px 0px;font-size:1.3em;font-weight: bold;border-bottom:3px solid #ffff" class="namewrap">
+								INFORMACIÓN DE USUARIO
+							</h2>
+						</header>
+						<br>
+						<form  class="form-horizontal" role="form">
+							<div class="row">
+								<label class="col-md-3 control-label" style="text-align:left;">Nombre</label>
+								<div class="col-md-9">
+									<p class="form-control-static" id="usr_name"></p>
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								<label class="col-md-3 control-label" style="text-align:left;">Empresa</label>
+								<div class="col-md-9">
+									<p class="form-control-static" id="usr_emp"></p>
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								<label class="col-md-3 control-label" style="text-align:left;">Correo</label>
+								<div class="col-md-9">
+									<p class="form-control-static" id="usr_correo"></p>
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								<label class="col-md-3 control-label" style="text-align:left;">Teléfono</label>
+								<div class="col-md-9">
+									<p class="form-control-static" id="usr_phone"></p>
+								</div>
+							</div>
+							<br>
+						</form>
+
+					</section>
+					<section  style="background-color:#ececec;padding: 10px 10px 1px 30px;">
+						<header style="border-bottom: 1px solid grey;">
+							<h2 style="margin:0px 0px 10px 0px;font-size:1.3em;font-weight: bold;border-bottom:3px solid #ffff" class="namewrap">
+								INFORMACIÓN DE TAREA
+							</h2>
+						</header>
+						<br>
+						<form id="moditaskform" class="form-horizontal" role="form">
+							<div class="row">
+								<label class="col-md-3 control-label" style="text-align:left;">Fecha inicio</label>
+								<div class="col-md-9">
+									<p class="form-control-static" id="tsk_ini"></p>
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								<label class="col-md-3 control-label" style="text-align:left;">Fecha fin</label>
+								<div class="col-md-9">
+									<p class="form-control-static" id="tsk_fin"></p>
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								<label class="col-md-3 control-label" style="text-align:left;">Tipo Tarea</label>
+								<div class="col-md-9">
+									<p class="form-control-static" id="tsk_tipo"></p>
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								<label class="col-md-3 control-label" style="text-align:left;">Descripción</label>
+								<div class="col-md-9">
+									<p class="form-control-static" id="tsk_des"></p>
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								<label class="col-md-3 control-label" style="text-align:left;">Estado</label>
+								<div class="col-md-9">
+									<select id="tsk_edo" class="form-control selectpicker"  name="tar_est" data-width="100%">
+										<option value="0">Creada</option>
+										<option value="1">En proceso</option>
+										<option value="2">Finalizada</option>
+									</select>
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								<label class="col-md-3 control-label" style="text-align:left;">Nota</label>
+								<div class="col-md-9">
+									<textarea type='text' id="tsk_not" class="form-control"  name="tar_not"></textarea>
+								</div>
+							</div>
+							<br>
+							<div class="row form-group">
+								<div class="col-sm-12">
+									<a  class="btn btn-nigga pull-right submit" id="moditask" >MODIFICAR TAREA</a>
+								</div>
+								<div class="col-sm-12" style="font-size:11px;">Campos obligatorios <span style="color:red;">*</span></div>
+							</div>
+							<div style="display:none;" class="alert alert-danger" role="alert" id="alertmsg">
+							</div>
+						</form>
+							<div style="display:none;" class="alert alert-danger" role="alert" id="alertmsg2">
+
+					</section>
+				</div>
+
+			</div>
+		</div>
+	</div> <!-- Modal -->
 	<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap-select.min.js"></script>
 	<script type="text/javascript" src="js/moment.js"></script>

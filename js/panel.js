@@ -1,24 +1,96 @@
 $(function() {
 
 	localStorage.setItem('uri', 'http://192.168.1.12/expofiss/index.php/');
+	localStorage.setItem('client','0');
+	tipoTarea={1:"Normal",2:"Rápida",3:"Urgente"};
+	estadoTarea={0:"Creada",1:"En proceso",2:"Finalizada"};
+
 	$('#tar_fechrea').datetimepicker( {language: 'es',
 		showToday: true,
 		sideBySide: true,
-		 ampm: true,
-		 useStrict:true
+		ampm: true,
+		useStrict:true
 	});
 	$('#tar_fechrea').data("DateTimePicker").setMinDate(moment());
+	$(document).on('click','#tab3 tr',function(evt){
+		$("#tab3 tbody>tr").removeClass('active');
+		$(this).addClass('active');
+		modificarTarea($(this).data('info'));
 
+	});
+
+
+	$(document).on('click','#agregarTask',function(evt){
+		if(localStorage.getItem('client')==0){
+			$('#modal2').modal();
+		}
+		else{
+			$("#alertmsg").hide();
+			$('#myModal').modal();
+		}
+
+	});
+	$(document).on('click','#moditask',function(evt){
+		moditask=this;
+		moditask.setAttribute('disabled','disabled');
+		var text=$('#tsk_edo').val();
+		var text2=$('#tsk_not').val();
+		if(text==""||text2==""){
+			$("#alertmsg2").hide();
+			$("#alertmsg2").html("Debe ingresar todos los campos.");
+			$("#alertmsg2").show('fast');
+			moditask.removeAttribute('disabled');
+		}
+		else{
+
+		}
+	});
+
+
+	$(document).on('click','#addtask',function(evt){
+		newtaskusr=this;
+		newtaskusr.setAttribute('disabled','disabled');
+		var text=$('#tar_des').val();
+		var text2=$('#tar_fechrea').val();
+
+		if(text==""||text2==""){
+			$("#alertmsg").hide();
+			$("#alertmsg").html("Debe ingresar todos los campos.");
+			$("#alertmsg").show('fast');
+			newtaskusr.removeAttribute('disabled');
+		}
+		else{
+			var uri=localStorage.getItem('uri')+'newtask/'+JSON.parse(localStorage.getItem('client')).pre_id;
+			$("#alertmsg").hide();
+			$.post( uri, $("#taskform").serialize(), function( data ) {
+				if(data.estatus){
+					actualizarTaskUsr();
+					$('#myModal').modal('hide');
+				}
+				else{
+					$("#alertmsg").hide();
+					$("#alertmsg").html("Ha ocurrido un error intente nuevamente.");
+					$("#alertmsg").show('fast');
+				}
+				newtaskusr.removeAttribute('disabled');
+
+			}, "json").fail(function(){
+				newtaskusr.removeAttribute('disabled');
+				$("#alertmsg").hide();
+				$("#alertmsg").html("Ha ocurrido un error intente nuevamente.");
+				$("#alertmsg").show('fast');
+			});
+		}
+	});
 	$(document).on('click','#tab1 tbody>tr',function(evt){
 		var estruct=$(this).data('info');
-		console.log(estruct);
 		$("#val_nom").html(estruct.pre_con);
-		$("#val_emp").html(estruct.pretrue);
+		$("#val_emp").html(estruct.pre_emp);
 		$("#val_cor").html(estruct.pre_ema);
 		$("#val_tel").html(estruct.pre_tel);
 		$("#tab1 tbody>tr").removeClass('active');
 		$(this).addClass('active');
-		localStorage.setItem("client",estruct.pre_id);
+		localStorage.setItem("client",JSON.stringify(estruct));
 	});
 	$(document).on('click','#wrapclientes',function(evt){
 		$(".btnswitch").removeClass('active');
@@ -53,16 +125,29 @@ $(function() {
 				body.append(row);
 			});
 				// $("#tab1").addClass('table-hover');
-
+				if(typeof(table1)==="undefined"){
+					table1 = $('#tab1').DataTable({
+						paging: false,
+						info:false,
+						language: {
+							"search": "Buscar Clientes",
+							"zeroRecords": "No se encontraron resultados."
+						},
+						scrollY: 400
+					});
+					$("#tab1_wrapper").hide();
+					$("#tab1_filter").css('float','left');
+					$("#tab1_filter label").css('text-align','left');
+					$("#tab1_filter input").closest('input').addClass('form-control').css('margin-left','0px');
+				}
 				$("#tagg").show();
 				$("#tab1_wrapper").show('fast');
 				$("#sectionclient").show();
 
 	}); //getson clients
-actualizarTaskUsr();
+		actualizarTaskUsr();
 
 		}); //getjson tasks
-});
 
 $(document).on('click','#wraptask',function(evt){
 	$(".btnswitch").removeClass('active');
@@ -76,7 +161,6 @@ $(document).on('click','#wraptask',function(evt){
 		var estadoTarea={0:"Creada",1:"En proceso",2:"Finalizada"};
 		body.html("");
 		$.each(data,function(key,val){
-
 			var row=document.createElement('tr');
 			var t1=document.createTextNode(val.tar_fechrea);
 			var td1=document.createElement('td');
@@ -118,81 +202,13 @@ $(document).on('click','#wraptask',function(evt){
 
 });
 
-$(document).on('click','#agregarTask',function(evt){
-	$('#myModal').modal();
-});
-$(document).on('click','#addtask',function(evt){
-	console.log(localStorage.getItem('client'));
-	var text=$('#tar_des').val();
-	var text2=$('#tar_fechrea').val();
-
-	if(text==""||text2==""){
-		$("#alertmsg").hide();
-		$("#alertmsg").html("Debe ingresar todos los campos.");
-		$("#alertmsg").show('fast');
-	}
-	else{
-		var uri=localStorage.getItem('uri')+'newtask/'+localStorage.getItem('client');
-		$.post( uri, $("#taskform").serialize(), function( data ) {
-			if(data.estatus){
-				actualizarTaskUsr();
-				$('#myModal').modal('hide');
-			}
-			else{
-				$("#alertmsg").hide();
-				$("#alertmsg").html("Ha ocurrido un error intente nuevamente.");
-				$("#alertmsg").show('fast');
-			}
-		}, "json").fail(function(){
-			$("#alertmsg").hide();
-			$("#alertmsg").html("Ha ocurrido un error intente nuevamente.");
-			$("#alertmsg").show('fast');
-		});
 
 
-	}
-
-});
-if(typeof(table1)==="undefined"){
-	table1 = $('#tab1').DataTable({
-		paging: false,
-		info:false,
-		language: {
-			"search": "Buscar Clientes",
-			"zeroRecords": "No se encontraron resultados."
-		},
-		scrollY: 400
-	});
-	$("#tab1_wrapper").hide();
-	$("#tab1_filter").css('float','left');
-	$("#tab1_filter label").css('text-align','left');
-	$("#tab1_filter input").closest('input').addClass('form-control').css('margin-left','0px');
-}
-
-if(typeof(table2)==="undefined"){
-	table2 = $('#tab2').DataTable({
-		paging: false,
-		info:false,
-		language: {
-			"search": "Buscar Tareas",
-			"zeroRecords": "No se encontraron resultados."
-		},
-		scrollY: 400
-	});
-	$("#tab2_wrapper").hide();
-	$("#tab2_filter").css('float','left');
-	$("#tab2_filter label").css('text-align','left');
-	$("#tab2_filter input").closest('input').addClass('form-control').css('margin-left','0px');
-}
-
-
-$('#wrapclientes').trigger('click');
 
 function actualizarTaskUsr(){
 	$.getJSON('json/taskusr.json', function( data ) {
 		var body=$("#tab3 tbody");
-		var tipoTarea={1:"Normal",2:"Rápida",3:"Urgente"};
-		var estadoTarea={0:"Creada",1:"En proceso",2:"Finalizada"};
+
 		body.html("");
 		$.each(data,function(key,val){
 			var row=document.createElement('tr');
@@ -249,3 +265,41 @@ function actualizarTaskUsr(){
 		}
 	});
 }
+
+function modificarTarea(info){
+
+	if(localStorage.getItem('client')==0){
+		// buscar info del cliente
+		// luego del post info.
+	}
+	else{
+		setTareaInfo(info);
+	}
+	$('#modal3').modal();
+
+}
+
+function setTareaInfo(info){
+	var estruct=JSON.parse(localStorage.getItem('client'));
+	$("#usr_name").html(estruct.pre_con);
+	$("#usr_emp").html(estruct.pre_emp);
+	$("#usr_correo").html(estruct.pre_ema);
+	$("#usr_phone").html(estruct.pre_tel);
+
+	$("#tsk_ini").html(info.tar_fechcre);
+	$("#tsk_fin").html(info.tar_fechrea);
+	$("#tsk_tipo").html(tipoTarea[info.tar_tip]);
+	$("#tsk_des").html(info.tar_des);
+	$("#tsk_edo").val(info.tar_est);
+	$("#tsk_not").val(info.tar_not);
+
+
+}
+
+$('#wrapclientes').trigger('click');
+
+
+}); //FUNCTION
+
+
+
