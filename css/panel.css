@@ -31,3 +31,8 @@ font-size: 13px !important;
 	background-color: #7f7f7f;
 	cursor:pointer;
 }
+
+.textRequired::after{
+	content: " *";
+	color:red;
+}
