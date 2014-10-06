@@ -200,7 +200,7 @@ $app->post('/savenew', function () use ($app) {
 			'pre_rutaid' => intval($vars['pre_rutaid'])
 			]); */
 			$guardado = true;
-			$app->mg->sendMessage($app->dm, array('from'    => 'ventas@tuquiniela.net', 
+			$app->mg->sendMessage($app->mg_domain, array('from'    => 'ventas@tuquiniela.net', 
                                 'to'      => $vars['email'], 
                                 'subject' => "Preventa ExpoTachira 2015",                                 
                                 'html' => $app->email));
