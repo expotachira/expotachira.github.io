@@ -1,13 +1,14 @@
 $(function() {
 
+	localStorage.setItem('uri', 'http://192.168.1.12/expofiss/index.php/');
 	$('#tar_fechrea').datetimepicker( {language: 'es',
 		showToday: true,
 		sideBySide: true,
 		 ampm: true,
-		 useStrict:true,
-
-		});
+		 useStrict:true
+	});
 	$('#tar_fechrea').data("DateTimePicker").setMinDate(moment());
+
 	$(document).on('click','#tab1 tbody>tr',function(evt){
 		var estruct=$(this).data('info');
 		console.log(estruct);
@@ -17,7 +18,7 @@ $(function() {
 		$("#val_tel").html(estruct.pre_tel);
 		$("#tab1 tbody>tr").removeClass('active');
 		$(this).addClass('active');
-		localStorage.setItem("client",estruct);
+		localStorage.setItem("client",estruct.pre_id);
 	});
 	$(document).on('click','#wrapclientes',function(evt){
 		$(".btnswitch").removeClass('active');
@@ -121,6 +122,7 @@ $(document).on('click','#agregarTask',function(evt){
 	$('#myModal').modal();
 });
 $(document).on('click','#addtask',function(evt){
+	console.log(localStorage.getItem('client'));
 	var text=$('#tar_des').val();
 	var text2=$('#tar_fechrea').val();
 
@@ -130,7 +132,8 @@ $(document).on('click','#addtask',function(evt){
 		$("#alertmsg").show('fast');
 	}
 	else{
-		$.post( localStorage.getItem("uri")+"/search/tabla", $("#taskform").serialize(), function( data ) {
+		var uri=localStorage.getItem('uri')+'newtask/'+localStorage.getItem('client');
+		$.post( uri, $("#taskform").serialize(), function( data ) {
 			if(data.estatus){
 				actualizarTaskUsr();
 				$('#myModal').modal('hide');
