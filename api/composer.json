@@ -2,6 +2,7 @@
     "require": {
         "slim/slim": "2.*",
         "catfan/medoo": "*",
+        "mailgun/mailgun-php":"*",
         "monolog/monolog":"*"
     }
 }

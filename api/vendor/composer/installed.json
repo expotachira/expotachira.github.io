@@ -48,60 +48,6 @@
         ]
     },
     {
-        "name": "catfan/medoo",
-        "version": "v0.9.6",
-        "version_normalized": "0.9.6.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/catfan/Medoo.git",
-            "reference": "2cf2d9fbbc09d55cf21cfa92c59a88fdcde099e3"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/catfan/Medoo/zipball/2cf2d9fbbc09d55cf21cfa92c59a88fdcde099e3",
-            "reference": "2cf2d9fbbc09d55cf21cfa92c59a88fdcde099e3",
-            "shasum": ""
-        },
-        "require": {
-            "ext-pdo": "*",
-            "php": ">=5.1"
-        },
-        "suggest": {
-            "ext-pdo-mysql": "For MySQL or MariaDB databases",
-            "ext-pdo-pqsql": "For PostgreSQL databases",
-            "ext-pdo-sqlite": "For SQLite databases",
-            "ext-pdo_dblib": "For MSSQL databases on Liunx/UNIX platform",
-            "ext-pdo_sqlsrv": "For MSSQL databases on Windows platform"
-        },
-        "time": "2014-06-08 16:39:46",
-        "type": "framework",
-        "installation-source": "dist",
-        "autoload": {
-            "files": [
-                "medoo.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Angel Lai",
-                "email": "angel.lai.cat@gmail.com"
-            }
-        ],
-        "description": "The Lightest PHP database framework to accelerate development",
-        "homepage": "http://medoo.in",
-        "keywords": [
-            "database",
-            "mssql",
-            "mysql",
-            "sql",
-            "sqlite"
-        ]
-    },
-    {
         "name": "psr/log",
         "version": "1.0.0",
         "version_normalized": "1.0.0.0",
@@ -142,23 +88,80 @@
         ]
     },
     {
-        "name": "monolog/monolog",
-        "version": "1.10.0",
-        "version_normalized": "1.10.0.0",
+        "name": "catfan/medoo",
+        "version": "v0.9.6.2",
+        "version_normalized": "0.9.6.2",
         "source": {
             "type": "git",
-            "url": "https://github.com/Seldaek/monolog.git",
-            "reference": "25b16e801979098cb2f120e697bfce454b18bf23"
+            "url": "https://github.com/catfan/Medoo.git",
+            "reference": "e489311409b18b06614d52a225d785419562de5d"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Seldaek/monolog/zipball/25b16e801979098cb2f120e697bfce454b18bf23",
-            "reference": "25b16e801979098cb2f120e697bfce454b18bf23",
+            "url": "https://api.github.com/repos/catfan/Medoo/zipball/e489311409b18b06614d52a225d785419562de5d",
+            "reference": "e489311409b18b06614d52a225d785419562de5d",
+            "shasum": ""
+        },
+        "require": {
+            "ext-pdo": "*",
+            "php": ">=5.1"
+        },
+        "suggest": {
+            "ext-pdo-mysql": "For MySQL or MariaDB databases",
+            "ext-pdo-pqsql": "For PostgreSQL databases",
+            "ext-pdo-sqlite": "For SQLite databases",
+            "ext-pdo_dblib": "For MSSQL databases on Liunx/UNIX platform",
+            "ext-pdo_sqlsrv": "For MSSQL databases on Windows platform"
+        },
+        "time": "2014-08-15 12:29:42",
+        "type": "framework",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "medoo.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Angel Lai",
+                "email": "angel.lai.cat@gmail.com"
+            }
+        ],
+        "description": "The Lightest PHP database framework to accelerate development",
+        "homepage": "http://medoo.in",
+        "keywords": [
+            "database",
+            "mssql",
+            "mysql",
+            "sql",
+            "sqlite"
+        ]
+    },
+    {
+        "name": "monolog/monolog",
+        "version": "1.11.0",
+        "version_normalized": "1.11.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Seldaek/monolog.git",
+            "reference": "ec3961874c43840e96da3a8a1ed20d8c73d7e5aa"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Seldaek/monolog/zipball/ec3961874c43840e96da3a8a1ed20d8c73d7e5aa",
+            "reference": "ec3961874c43840e96da3a8a1ed20d8c73d7e5aa",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.0",
             "psr/log": "~1.0"
+        },
+        "provide": {
+            "psr/log-implementation": "1.0.0"
         },
         "require-dev": {
             "aws/aws-sdk-php": "~2.4, >2.4.8",
@@ -166,7 +169,8 @@
             "graylog2/gelf-php": "~1.0",
             "phpunit/phpunit": "~3.7.0",
             "raven/raven": "~0.5",
-            "ruflin/elastica": "0.90.*"
+            "ruflin/elastica": "0.90.*",
+            "videlalvaro/php-amqplib": "~2.4"
         },
         "suggest": {
             "aws/aws-sdk-php": "Allow sending log messages to AWS services like DynamoDB",
@@ -176,13 +180,14 @@
             "graylog2/gelf-php": "Allow sending log messages to a GrayLog2 server",
             "raven/raven": "Allow sending log messages to a Sentry server",
             "rollbar/rollbar": "Allow sending log messages to Rollbar",
-            "ruflin/elastica": "Allow sending log messages to an Elastic Search server"
+            "ruflin/elastica": "Allow sending log messages to an Elastic Search server",
+            "videlalvaro/php-amqplib": "Allow sending log messages to an AMQP server using php-amqplib"
         },
-        "time": "2014-06-04 16:30:04",
+        "time": "2014-09-30 13:30:58",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.10.x-dev"
+                "dev-master": "1.11.x-dev"
             }
         },
         "installation-source": "dist",
@@ -199,8 +204,7 @@
             {
                 "name": "Jordi Boggiano",
                 "email": "j.boggiano@seld.be",
-                "homepage": "http://seld.be",
-                "role": "Developer"
+                "homepage": "http://seld.be"
             }
         ],
         "description": "Sends your logs to files, sockets, inboxes, databases and various web services",
@@ -210,5 +214,200 @@
             "logging",
             "psr-3"
         ]
+    },
+    {
+        "name": "symfony/event-dispatcher",
+        "version": "v2.5.5",
+        "version_normalized": "2.5.5.0",
+        "target-dir": "Symfony/Component/EventDispatcher",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/EventDispatcher.git",
+            "reference": "f6281337bf5f985f585d1db6a83adb05ce531f46"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/f6281337bf5f985f585d1db6a83adb05ce531f46",
+            "reference": "f6281337bf5f985f585d1db6a83adb05ce531f46",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "psr/log": "~1.0",
+            "symfony/config": "~2.0",
+            "symfony/dependency-injection": "~2.0,<2.6.0",
+            "symfony/stopwatch": "~2.2"
+        },
+        "suggest": {
+            "symfony/dependency-injection": "",
+            "symfony/http-kernel": ""
+        },
+        "time": "2014-09-28 15:56:11",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.5-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Symfony\\Component\\EventDispatcher\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Symfony Community",
+                "homepage": "http://symfony.com/contributors"
+            },
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            }
+        ],
+        "description": "Symfony EventDispatcher Component",
+        "homepage": "http://symfony.com"
+    },
+    {
+        "name": "guzzle/guzzle",
+        "version": "v3.9.2",
+        "version_normalized": "3.9.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/guzzle/guzzle3.git",
+            "reference": "54991459675c1a2924122afbb0e5609ade581155"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/guzzle/guzzle3/zipball/54991459675c1a2924122afbb0e5609ade581155",
+            "reference": "54991459675c1a2924122afbb0e5609ade581155",
+            "shasum": ""
+        },
+        "require": {
+            "ext-curl": "*",
+            "php": ">=5.3.3",
+            "symfony/event-dispatcher": "~2.1"
+        },
+        "replace": {
+            "guzzle/batch": "self.version",
+            "guzzle/cache": "self.version",
+            "guzzle/common": "self.version",
+            "guzzle/http": "self.version",
+            "guzzle/inflection": "self.version",
+            "guzzle/iterator": "self.version",
+            "guzzle/log": "self.version",
+            "guzzle/parser": "self.version",
+            "guzzle/plugin": "self.version",
+            "guzzle/plugin-async": "self.version",
+            "guzzle/plugin-backoff": "self.version",
+            "guzzle/plugin-cache": "self.version",
+            "guzzle/plugin-cookie": "self.version",
+            "guzzle/plugin-curlauth": "self.version",
+            "guzzle/plugin-error-response": "self.version",
+            "guzzle/plugin-history": "self.version",
+            "guzzle/plugin-log": "self.version",
+            "guzzle/plugin-md5": "self.version",
+            "guzzle/plugin-mock": "self.version",
+            "guzzle/plugin-oauth": "self.version",
+            "guzzle/service": "self.version",
+            "guzzle/stream": "self.version"
+        },
+        "require-dev": {
+            "doctrine/cache": "~1.3",
+            "monolog/monolog": "~1.0",
+            "phpunit/phpunit": "3.7.*",
+            "psr/log": "~1.0",
+            "symfony/class-loader": "~2.1",
+            "zendframework/zend-cache": "2.*,<2.3",
+            "zendframework/zend-log": "2.*,<2.3"
+        },
+        "time": "2014-08-11 04:32:36",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.9-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Guzzle": "src/",
+                "Guzzle\\Tests": "tests/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Michael Dowling",
+                "email": "mtdowling@gmail.com",
+                "homepage": "https://github.com/mtdowling"
+            },
+            {
+                "name": "Guzzle Community",
+                "homepage": "https://github.com/guzzle/guzzle/contributors"
+            }
+        ],
+        "description": "Guzzle is a PHP HTTP client library and framework for building RESTful web service clients",
+        "homepage": "http://guzzlephp.org/",
+        "keywords": [
+            "client",
+            "curl",
+            "framework",
+            "http",
+            "http client",
+            "rest",
+            "web service"
+        ]
+    },
+    {
+        "name": "mailgun/mailgun-php",
+        "version": "v1.7.1",
+        "version_normalized": "1.7.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/mailgun/mailgun-php.git",
+            "reference": "b16608bd5f62108ab6fb279d40ed8b503ecf899d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/mailgun/mailgun-php/zipball/b16608bd5f62108ab6fb279d40ed8b503ecf899d",
+            "reference": "b16608bd5f62108ab6fb279d40ed8b503ecf899d",
+            "shasum": ""
+        },
+        "require": {
+            "guzzle/guzzle": "<4.0,>=3.8"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "3.7.*"
+        },
+        "time": "2014-05-27 17:45:51",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Mailgun\\Tests": "tests/",
+                "Mailgun": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Travis Swientek",
+                "email": "travis@mailgunhq.com"
+            }
+        ],
+        "description": "The Mailgun SDK provides methods for all API functions."
     }
 ]
