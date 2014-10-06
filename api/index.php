@@ -3,7 +3,21 @@ require 'vendor/autoload.php';
 use Mailgun\Mailgun;
 
 $app = new \Slim\Slim();
-$app->database = new medoo();
+$app->database = new medoo([
+    
+    'database_type' => 'mysql',
+    'database_name' => 'expofiss',
+    'server' => '127.0.0.1',
+    'username' => 'root',
+    'password' => 'root',
+    'port' => 3306,
+    'charset' => 'utf8',
+    'option' => [
+        //PDO::ATTR_CASE => PDO::CASE_NATURAL,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+    ]
+    ]);
+
 $app->mg = new Mailgun("key-76u-fd2ilxwmtid-dm9rgq69dikp6km3");
 $app->mg_domain = "tuquiniela.net";
 $app->email = <<<EOF
@@ -176,7 +190,7 @@ $app->post('/savenew', function () use ($app) {
     }
 
     if ($status) {
-    	    $app->database->insert('preventaweb', [
+    	  /*  $app->database->insert('preventaweb', [
 			'pre_emp' => $vars['empresa'],
 			'pre_con' => $vars['contacto'],
 			'pre_tel' => $vars['telefono'],
@@ -184,7 +198,7 @@ $app->post('/savenew', function () use ($app) {
 			'pre_tip' => intval($vars['tipo']),
 			'pre_ruta' => intval($vars['pre_ruta']),
 			'pre_rutaid' => intval($vars['pre_rutaid'])
-			]);
+			]); */
 			$guardado = true;
 			$app->mg->sendMessage($app->dm, array('from'    => 'ventas@tuquiniela.net', 
                                 'to'      => $vars['email'], 
