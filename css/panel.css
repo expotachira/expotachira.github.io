@@ -36,3 +36,7 @@ font-size: 13px !important;
 	content: " *";
 	color:red;
 }
+
+.form-group{
+	margin-bottom: 5px;
+}

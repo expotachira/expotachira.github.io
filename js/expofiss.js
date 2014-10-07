@@ -1,6 +1,7 @@
 $(function() {
 	stipo = GetURLParameter('stype')|0;
 	sid = GetURLParameter('sid')|0;
+	localStorage.setItem('uri', 'http://127.0.0.1/laexpofiss/api/index.php');
 
 	$(document).keyup(function(e) {
 		if (e.keyCode == 27) {
@@ -39,7 +40,7 @@ $(function() {
 		});
 if(cont==0){
 	var data=($(infoform).serialize()+'&pre_ruta='+stipo+'&pre_rutaid='+sid);
-	$.post( 'http://192.168.1.12/expofiss/index.php/savenew',data, function( data ) {
+	$.post( localStorage.getItem('uri')+'/savenew',data, function( data ) {
 		if(data.estatus){
 			$('.infobody').hide().css('padding','20px 20px');
 			var html="<div class='alert alert-success' style='background-color:transparent;'><header style='text-align: center;' ><strong style='font-size:1.5em;'>Enviado Exitosamente </strong> <span class='glyphicon glyphicon-ok'></span></header><hr class='message-inner-separator'><p style='font-size:1.2em;'>Su información fue recibida, en breve, será contactado por nuestro equipo de ventas.</p></div>";
@@ -81,7 +82,7 @@ $(document).on('blur','[data-required=true]',function(e){
 	}
 });
 
-$.getJSON( 'http://192.168.1.12/expofiss/index.php/tipoempresa', function( data ) {
+$.getJSON( localStorage.getItem('uri')+'/tipoempresa', function( data ) {
 	var select=$('.infobody .selectpicker');
 	$.each(data, function(index, val) {
 		var option=document.createElement('option');

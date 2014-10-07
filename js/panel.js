@@ -1,6 +1,6 @@
 $(function() {
 
-	localStorage.setItem('uri', 'http://192.168.1.12/expofiss/index.php/');
+	localStorage.setItem('uri', 'http://127.0.0.1/laexpofiss/api/index.php/');
 	localStorage.setItem('client','0');
 	tipoTarea={1:"Normal",2:"Rápida",3:"Urgente"};
 	estadoTarea={0:"Creada",1:"En proceso",2:"Finalizada"};
@@ -24,6 +24,41 @@ $(function() {
 		}
 
 	});
+	$(document).on('click','#editclient',function(evt){
+		var estruct=JSON.parse(localStorage.getItem('client'));
+		$("#edittaskform .usr_name").html(estruct.pre_con);
+		$("#edittaskform .usr_emp").html(estruct.pre_emp);
+		$("#edittaskform .usr_correo").html(estruct.pre_ema);
+		$("#edittaskform .usr_phone").html(estruct.pre_tel);
+		$("#edittaskform .usr_est").val(estruct.pre_est);
+		$("#edittaskform .usr_int").val(estruct.pre_int);
+		$("alertmsg3").hide();
+		$("#modal4").modal();
+	});
+	$(document).on('click','#modiclie',function(evt){
+		var uri=localStorage.getItem('uri')+'update/clipre/'+JSON.parse(localStorage.getItem('client')).pre_id;
+			$("#alertmsg2").hide();
+			console.log($("#edittaskform").serialize());
+			modicliente=this;
+			modicliente.setAttribute('disabled','disabled');
+			$.post( uri, $("#edittaskform").serialize(), function( data ) {
+				if(data.estatus){
+					$('#modal4').modal('hide');
+				}
+				else{
+					$("#alertmsg3").hide();
+					$("#alertmsg3").html("Ha ocurrido un error intente nuevamente.");
+					$("#alertmsg3").show('fast');
+				}
+				modicliente.removeAttribute('disabled');
+
+			}, "json").fail(function(){
+				modicliente.removeAttribute('disabled');
+				$("#alertmsg3").hide();
+				$("#alertmsg3").html("Ha ocurrido un error intente nuevamente.");
+				$("#alertmsg3").show('fast');
+			});
+	})
 	$(document).on('click','#moditask',function(evt){
 		moditask=this;
 		moditask.setAttribute('disabled','disabled');
@@ -152,7 +187,6 @@ $(document).on('click','#wrapclientes',function(evt){
 				}
 				$("#tagg").show();
 				$("#tab1_wrapper").show('fast');
-				$("#sectionclient").show();
 
 	}); //getson clients
 
@@ -179,6 +213,8 @@ $(document).on('click','#tab1 tbody>tr',function(evt){
 	$(this).addClass('active');
 	localStorage.setItem("client",JSON.stringify(estruct));
 	actualizarTaskUsr();
+	$("#sectionclient").show();
+
 
 });
 $(document).on('click','#tab2 tbody>tr',function(evt){
@@ -281,7 +317,7 @@ var uri=localStorage.getItem('uri')+'listtask/unicper';
 					"search": "Buscar Tarea",
 					"zeroRecords": "No se encontraron resultados."
 				},
-				scrollY: 213
+				scrollY: 215
 			});
 			$("#tab3_filter").css('float','left')
 			$("#tab3_filter").css('width','50%');
@@ -315,8 +351,9 @@ function modificarTarea(info){
 		// http://192.168.1.12/expofiss/index.php/clipre/12
 		$.post(uri, function( data ) {
 			localStorage.setItem("client",JSON.stringify(data));
-		, "json").fail(function(){
-			alert("secago");
+			setTareaInfo(info);
+		}, "json").fail(function(){
+			console.warn("Ocurrio un problema cargando el cliente.")
 		});
 
 	}
@@ -329,10 +366,10 @@ function modificarTarea(info){
 
 function setTareaInfo(info){
 	var estruct=JSON.parse(localStorage.getItem('client'));
-	$("#usr_name").html(estruct.pre_con);
-	$("#usr_emp").html(estruct.pre_emp);
-	$("#usr_correo").html(estruct.pre_ema);
-	$("#usr_phone").html(estruct.pre_tel);
+	$("#usrtaskform .usr_name").html(estruct.pre_con);
+	$("#usrtaskform .usr_emp").html(estruct.pre_emp);
+	$("#usrtaskform .usr_correo").html(estruct.pre_ema);
+	$("#usrtaskform .usr_phone").html(estruct.pre_tel);
 
 	$("#tsk_ini").html(info.tar_fechcre);
 	$("#tsk_fin").html(info.tar_fechrea);

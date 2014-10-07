@@ -4,7 +4,7 @@ use Mailgun\Mailgun;
 
 $app = new \Slim\Slim();
 $app->database = new medoo([
-    
+
     'database_type' => 'mysql',
     'database_name' => 'expofiss',
     'server' => '127.0.0.1',
@@ -108,7 +108,7 @@ background-color: #f6f6f6;
                                 </tr>
                                 <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
                                     <td class="content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 16px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
-                                        Gracias por registrarte, pronto seras atendido por nuestro servicio de <strong>Atencion al cliente</strong>, mientras tanto te invitamos a conocer en detalle la perimetria y los servicios que ofrecidos por la <strong>ExpoFiss 2015.</strong> 
+                                        Gracias por registrarte, pronto seras atendido por nuestro servicio de <strong>Atencion al cliente</strong>, mientras tanto te invitamos a conocer en detalle la perimetria y los servicios que ofrecidos por la <strong>ExpoFiss 2015.</strong>
                                     </td>
                                 </tr>
                                 <tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; padding: 0;">
@@ -128,7 +128,7 @@ background-color: #f6f6f6;
                             <td class="aligncenter content-block" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 12px; vertical-align: top; text-align: center; margin: 0; padding: 0 0 20px;" align="center" valign="top">Siguenos en <a href="http://twitter.com/laexpofiss" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; box-sizing: border-box; font-size: 12px; color: #999; text-decoration: underline; margin: 0; padding: 0;">@laexpotachira</a> en Twitter.</td>
                         </tr>
 
-                        
+
                     </table>
                 </div></div>
         </td>
@@ -164,7 +164,7 @@ $app->get('/clipre/:id', function ($id) use ($app){
 });
 
 $app->post('/savenew', function () use ($app) {
-    
+
     $vars = $app->request->post();
     $status=true;
 
@@ -200,17 +200,17 @@ $app->post('/savenew', function () use ($app) {
 			'pre_rutaid' => intval($vars['pre_rutaid'])
 			]); */
 			$guardado = true;
-			$app->mg->sendMessage($app->mg_domain, array('from'    => 'ventas@tuquiniela.net', 
-                                'to'      => $vars['email'], 
-                                'subject' => "Preventa ExpoTachira 2015",                                 
+			$app->mg->sendMessage($app->mg_domain, array('from'    => 'ventas@tuquiniela.net',
+                                'to'      => $vars['email'],
+                                'subject' => "Preventa ExpoTachira 2015",
                                 'html' => $app->email));
     }else{
     		$guardado = false;
     }
 
-    $respuesta = new stdClass(); 
-    $respuesta->estatus = $guardado; 
-    $respuesta->error = $errorlog; 
+    $respuesta = new stdClass();
+    $respuesta->estatus = $guardado;
+    $respuesta->error = (isset($errorlog))?$errorlog:array();
 
     header("access-control-allow-origin: *");
     echo json_encode($respuesta);
@@ -219,8 +219,8 @@ $app->post('/savenew', function () use ($app) {
 
 
 $app->post('/update/:tipo/:id', function ($tipo,$id) use ($app) {
-    
-	$vars = $app->request->post();  
+
+	$vars = $app->request->post();
 	$respuesta = new stdClass();
 
     if ($tipo=="clipre") {
@@ -233,40 +233,40 @@ $app->post('/update/:tipo/:id', function ($tipo,$id) use ($app) {
 		   	}
 		    $app->database->update('preventaweb', $updatepre , ["pre_id" => $id]);
 
-		    $respuesta->estatus = true; 
+		    $respuesta->estatus = true;
 
 		}else{
 
-			$respuesta->estatus = false; 
+			$respuesta->estatus = false;
 
 		}
     }
 
     if ($tipo=="task") {
     	if ($app->database->has( "tarea_pre" , ["tar_id" => $id ] )) {
-	    	
+
 	    	$updatetar = [ "tar_est"=>$vars['est'] , "tar_not"=>$vars['tar_not']];
 	    	$app->database->update('tarea_pre', $updatetar , ["tar_id" => $id]);
 
-	    	$respuesta->estatus = true; 
-    	
+	    	$respuesta->estatus = true;
+
     	}else{
 
-    		$respuesta->estatus = false; 
+    		$respuesta->estatus = false;
 
     	}
     }
 
     header("access-control-allow-origin: *");
 	echo json_encode($respuesta);
-   
+
 });
 
 
 $app->post('/newtask/:id', function ($id) use ($app) {
 
-	$vars = $app->request->post();  
-	$respuesta = new stdClass(); 
+	$vars = $app->request->post();
+	$respuesta = new stdClass();
 
 	if ($app->database->has( "preventaweb" , ["pre_id" => $id ] )) {
 		$app->database->insert('tarea_pre', [
@@ -276,9 +276,9 @@ $app->post('/newtask/:id', function ($id) use ($app) {
 			'#tar_fechcre' => 'NOW()',
 			'tar_fechrea'  => 'NOW()'
 			]);
-			$respuesta->estatus = true; 
+			$respuesta->estatus = true;
 	}else{
-			$respuesta->estatus = false; 
+			$respuesta->estatus = false;
 	}
 	header("access-control-allow-origin: *");
 	echo json_encode($respuesta);
@@ -286,9 +286,9 @@ $app->post('/newtask/:id', function ($id) use ($app) {
 });
 
 $app->post('/listtask/:tip', function ($tip) use ($app) {
-	
+
 	// Toda la lista de Tareas por Realizar
-	$vars = $app->request->post();   
+	$vars = $app->request->post();
 
 	// En este lado construyo - El array del sql.
 	switch ($tip) {
@@ -311,7 +311,7 @@ $app->post('/listtask/:tip', function ($tip) use ($app) {
 
 	header("access-control-allow-origin: *");
 	echo json_encode($datas);
-	
+
 	// Lista DE TAREAS DE UN ID. EN ESPECIFICO
 });
 
