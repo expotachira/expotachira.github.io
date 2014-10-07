@@ -11,8 +11,7 @@ $(function() {
 		ampm: true,
 		useStrict:true
 	});
-	$('#tar_fechrea').data("DateTimePicker").setMinDate(moment());
-
+	$('#tar_fechrea').data("DateTimePicker").setMinDate(moment().subtract(1, 'days'));
 
 	$(document).on('click','#agregarTask',function(evt){
 		if(localStorage.getItem('client')==0){
