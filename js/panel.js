@@ -80,8 +80,8 @@ $(document).on('click','#addtask',function(evt){
 		$("#alertmsg").hide();
 		$.post( uri, $("#taskform").serialize(), function( data ) {
 			if(data.estatus){
-				actualizarTaskUsr();
 				$('#myModal').modal('hide');
+				actualizarTaskUsr();
 			}
 			else{
 				$("#alertmsg").hide();
@@ -165,6 +165,7 @@ $(document).on('click','#wraptask',function(evt){
 	$(this).addClass('active');
 	$("#sectionclient,#sectiontask").hide();
 	$("#tab1_wrapper,#tab2_wrapper").hide();
+
 	actualizarTaskAll();
 });
 
@@ -180,19 +181,17 @@ $(document).on('click','#tab1 tbody>tr',function(evt){
 	actualizarTaskUsr();
 
 });
-$(document).on('click','#tab3 tr',function(evt){
-	$("#tab3 tbody>tr").removeClass('active');
-	$(this).addClass('active');
-	modificarTarea($(this).data('info'));
-
-});
-
 $(document).on('click','#tab2 tbody>tr',function(evt){
 	$("#tab2 tbody>tr").removeClass('active');
 	$(this).addClass('active');
 	modificarTarea($(this).data('info'));
-
 });
+$(document).on('click','#tab3 tbody>tr',function(evt){
+	$("#tab3 tbody>tr").removeClass('active');
+	$(this).addClass('active');
+	modificarTarea($(this).data('info'));
+});
+
 function actualizarTaskAll(){
 var uri=localStorage.getItem('uri')+'listtask/all';
 	$.post( uri, function( data ) {
@@ -222,6 +221,7 @@ var uri=localStorage.getItem('uri')+'listtask/all';
 			body.append(row);
 		});
 		if(typeof(table2)==="undefined"){
+			$('#tab2').show();
 			table2 = $('#tab2').DataTable({
 				paging: false,
 				info:false,
@@ -248,8 +248,10 @@ var idcli=JSON.parse(localStorage.getItem('client')).pre_id;
 var uri=localStorage.getItem('uri')+'listtask/unicper';
 	$.post( uri,{"id":idcli}, function( data ) {
 		var body=$("#tab3 tbody");
+		$('#tab3').dataTable().fnDestroy();
 
 		body.html("");
+
 		$.each(data,function(key,val){
 			var row=document.createElement('tr');
 			var t1=document.createTextNode(val.tar_fechrea);
@@ -271,7 +273,6 @@ var uri=localStorage.getItem('uri')+'listtask/unicper';
 			row.setAttribute('data-info',JSON.stringify(val));
 			body.append(row);
 		});
-		if(typeof(table3)==="undefined"){
 			$('#tab3').show();
 			table3 = $('#tab3').DataTable({
 				paging: false,
@@ -303,15 +304,21 @@ var uri=localStorage.getItem('uri')+'listtask/unicper';
 			label.appendChild(bot);
 			div.appendChild(label);
 			$("#tab3_filter").after(div);
-		}
+
 	}, "json").fail(function(evt){console.log("Ocurrio un error")});
 }
 
 function modificarTarea(info){
-
+	$("#alertmsg,#alertmsg2").hide();
 	if(localStorage.getItem('client')==0){
-		// buscar info del cliente
-		// luego del post info.
+		var uri=localStorage.getItem("uri")+"clipre/"+info.pre_id;
+		// http://192.168.1.12/expofiss/index.php/clipre/12
+		$.post(uri, function( data ) {
+			localStorage.setItem("client",JSON.stringify(data));
+		, "json").fail(function(){
+			alert("secago");
+		});
+
 	}
 	else{
 		setTareaInfo(info);
@@ -333,23 +340,6 @@ function setTareaInfo(info){
 	$("#tsk_des").html(info.tar_des);
 	$("#tsk_edo").val(info.tar_est);
 	$("#tsk_not").val(info.tar_not);
-
-
-}
-if(typeof(table2)==="undefined"){
-	table2 = $('#tab2').DataTable({
-		paging: false,
-		info:false,
-		language: {
-			"search": "Buscar Tareas",
-			"zeroRecords": "No se encontraron resultados."
-		},
-		scrollY: 400
-	});
-	$("#tab2_wrapper").hide();
-	$("#tab2_filter").css('float','left');
-	$("#tab2_filter label").css('text-align','left');
-	$("#tab2_filter input").closest('input').addClass('form-control').css('margin-left','0px');
 }
 
 $('#wrapclientes').trigger('click');
