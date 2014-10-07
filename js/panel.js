@@ -32,7 +32,7 @@ $(function() {
 		$("#edittaskform .usr_phone").html(estruct.pre_tel);
 		$("#edittaskform .usr_est").val(estruct.pre_est);
 		$("#edittaskform .usr_int").val(estruct.pre_int);
-		$("alertmsg3").hide();
+		$("#alertmsg3").hide();
 		$("#modal4").modal();
 	});
 	$(document).on('click','#modiclie',function(evt){
