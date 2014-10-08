@@ -142,7 +142,7 @@ $(document).on('click','#wrapclientes',function(evt){
 	$(this).addClass('active');
 	$("#sectionclient,#sectiontask").hide();
 	$("#tab1_wrapper,#tab2_wrapper").hide();
-	var uri=localStorage.getItem('uri')+'/listclie';
+	var uri=localStorage.getItem('uri')+'listclie';
 	$.getJSON(uri, function( data ) {
 		var body=$("#tab1 tbody");
 		var ruta={1:"Google",2:"Facebook",3:"Directo",4:"Sistema"};
