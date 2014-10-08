@@ -38,7 +38,7 @@ $(function() {
 		$("#modal4").modal();
 	});
 	$(document).on('click','#modiclie',function(evt){
-		var uri=localStorage.getItem('uri')+'update/clipre/'+JSON.parse(localStorage.getItem('client')).pre_id;
+		var uri=localStorage.getItem('uri')+'/update/clipre/'+JSON.parse(localStorage.getItem('client')).pre_id;
 		$("#alertmsg2").hide();
 		modicliente=this;
 		modicliente.setAttribute('disabled','disabled');
