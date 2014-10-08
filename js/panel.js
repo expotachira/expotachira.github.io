@@ -14,6 +14,9 @@ $(function() {
 	$('#tar_fechrea').data("DateTimePicker").setMinDate(moment().subtract(1, 'days'));
 
 	$(document).on('click','#agregarTask',function(evt){
+		$("#tar_des").val("");
+		$("#tar_fechrea").val("");
+
 		if(localStorage.getItem('client')==0){
 			$('#modal2').modal();
 		}
@@ -36,27 +39,26 @@ $(function() {
 	});
 	$(document).on('click','#modiclie',function(evt){
 		var uri=localStorage.getItem('uri')+'update/clipre/'+JSON.parse(localStorage.getItem('client')).pre_id;
-			$("#alertmsg2").hide();
-			console.log($("#edittaskform").serialize());
-			modicliente=this;
-			modicliente.setAttribute('disabled','disabled');
-			$.post( uri, $("#edittaskform").serialize(), function( data ) {
-				if(data.estatus){
-					$('#modal4').modal('hide');
-				}
-				else{
-					$("#alertmsg3").hide();
-					$("#alertmsg3").html("Ha ocurrido un error intente nuevamente.");
-					$("#alertmsg3").show('fast');
-				}
-				modicliente.removeAttribute('disabled');
-
-			}, "json").fail(function(){
-				modicliente.removeAttribute('disabled');
+		$("#alertmsg2").hide();
+		modicliente=this;
+		modicliente.setAttribute('disabled','disabled');
+		$.post( uri, $("#edittaskform").serialize(), function( data ) {
+			if(data.estatus){
+				$('#modal4').modal('hide');
+			}
+			else{
 				$("#alertmsg3").hide();
 				$("#alertmsg3").html("Ha ocurrido un error intente nuevamente.");
 				$("#alertmsg3").show('fast');
-			});
+			}
+			modicliente.removeAttribute('disabled');
+
+		}, "json").fail(function(){
+			modicliente.removeAttribute('disabled');
+			$("#alertmsg3").hide();
+			$("#alertmsg3").html("Ha ocurrido un error intente nuevamente.");
+			$("#alertmsg3").show('fast');
+		});
 	})
 	$(document).on('click','#moditask',function(evt){
 		moditask=this;
@@ -70,7 +72,7 @@ $(function() {
 			moditask.removeAttribute('disabled');
 		}
 		else{
-			var uri=localStorage.getItem('uri')+'update/task/'+JSON.parse(localStorage.getItem('client')).tar_id;
+			var uri=localStorage.getItem('uri')+'update/task/'+$(moditask).data('task');
 			$("#alertmsg2").hide();
 			$.post( uri, $("#moditaskform").serialize(), function( data ) {
 				if(data.estatus){
@@ -140,7 +142,7 @@ $(document).on('click','#wrapclientes',function(evt){
 	$(this).addClass('active');
 	$("#sectionclient,#sectiontask").hide();
 	$("#tab1_wrapper,#tab2_wrapper").hide();
-	var uri=localStorage.getItem('uri')+'listclie';
+	var uri=localStorage.getItem('uri')+'/listclie';
 	$.getJSON(uri, function( data ) {
 		var body=$("#tab1 tbody");
 		var ruta={1:"Google",2:"Facebook",3:"Directo",4:"Sistema"};
@@ -214,7 +216,6 @@ $(document).on('click','#tab1 tbody>tr',function(evt){
 	actualizarTaskUsr();
 	$("#sectionclient").show();
 
-
 });
 $(document).on('click','#tab2 tbody>tr',function(evt){
 	$("#tab2 tbody>tr").removeClass('active');
@@ -228,7 +229,7 @@ $(document).on('click','#tab3 tbody>tr',function(evt){
 });
 
 function actualizarTaskAll(){
-var uri=localStorage.getItem('uri')+'listtask/all';
+	var uri=localStorage.getItem('uri')+'listtask/all';
 	$.post( uri, function( data ) {
 		var body=$("#tab2 tbody");
 		var tipoTarea={1:"Normal",2:"Rápida",3:"Urgente"};
@@ -248,7 +249,7 @@ var uri=localStorage.getItem('uri')+'listtask/all';
 			var td3=document.createElement('td');
 			td3.appendChild(t3);
 			row.appendChild(td3);
-			var t4=document.createTextNode(estadoTarea[val.pre_est]!==undefined?estadoTarea[val.pre_est]:"Desconocido");
+			var t4=document.createTextNode(estadoTarea[val.tar_est]!==undefined?estadoTarea[val.tar_est]:"Desconocido");
 			var td4=document.createElement('td');
 			td4.appendChild(t4);
 			row.appendChild(td4);
@@ -279,8 +280,8 @@ var uri=localStorage.getItem('uri')+'listtask/all';
 
 
 function actualizarTaskUsr(){
-var idcli=JSON.parse(localStorage.getItem('client')).pre_id;
-var uri=localStorage.getItem('uri')+'listtask/unicper';
+	var idcli=JSON.parse(localStorage.getItem('client')).pre_id;
+	var uri=localStorage.getItem('uri')+'/listtask/unicper';
 	$.post( uri,{"id":idcli}, function( data ) {
 		var body=$("#tab3 tbody");
 		$('#tab3').dataTable().fnDestroy();
@@ -301,64 +302,58 @@ var uri=localStorage.getItem('uri')+'listtask/unicper';
 			var td3=document.createElement('td');
 			td3.appendChild(t3);
 			row.appendChild(td3);
-			var t4=document.createTextNode(estadoTarea[val.pre_est]!==undefined?estadoTarea[val.pre_est]:"Desconocido");
+			var t4=document.createTextNode(estadoTarea[val.tar_est]!==undefined?estadoTarea[val.tar_est]:"Desconocido");
 			var td4=document.createElement('td');
 			td4.appendChild(t4);
 			row.appendChild(td4);
 			row.setAttribute('data-info',JSON.stringify(val));
 			body.append(row);
 		});
-			$('#tab3').show();
-			table3 = $('#tab3').DataTable({
-				paging: false,
-				info:false,
-				language: {
-					"search": "Buscar Tarea",
-					"zeroRecords": "No se encontraron resultados."
-				},
-				scrollY: 215
-			});
-			$("#tab3_filter").css('float','left')
-			$("#tab3_filter").css('width','50%');
-			$("#tab3_filter label").css('text-align','left');
-			$("#tab3_filter label").css('float','left');
-			$("#tab3_filter input").closest('input').addClass('form-control').css('margin-left','0px');
+		$('#tab3').show();
+		table3 = $('#tab3').DataTable({
+			paging: false,
+			info:false,
+			language: {
+				"search": "Buscar Tarea",
+				"zeroRecords": "No se encontraron resultados."
+			},
+			scrollY: 215
+		});
+		$("#tab3_filter").css('float','left')
+		$("#tab3_filter").css('width','50%');
+		$("#tab3_filter label").css('text-align','left');
+		$("#tab3_filter label").css('float','left');
+		$("#tab3_filter input").closest('input').addClass('form-control').css('margin-left','0px');
 
-			var div= document.createElement('div');
-			div.setAttribute('style','display:inline;');
-			var label=document.createElement('label');
-			label.setAttribute('style','width:50%');
-			var bot=document.createElement('button');
-			bot.setAttribute('type','button');
-			bot.setAttribute('class','btn btn-default btn-md');
-			bot.setAttribute('id','agregarTask');
-			bot.setAttribute('style','margin-left:10px;margin-top:20px;float:right;');
-			var span=document.createElement('span');
-			span.setAttribute('class','glyphicon glyphicon-plus');
-			bot.appendChild(span);
-			label.appendChild(bot);
-			div.appendChild(label);
-			$("#tab3_filter").after(div);
+		var div= document.createElement('div');
+		div.setAttribute('style','display:inline;');
+		var label=document.createElement('label');
+		label.setAttribute('style','width:50%');
+		var bot=document.createElement('button');
+		bot.setAttribute('type','button');
+		bot.setAttribute('class','btn btn-default btn-md');
+		bot.setAttribute('id','agregarTask');
+		bot.setAttribute('style','margin-left:10px;margin-top:20px;float:right;');
+		var span=document.createElement('span');
+		span.setAttribute('class','glyphicon glyphicon-plus');
+		bot.appendChild(span);
+		label.appendChild(bot);
+		div.appendChild(label);
+		$("#tab3_filter").after(div);
 
 	}, "json").fail(function(evt){console.log("Ocurrio un error")});
 }
 
 function modificarTarea(info){
 	$("#alertmsg,#alertmsg2").hide();
-	if(localStorage.getItem('client')==0){
-		var uri=localStorage.getItem("uri")+"clipre/"+info.pre_id;
-		// http://192.168.1.12/expofiss/index.php/clipre/12
-		$.post(uri, function( data ) {
-			localStorage.setItem("client",JSON.stringify(data));
-			setTareaInfo(info);
-		}, "json").fail(function(){
-			console.warn("Ocurrio un problema cargando el cliente.")
-		});
 
-	}
-	else{
+	var uri=localStorage.getItem("uri")+"clipre/"+info.pre_id;
+	// http://192.168.1.12/expofiss/index.php/clipre/12
+	$.getJSON(uri, function( data ) {
+		localStorage.setItem("client",JSON.stringify(data));
 		setTareaInfo(info);
-	}
+	});
+
 	$('#modal3').modal();
 
 }
@@ -376,12 +371,13 @@ function setTareaInfo(info){
 	$("#tsk_des").html(info.tar_des);
 	$("#tsk_edo").val(info.tar_est);
 	$("#tsk_not").val(info.tar_not);
+	$("#moditask").data('task',info.tar_id);
 }
 
 $('#wrapclientes').trigger('click');
 
 
-}); //FUNCTION
+}); //FUNCTION READY
 
 
 
