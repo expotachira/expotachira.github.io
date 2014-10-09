@@ -103,6 +103,15 @@ $app->post('/update/:tipo/:id', function ($tipo,$id) use ($app) {
 
 		}
     }
+    if ($tipo=="firth") {
+    	if ($app->database->has( "preventaweb" , ["pre_id" => $id ] )) {
+		   	$updatepre['pre_est'] =  "1";
+		    $app->database->update('preventaweb', $updatepre , ["pre_id" => $id]);
+		    $respuesta->estatus = true;
+		}else{
+			$respuesta->estatus = false;
+		}
+    }
 
     if ($tipo=="task") {
     	if ($app->database->has( "tarea_pre" , ["tar_id" => $id ] )) {

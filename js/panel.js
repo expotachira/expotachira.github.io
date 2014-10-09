@@ -44,14 +44,23 @@ $(function() {
 		$("#modal4").modal();
 	});
 	$(document).on('click','#modiclie',function(evt){
-		var uri=localStorage.getItem('uri')+'update/clipre/'+JSON.parse(localStorage.getItem('client')).pre_id;
+		var cli=JSON.parse(localStorage.getItem('client'));
+		var uri=localStorage.getItem('uri')+'update/clipre/'+cli.pre_id;
 		$("#alertmsg2").hide();
 		modicliente=this;
 		modicliente.setAttribute('disabled','disabled');
-		var datas="pre_est="+($("#pre_est").val()?$("#pre_est").val():$("#pre_est").data('val'))+"&pre_int="+($("#pre_int").val()?$("#pre_int").val():$("#pre_int").data('val'));
+		var preest=($("#pre_est").val()?$("#pre_est").val():$("#pre_est").data('val'));
+		var preint=($("#pre_int").val()?$("#pre_int").val():$("#pre_int").data('val'));
+		var datas="pre_est="+preest+"&pre_int="+preint;
 
 		$.post( uri, datas, function( data ) {
 			if(data.estatus){
+				var tr=$("#tab1 tr[data-idc="+cli.pre_id+"]");
+				cli.pre_est=preest;
+				cli.pre_int=preint;
+				tr.attr('data-info',JSON.stringify(cli));
+				tr.find("td:nth-child(4)").html(est[preest]);
+				localStorage.setItem("client",JSON.stringify(cli));
 				$('#modal4').modal('hide');
 			}
 			else{
@@ -154,7 +163,7 @@ $(document).on('click','#wrapclientes',function(evt){
 	$.getJSON(uri, function( data ) {
 		var body=$("#tab1 tbody");
 		var ruta={1:"Google",2:"Facebook",3:"Directo",4:"Sistema"};
-		var est={0:"Recien Registrado",1:"Revisado",2:"Contactado",3:"Rechazado",4:"Finalizado"};
+		est={0:"Recien Registrado",1:"Revisado",2:"Contactado",3:"Rechazado",4:"Finalizado"};
 		body.html("");
 		$.each(data,function(key,val){
 
@@ -176,6 +185,7 @@ $(document).on('click','#wrapclientes',function(evt){
 			td4.appendChild(t4);
 			row.appendChild(td4);
 			row.setAttribute('data-info',JSON.stringify(val));
+			row.setAttribute('data-idc',val.pre_id);
 			body.append(row);
 		});
 				// $("#tab1").addClass('table-hover');
@@ -213,13 +223,25 @@ $(document).on('click','#wraptask',function(evt){
 });
 
 $(document).on('click','#tab1 tbody>tr',function(evt){
-	var estruct=$(this).data('info');
+	var tr=$(this);
+	var estruct=tr.data('info');
 	$("#val_nom").html(estruct.pre_con);
 	$("#val_emp").html(estruct.pre_emp);
 	$("#val_cor").html(estruct.pre_ema);
 	$("#val_tel").html(estruct.pre_tel);
 	$("#tab1 tbody>tr").removeClass('active');
-	$(this).addClass('active');
+	tr.addClass('active');
+	if(estruct.pre_est==0){
+		var uri=localStorage.getItem('uri')+'update/firth/'+estruct.pre_id;
+		$.post( uri, function( data ) {
+			if(data.estatus){
+				estruct.pre_est=1;
+				tr.attr('data-info',JSON.stringify(estruct));
+				tr.find("td:nth-child(4)").html(est[1]);
+				localStorage.setItem("client",JSON.stringify(estruct));
+			}
+		},"json");
+	}
 	localStorage.setItem("client",JSON.stringify(estruct));
 	actualizarTaskUsr();
 	$("#sectionclient").show();
