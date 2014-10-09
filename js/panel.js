@@ -32,8 +32,14 @@ $(function() {
 		$("#edittaskform .usr_emp").html(estruct.pre_emp);
 		$("#edittaskform .usr_correo").html(estruct.pre_ema);
 		$("#edittaskform .usr_phone").html(estruct.pre_tel);
-		$("#edittaskform .usr_est").val(estruct.pre_est);
-		$("#edittaskform .usr_int").val(estruct.pre_int);
+
+		$("#pre_est").data('val',estruct.pre_est);
+		$("#pre_est").val(estruct.pre_est);
+		$('#pre_est').selectpicker('refresh');
+
+		$("#pre_int").val(estruct.pre_int);
+		$('#pre_int').selectpicker('refresh');
+		$("#pre_int").data('val',(estruct.pre_int==""?0:estruct.pre_int));
 		$("#alertmsg3").hide();
 		$("#modal4").modal();
 	});
@@ -42,7 +48,9 @@ $(function() {
 		$("#alertmsg2").hide();
 		modicliente=this;
 		modicliente.setAttribute('disabled','disabled');
-		$.post( uri, $("#edittaskform").serialize(), function( data ) {
+		var datas="pre_est="+($("#pre_est").val()?$("#pre_est").val():$("#pre_est").data('val'))+"&pre_int="+($("#pre_int").val()?$("#pre_int").val():$("#pre_int").data('val'));
+
+		$.post( uri, datas, function( data ) {
 			if(data.estatus){
 				$('#modal4').modal('hide');
 			}
@@ -146,7 +154,7 @@ $(document).on('click','#wrapclientes',function(evt){
 	$.getJSON(uri, function( data ) {
 		var body=$("#tab1 tbody");
 		var ruta={1:"Google",2:"Facebook",3:"Directo",4:"Sistema"};
-		var est={1:"Recien registrado",2:"Recien revisado",3:"-Contactado",4:" En comunicación",5:"No cliente"};
+		var est={0:"Recien Registrado",1:"Revisado",2:"Contactado",3:"Rechazado",4:"Finalizado"};
 		body.html("");
 		$.each(data,function(key,val){
 
@@ -370,6 +378,8 @@ function setTareaInfo(info){
 	$("#tsk_tipo").html(tipoTarea[info.tar_tip]);
 	$("#tsk_des").html(info.tar_des);
 	$("#tsk_edo").val(info.tar_est);
+	$("#tsk_edo").selectpicker("refresh");
+
 	$("#tsk_not").val(info.tar_not);
 	$("#moditask").data('task',info.tar_id);
 }

@@ -87,11 +87,11 @@ $app->post('/update/:tipo/:id', function ($tipo,$id) use ($app) {
     if ($tipo=="clipre") {
     	if ($app->database->has( "preventaweb" , ["pre_id" => $id ] )) {
     		$updatepre=array();
-		   	if (isset($vars['est'])) {
-		   		$updatepre['pre_est'] =  $vars['est'];
+		   	if (isset($vars['pre_est'])) {
+		   		$updatepre['pre_est'] =  $vars['pre_est'];
 		   	}
-		   	if (isset($vars['interes'])) {
-		   		$updatepre['pre_int'] =  $vars['interes'];
+		   	if (isset($vars['pre_int'])) {
+		   		$updatepre['pre_int'] =  $vars['pre_int'];
 		   	}
 		    $app->database->update('preventaweb', $updatepre , ["pre_id" => $id]);
 
