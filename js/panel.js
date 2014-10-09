@@ -77,43 +77,43 @@ $(function() {
 			$("#alertmsg3").show('fast');
 		});
 	})
-	$(document).on('click','#moditask',function(evt){
-		moditask=this;
-		moditask.setAttribute('disabled','disabled');
-		var text=$('#tsk_edo').val();
-		var text2=$('#tsk_not').val();
-		if(text==""||text2==""){
-			$("#alertmsg2").hide();
-			$("#alertmsg2").html("Debe ingresar todos los campos.");
-			$("#alertmsg2").show('fast');
-			moditask.removeAttribute('disabled');
-		}
-		else{
-			var uri=localStorage.getItem('uri')+'/update/task/'+$(moditask).data('task');
-			$("#alertmsg2").hide();
-			$.post( uri, $("#moditaskform").serialize(), function( data ) {
-				if(data.estatus){
-					if(taskusr)
-						actualizarTaskUsr();
-					else
-						actualizarTaskAll();
-					$('#modal3').modal('hide');
-				}
-				else{
-					$("#alertmsg2").hide();
-					$("#alertmsg2").html("Ha ocurrido un error intente nuevamente.");
-					$("#alertmsg2").show('fast');
-				}
-				moditask.removeAttribute('disabled');
-
-			}, "json").fail(function(){
-				moditask.removeAttribute('disabled');
+$(document).on('click','#moditask',function(evt){
+	moditask=this;
+	moditask.setAttribute('disabled','disabled');
+	var text=$('#tsk_edo').val();
+	var text2=$('#tsk_not').val();
+	if(text==""||text2==""){
+		$("#alertmsg2").hide();
+		$("#alertmsg2").html("Debe ingresar todos los campos.");
+		$("#alertmsg2").show('fast');
+		moditask.removeAttribute('disabled');
+	}
+	else{
+		var uri=localStorage.getItem('uri')+'/update/task/'+$(moditask).data('task');
+		$("#alertmsg2").hide();
+		$.post( uri, $("#moditaskform").serialize(), function( data ) {
+			if(data.estatus){
+				if(taskusr)
+					actualizarTaskUsr();
+				else
+					actualizarTaskAll();
+				$('#modal3').modal('hide');
+			}
+			else{
 				$("#alertmsg2").hide();
 				$("#alertmsg2").html("Ha ocurrido un error intente nuevamente.");
 				$("#alertmsg2").show('fast');
-			});
-		}
-	});
+			}
+			moditask.removeAttribute('disabled');
+
+		}, "json").fail(function(){
+			moditask.removeAttribute('disabled');
+			$("#alertmsg2").hide();
+			$("#alertmsg2").html("Ha ocurrido un error intente nuevamente.");
+			$("#alertmsg2").show('fast');
+		});
+	}
+});
 
 
 $(document).on('click','#addtask',function(evt){
@@ -164,6 +164,8 @@ $(document).on('click','#wrapclientes',function(evt){
 		var body=$("#tab1 tbody");
 		var ruta={1:"Google",2:"Facebook",3:"Directo",4:"Sistema"};
 		est={0:"Recien Registrado",1:"Revisado",2:"Contactado",3:"Rechazado",4:"Finalizado"};
+		// $("#tab2_wrapper").hide();
+		$('#tab1').dataTable().fnDestroy();
 		body.html("");
 		$.each(data,function(key,val){
 
@@ -189,21 +191,20 @@ $(document).on('click','#wrapclientes',function(evt){
 			body.append(row);
 		});
 				// $("#tab1").addClass('table-hover');
-				if(typeof(table1)==="undefined"){
-					table1 = $('#tab1').DataTable({
-						paging: false,
-						info:false,
-						language: {
-							"search": "Buscar Clientes",
-							"zeroRecords": "No se encontraron resultados."
-						},
-						scrollY: 400
-					});
-					$("#tab1_wrapper").hide();
-					$("#tab1_filter").css('float','left');
-					$("#tab1_filter label").css('text-align','left');
-					$("#tab1_filter input").closest('input').addClass('form-control').css('margin-left','0px');
-				}
+				var table1 = $('#tab1').DataTable({
+					paging: false,
+					info:false,
+					language: {
+						"search": "Buscar Clientes",
+						"zeroRecords": "No se encontraron resultados."
+					},
+					scrollY: 400
+				});
+				$("#tab1_wrapper").hide();
+				$("#tab1_filter").css('float','left');
+				$("#tab1_filter label").css('text-align','left');
+				$("#tab1_filter input").closest('input').addClass('form-control').css('margin-left','0px');
+
 				$("#tagg").show();
 				$("#tab1_wrapper").show('fast');
 
@@ -264,6 +265,9 @@ function actualizarTaskAll(){
 		var body=$("#tab2 tbody");
 		var tipoTarea={1:"Normal",2:"Rápida",3:"Urgente"};
 		var estadoTarea={0:"Creada",1:"En proceso",2:"Finalizada"};
+		// $("#tab1_wrapper").hide();
+		$('#tab2').dataTable().fnDestroy();
+
 		body.html("");
 		$.each(data,function(key,val){
 			var row=document.createElement('tr');
@@ -286,22 +290,22 @@ function actualizarTaskAll(){
 			row.setAttribute('data-info',JSON.stringify(val));
 			body.append(row);
 		});
-		if(typeof(table2)==="undefined"){
-			$('#tab2').show();
-			table2 = $('#tab2').DataTable({
-				paging: false,
-				info:false,
-				language: {
-					"search": "Buscar Tareas",
-					"zeroRecords": "No se encontraron resultados."
-				},
-				scrollY: 400
-			});
-			$("#tab2_wrapper").hide();
-			$("#tab2_filter").css('float','left');
-			$("#tab2_filter label").css('text-align','left');
-			$("#tab2_filter input").closest('input').addClass('form-control').css('margin-left','0px');
-		}
+
+		$('#tab2').show();
+		var table2 = $('#tab2').DataTable({
+			paging: false,
+			info:false,
+			language: {
+				"search": "Buscar Tareas",
+				"zeroRecords": "No se encontraron resultados."
+			},
+			scrollY: 400
+		});
+		$("#tab2_wrapper").hide();
+		$("#tab2_filter").css('float','left');
+		$("#tab2_filter label").css('text-align','left');
+		$("#tab2_filter input").closest('input').addClass('form-control').css('margin-left','0px');
+
 		$("#tab2_wrapper").show('fast');
 		$("#sectiontask").show();
 
