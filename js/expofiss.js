@@ -1,7 +1,7 @@
 $(function() {
 	stipo = GetURLParameter('stype')|0;
 	sid = GetURLParameter('sid')|0;
-	localStorage.setItem('uri', 'http://127.0.0.1/laexpofiss/api/index.php');
+	localStorage.setItem('uri', 'http://192.168.1.12/expotachira_api/index.php');
 
 	$(document).keyup(function(e) {
 		if (e.keyCode == 27) {
