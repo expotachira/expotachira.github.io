@@ -15,6 +15,8 @@ $(function() {
 	});
 
 	$(document).on('click','.infobody .submit',function(evt){
+		bot=this;
+		bot.setAttribute('disabled','disabled');
 		evt.preventDefault();
 		var form=$('#infoform');
 		var cont=0;
@@ -62,9 +64,15 @@ if(cont==0){
 				}
 			});
 		}
+		bot.removeAttribute('disabled');
 	},'json').fail(function(res){
+		bot.removeAttribute('disabled');
 		console.log('se cago');
 	});
+}
+else{
+	bot.removeAttribute('disabled');
+
 }
 });
 

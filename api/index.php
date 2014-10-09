@@ -190,11 +190,22 @@ $app->post('/savenew', function () use ($app) {
     }
 
     if ($status) {
+
 		$guardado = true;
-		$app->mg->sendMessage($app->mg_domain, array('from'    => 'ventas@tuquiniela.net',
-                            'to'      => $vars['email'],
-                            'subject' => "Preventa ExpoTachira 2015",
-                            'html' => $app->email));
+		$app->database->insert('preventaweb', [
+		'pre_emp' => $vars['empresa'],
+		'pre_con' => $vars['contacto'],
+		'pre_tel' => $vars['telefono'],
+		'pre_ema' => $vars['email'],
+		'pre_tip' => intval($vars['tipo']),
+		'pre_ruta' => intval($vars['pre_ruta']),
+		'pre_rutaid' => intval($vars['pre_rutaid'])
+		]);
+		$guardado = true;
+		$app->mg->sendMessage($app->mg_domain, array('from' => 'ventas@tuquiniela.net',
+		'to' => $vars['email'],
+		'subject' => "Preventa ExpoTachira 2015",
+		'html' => $app->email));
     }else{
     		$guardado = false;
     }

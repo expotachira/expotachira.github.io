@@ -1,6 +1,6 @@
 $(function() {
 
-	localStorage.setItem('uri', 'http://127.0.0.1/laexpofiss/api/index.php/');
+	localStorage.setItem('uri', 'http://127.0.0.1/laexpofiss/api/index.php');
 	localStorage.setItem('client','0');
 	tipoTarea={1:"Normal",2:"Rápida",3:"Urgente"};
 	estadoTarea={0:"Creada",1:"En proceso",2:"Finalizada"};
@@ -45,7 +45,7 @@ $(function() {
 	});
 	$(document).on('click','#modiclie',function(evt){
 		var cli=JSON.parse(localStorage.getItem('client'));
-		var uri=localStorage.getItem('uri')+'update/clipre/'+cli.pre_id;
+		var uri=localStorage.getItem('uri')+'/update/clipre/'+cli.pre_id;
 		$("#alertmsg2").hide();
 		modicliente=this;
 		modicliente.setAttribute('disabled','disabled');
@@ -89,7 +89,7 @@ $(function() {
 			moditask.removeAttribute('disabled');
 		}
 		else{
-			var uri=localStorage.getItem('uri')+'update/task/'+$(moditask).data('task');
+			var uri=localStorage.getItem('uri')+'/update/task/'+$(moditask).data('task');
 			$("#alertmsg2").hide();
 			$.post( uri, $("#moditaskform").serialize(), function( data ) {
 				if(data.estatus){
@@ -129,7 +129,7 @@ $(document).on('click','#addtask',function(evt){
 		newtaskusr.removeAttribute('disabled');
 	}
 	else{
-		var uri=localStorage.getItem('uri')+'newtask/'+JSON.parse(localStorage.getItem('client')).pre_id;
+		var uri=localStorage.getItem('uri')+'/newtask/'+JSON.parse(localStorage.getItem('client')).pre_id;
 		$("#alertmsg").hide();
 		$.post( uri, $("#taskform").serialize(), function( data ) {
 			if(data.estatus){
@@ -159,7 +159,7 @@ $(document).on('click','#wrapclientes',function(evt){
 	$(this).addClass('active');
 	$("#sectionclient,#sectiontask").hide();
 	$("#tab1_wrapper,#tab2_wrapper").hide();
-	var uri=localStorage.getItem('uri')+'listclie';
+	var uri=localStorage.getItem('uri')+'/listclie';
 	$.getJSON(uri, function( data ) {
 		var body=$("#tab1 tbody");
 		var ruta={1:"Google",2:"Facebook",3:"Directo",4:"Sistema"};
@@ -232,7 +232,7 @@ $(document).on('click','#tab1 tbody>tr',function(evt){
 	$("#tab1 tbody>tr").removeClass('active');
 	tr.addClass('active');
 	if(estruct.pre_est==0){
-		var uri=localStorage.getItem('uri')+'update/firth/'+estruct.pre_id;
+		var uri=localStorage.getItem('uri')+'/update/firth/'+estruct.pre_id;
 		$.post( uri, function( data ) {
 			if(data.estatus){
 				estruct.pre_est=1;
@@ -259,7 +259,7 @@ $(document).on('click','#tab3 tbody>tr',function(evt){
 });
 
 function actualizarTaskAll(){
-	var uri=localStorage.getItem('uri')+'listtask/all';
+	var uri=localStorage.getItem('uri')+'/listtask/all';
 	$.post( uri, function( data ) {
 		var body=$("#tab2 tbody");
 		var tipoTarea={1:"Normal",2:"Rápida",3:"Urgente"};
@@ -377,7 +377,7 @@ function actualizarTaskUsr(){
 function modificarTarea(info){
 	$("#alertmsg,#alertmsg2").hide();
 
-	var uri=localStorage.getItem("uri")+"clipre/"+info.pre_id;
+	var uri=localStorage.getItem("uri")+"/clipre/"+info.pre_id;
 	// http://192.168.1.12/expofiss/index.php/clipre/12
 	$.getJSON(uri, function( data ) {
 		localStorage.setItem("client",JSON.stringify(data));
