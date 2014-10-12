@@ -90,7 +90,9 @@ $(document).on('blur','[data-required=true]',function(e){
 	}
 });
 
-$.getJSON( localStorage.getItem('uri')+'/tipoempresa', function( data ) {
+$.get( localStorage.getItem('uri')+'/wakeup')
+  .done(function( data ) {
+    $.getJSON( localStorage.getItem('uri')+'/tipoempresa', function( data ) {
 	var select=$('.infobody .selectpicker');
 	$.each(data, function(index, val) {
 		var option=document.createElement('option');
@@ -102,6 +104,8 @@ $.getJSON( localStorage.getItem('uri')+'/tipoempresa', function( data ) {
 	$('.selectpicker').selectpicker();
 	$('.selectpicker.btn').css('border','none');
 });
+  });
+
 
 function GetURLParameter(sParam)
 {

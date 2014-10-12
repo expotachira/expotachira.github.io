@@ -6,6 +6,16 @@
 {
 	clear: both;
 }
+
+.thumb h3{
+margin:0px;
+font-family: 'Open Sans Condensed', sans-serif;
+}
+.thumbnail{
+	border:none;
+	margin: 0px;
+}
+
 .textRequired::after{
 	content: " *";
 	color:red;
