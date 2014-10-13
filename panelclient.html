@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta content='registro stands feria san sebastian expoferia' name='description'/>
+	<meta content='Feria Sebastian expoferia laexpoferia' name='keywords'/>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css"/>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-select.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/panelclient.css"/>
+
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+	<title>Panel del Cliente.</title>
+</head>
+<body>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<div class="row" style="height:2em;">
+	</div>
+	<section class="row container">
+		<div class="col-md-6">
+			<div class="row">
+				<div class="col-md-6">
+					<div type="button" style="display: block; width: 100%; font-size:1.2em; padding:10px 0;" class="btn btn-info btnswitch" id="wrapclientes">Clientes Registrados</div>
+				</div>
+				<div class="col-md-6">
+					<button type="button" style="display: block; width: 100%;font-size:1.2em; padding:10px 0;" class="btn btn-info btnswitch" id="wrapadd">Nuevo Cliente</button>
+				</div>
+			</div>
+			<hr>
+			<div class="row" >
+				<table class="table table-hover" id="tab1" >
+					<thead >
+						<tr>
+							<th>RIF</th>
+							<th>Razón Social</th>
+							<th>Contacto</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+			<section id="newclient" style="display:none;">
+				<form id="addform" class="form-horizontal" role="form">
+					<header class="infotitulo modal-title" id="myModalLabel4">
+						<h2 style="margin-top:0px;margin-left:0px;font-size:1.85em;;" class="namewrap">
+							NUEVO CLIENTE
+						</h2>
+					</header>
+					<section class="infobody" style="background-color:#ececec;padding: 20px 10px 1px 30px;">
+						<div class="row">
+							<div class="col-md-4 rigth" >
+								<label for="st_rif" class="textRequired">RIF</label>
+							</div>
+							<div class="col-md-8">
+								<input data-required="true" type="text" class="form-control" id="st_rif" name="st_rif" placeholder="Ej. J11223344550" data-placement="right" data-trigger="manual" data-container="body" data-content="" data-fun="ValidateRIF" data-msgfun="Formato de RIF inválido, Ej. V11223344, E11223311, " maxlength="15" >
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-4 rigth">
+								<label for="st_razon" class="textRequired">Razón Social</label>
+							</div>
+							<div class="col-md-8">
+								<input data-required="true" type="text" class="form-control" id="st_razon" name="st_razon"  data-placement="right" data-trigger="manual" data-container="body" data-content="">
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-4 rigth">
+								<label for="st_contacto" class="textRequired">Persona Contacto</label>
+							</div>
+							<div class="col-md-8">
+								<input data-required="true" type="text" class="form-control" id="st_contacto" name="st_contacto"  data-placement="right" data-trigger="manual" data-container="body" data-content="">
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-4 rigth">
+								<label for="st_telf" class="textRequired">Teléfono </label>
+							</div>
+							<div class="col-md-8">
+								<input data-required="true" type="text" class="form-control" id="st_telf" name="st_telf" placeholder="Ej. 04161122334" data-placement="right" data-trigger="manual" data-container="body" data-content="" data-fun="ValidatePhone" data-msgfun="Formato de Teléfono inválido, ingrese sólo números de 11 dígitos Ejm. 02764433221, 04121122334" placeholder="Ej: 04161234321" maxlength="11">
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-4 rigth">
+								<label for="st_correo" class="textRequired">Correo </label>
+							</div>
+							<div class="col-md-8">
+								<input data-required="true" type="text" class="form-control" id="st_correo" name="st_correo"  data-placement="right" data-trigger="manual" data-container="body" data-content="" data-fun="ValidateEmail" data-msgfun="Formato de correo electríco erroneo, Ejm. admin@dominio.com" placeholder="empresa@dominio.com">
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-4 rigth">
+								<label for="nombre" class="textRequired">Condición Stand</label>
+							</div>
+							<div class="col-md-8">
+								<select data-required="true" class="selectpicker" id="st_condi" name="st_condi" data-width="100%" >
+									<option value="3">Compra</option>
+									<option value="2">Reserva</option>
+								</select>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-4 rigth">
+								<label for="nombre" class="textRequired">Zona de Pabellón</label>
+							</div>
+							<div class="col-md-8">
+								<select data-required="true" class="selectpicker" id="st_zona" name="st_zona" data-width="100%" >
+									<option value="0">Seleccione</option>
+								</select>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-4 rigth">
+								<label for="nombre" class="textRequired">Metros  m<sup>2</sup></label>
+							</div>
+							<div class="col-md-8">
+								<select data-required="true" class="selectpicker" id="st_mts" name="st_mts" data-width="100%" data-placement="right" data-trigger="manual" data-container="body" data-content="Seleccione una opción">
+									<option value="0">Seleccione</option>
+								</select>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-md-4 rigth">
+								<label for="nombre" class="textRequired">Stands</label>
+							</div>
+							<div class="col-md-8">
+								<select data-required="true" class="selectpicker" id="st_stand" name="st_stand" data-width="100%" data-placement="right" data-trigger="manual" data-container="body" data-content="Seleccione una opción">
+									<option value="0">Seleccione</option>
+								</select>
+							</div>
+						</div>
+						<br>
+						<div class="row form-group">
+							<div class="col-sm-12">
+								<a  class="btn btn-nigga pull-right submit" id="regbuttom" >REGISTRAR CLIENTE </a>
+							</div>
+							<div class="col-sm-12" style="font-size:11px;">Campos obligatorios <span style="color:red;">*</span></div>
+						</div>
+						<div style="display:none;" class="alert alert-success" role="alert" id="alertmsg">
+							Se ha guardado exitosamente.
+						</div>
+						<div style="display:none;" class="alert alert-danger" role="alert" id="alerterror">
+							Ha ocurrido un error, verifique si el cliente ya se encuentra registrado.
+						</div>
+					</section>
+					<br>
+				</form>
+			</section>
+		</div>
+		<div class="col-md-6">
+
+		</div>
+	</section>
+	<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap-select.min.js"></script>
+	<script type="text/javascript" src="js/moment.js"></script>
+	<script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript" src="js/panelclient.js"></script>
+</body>
+</html>
