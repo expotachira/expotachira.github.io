@@ -40,41 +40,41 @@ $(function() {
 				}
 			}
 		});
-if(cont==0){
-	var data=($(infoform).serialize()+'&pre_ruta='+stipo+'&pre_rutaid='+sid);
-	$.post( localStorage.getItem('uri')+'/savenew',data, function( data ) {
-		if(data.estatus){
-			$('.infobody').hide().css('padding','20px 20px');
-			var html="<div class='alert alert-success' style='background-color:transparent;'><header style='text-align: center;' ><strong style='font-size:1.5em;'>Enviado Exitosamente </strong> <span class='glyphicon glyphicon-ok'></span></header><hr class='message-inner-separator'><p style='font-size:1.2em;'>Su información fue recibida, en breve, será contactado por nuestro equipo de ventas.</p></div>";
-			$('.infobody').html(html);
-			$('.infobody').show('fast');
-		}
-		else{
-			$.each(data.error,function(key,val){
-				var element=$('#'+val);
-				if(element.data('fun')!=undefined){
-					element.popover('destroy');
-					element.data('content',element.data('msgfun'));
-					element.popover('show');
+		if(cont==0){
+			var data=($(infoform).serialize()+'&pre_ruta='+stipo+'&pre_rutaid='+sid);
+			$.post( localStorage.getItem('uri')+'/savenew',data, function( data ) {
+				if(data.estatus){
+					$('.infobody').hide().css('padding','20px 20px');
+					var html="<div class='alert alert-success' style='background-color:transparent;'><header style='text-align: center;' ><strong style='font-size:1.5em;'>Enviado Exitosamente </strong> <span class='glyphicon glyphicon-ok'></span></header><hr class='message-inner-separator'><p style='font-size:1.2em;'>Su información fue recibida, en breve, será contactado por nuestro equipo de ventas.</p></div>";
+					$('.infobody').html(html);
+					$('.infobody').show('fast');
 				}
 				else{
-					element.popover('destroy');
-					element.data('content','Campo obligatorio');
-					element.popover('show');
+					$.each(data.error,function(key,val){
+						var element=$('#'+val);
+						if(element.data('fun')!=undefined){
+							element.popover('destroy');
+							element.data('content',element.data('msgfun'));
+							element.popover('show');
+						}
+						else{
+							element.popover('destroy');
+							element.data('content','Campo obligatorio');
+							element.popover('show');
+						}
+					});
 				}
+				bot.removeAttribute('disabled');
+			},'json').fail(function(res){
+				bot.removeAttribute('disabled');
+				console.log('se cago');
 			});
 		}
-		bot.removeAttribute('disabled');
-	},'json').fail(function(res){
-		bot.removeAttribute('disabled');
-		console.log('se cago');
-	});
-}
-else{
-	bot.removeAttribute('disabled');
+		else{
+			bot.removeAttribute('disabled');
 
-}
-});
+		}
+	});
 
 $(document).on('blur','[data-required=true]',function(e){
 	e.preventDefault();
@@ -126,5 +126,18 @@ function Validador()
 	 this.ValidatePhone=function (){
 	 	return /^\d{11}$/.test(arguments[0]);
 	 }
-}
+	}
+	var nigga= $("a.btn-nigga.submit");
+	var watcherbot = scrollMonitor.create(nigga);
+	watcherbot.lock();
+
+	watcherbot.enterViewport(function() {
+		$("header.container").addClass('take');
+	});
+	watcherbot.exitViewport(function() {
+		$("header.container").removeClass('take');
+	});
+
+
+
 });

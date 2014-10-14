@@ -1,6 +1,8 @@
 $(function() {
 
-	localStorage.setItem('uri', 'http://expotachira.herokuapp.com/index.php');
+	// localStorage.setItem('uri', 'http://expotachira.herokuapp.com/index.php');
+	localStorage.setItem('uri', 'http://127.0.0.1/expotachira_api/index.php');
+
 	localStorage.setItem('client','0');
 	tipoTarea={1:"Normal",2:"Rápida",3:"Urgente"};
 	estadoTarea={0:"Creada",1:"En proceso",2:"Finalizada"};
