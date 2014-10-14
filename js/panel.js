@@ -59,7 +59,7 @@ $(function() {
 				cli.pre_est=preest;
 				cli.pre_int=preint;
 				tr.attr('data-info',JSON.stringify(cli));
-				tr.find("td:nth-child(4)").html(est[preest]);
+				tr.find("td:nth-child(5)").html(est[preest]);
 				localStorage.setItem("client",JSON.stringify(cli));
 				$('#modal4').modal('hide');
 			}
@@ -163,13 +163,17 @@ $(document).on('click','#wrapclientes',function(evt){
 	$.getJSON(uri, function( data ) {
 		var body=$("#tab1 tbody");
 		var ruta={1:"Google",2:"Facebook",3:"Directo",4:"Sistema"};
-		est={0:"Recien Registrado",1:"Revisado",2:"Contactado",3:"Rechazado",4:"Finalizado"};
+		est={0:"Nuevo",1:"Revisado",2:"Contactado",3:"Rechazado",4:"Finalizado"};
 		// $("#tab2_wrapper").hide();
 		$('#tab1').dataTable().fnDestroy();
 		body.html("");
 		$.each(data,function(key,val){
 
 			var row=document.createElement('tr');
+			var t0=document.createTextNode(val.pre_id);
+			var td0=document.createElement('td');
+			td0.appendChild(t0);
+			row.appendChild(td0);
 			var t1=document.createTextNode(val.pre_emp);
 			var td1=document.createElement('td');
 			td1.appendChild(t1);
@@ -184,6 +188,8 @@ $(document).on('click','#wrapclientes',function(evt){
 			row.appendChild(td3);
 			var t4=document.createTextNode(est[val.pre_est]!==undefined?est[val.pre_est]:"Desconocido");
 			var td4=document.createElement('td');
+			if(val.pre_est==0)
+			td4.setAttribute('class','bg-info');
 			td4.appendChild(t4);
 			row.appendChild(td4);
 			row.setAttribute('data-info',JSON.stringify(val));
@@ -192,13 +198,14 @@ $(document).on('click','#wrapclientes',function(evt){
 		});
 				// $("#tab1").addClass('table-hover');
 				var table1 = $('#tab1').DataTable({
-					paging: false,
-					info:false,
-					language: {
+					"paging": false,
+					"info":false,
+					"language": {
 						"search": "Buscar Clientes",
-						"zeroRecords": "No se encontraron resultados."
+						"zeroRecords": "No se encontraron resultados.",
 					},
-					scrollY: 400
+					"order": [[ 0, "desc" ]],
+					"scrollY": 400
 				});
 				$("#tab1_wrapper").hide();
 				$("#tab1_filter").css('float','left');
@@ -238,7 +245,7 @@ $(document).on('click','#tab1 tbody>tr',function(evt){
 			if(data.estatus){
 				estruct.pre_est=1;
 				tr.attr('data-info',JSON.stringify(estruct));
-				tr.find("td:nth-child(4)").html(est[1]);
+				tr.find("td:nth-child(5)").html(est[1]).removeClass('bg-info');
 				localStorage.setItem("client",JSON.stringify(estruct));
 			}
 		},"json");
