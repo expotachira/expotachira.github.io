@@ -1,8 +1,5 @@
 $(function() {
-
-	// localStorage.setItem('uri', 'http://expotachira.herokuapp.com/index.php');
-	localStorage.setItem('uri', 'http://127.0.0.1/expotachira_api/index.php');
-
+	localStorage.setItem('uri', 'http://expotachira.herokuapp.com/index.php');
 	localStorage.setItem('client','0');
 	tipoTarea={1:"Normal",2:"Rápida",3:"Urgente"};
 	estadoTarea={0:"Creada",1:"En proceso",2:"Finalizada"};
@@ -63,6 +60,8 @@ $(function() {
 				tr.attr('data-info',JSON.stringify(cli));
 				tr.find("td:nth-child(5)").html(est[preest]);
 				localStorage.setItem("client",JSON.stringify(cli));
+				$("#val_est").html(est[preest]);
+				$("#val_int").html((inte[preint]===undefined)?"Desconocido":inte[preint]);
 				$('#modal4').modal('hide');
 			}
 			else{
@@ -153,7 +152,8 @@ $(document).on('click','#addtask',function(evt){
 		});
 	}
 });
-
+		est={0:"Nuevo",1:"Revisado",2:"Contactado",3:"Rechazado",4:"Finalizado"};
+		inte={0:"Pabellón Colombia",1:"Pabellón Venezuela"};
 $(document).on('click','#wrapclientes',function(evt){
 	taskusr=true;
 	localStorage.setItem('client','0');
@@ -165,7 +165,6 @@ $(document).on('click','#wrapclientes',function(evt){
 	$.getJSON(uri, function( data ) {
 		var body=$("#tab1 tbody");
 		var ruta={1:"Google",2:"Facebook",3:"Directo",4:"Sistema"};
-		est={0:"Nuevo",1:"Revisado",2:"Contactado",3:"Rechazado",4:"Finalizado"};
 		// $("#tab2_wrapper").hide();
 		$('#tab1').dataTable().fnDestroy();
 		body.html("");
@@ -190,6 +189,7 @@ $(document).on('click','#wrapclientes',function(evt){
 			row.appendChild(td3);
 			var t4=document.createTextNode(est[val.pre_est]!==undefined?est[val.pre_est]:"Desconocido");
 			var td4=document.createElement('td');
+			td4.setAttribute('style','text-align:center;');
 			if(val.pre_est==0)
 			td4.setAttribute('class','bg-info');
 			td4.appendChild(t4);
@@ -239,6 +239,10 @@ $(document).on('click','#tab1 tbody>tr',function(evt){
 	$("#val_emp").html(estruct.pre_emp);
 	$("#val_cor").html(estruct.pre_ema);
 	$("#val_tel").html(estruct.pre_tel);
+	$("#val_est").html(est[estruct.pre_est]);
+	$("#val_int").html((inte[estruct.pre_int]===undefined)?"Desconocido":inte[estruct.pre_int]);
+
+
 	$("#tab1 tbody>tr").removeClass('active');
 	tr.addClass('active');
 	if(estruct.pre_est==0){

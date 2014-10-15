@@ -1,5 +1,5 @@
 $(function(){
-	localStorage.setItem('uri', 'http://127.0.0.1/expotachira_api/index.php');
+	localStorage.setItem('uri', 'http://expotachira.herokuapp.com/index.php');
 	$(document).keyup(function(e) {
 		if (e.keyCode == 27) {
 			$('[data-required=true]').popover('destroy').removeClass('ms-inv');
