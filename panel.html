@@ -1,31 +1,33 @@
-<!doctype html>
-<html lang="es">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta content='registro stands feria san sebastian expoferia' name='description'/>
-	<meta content='Feria Sebastian expoferia laexpoferia' name='keywords'/>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
-	<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css"/>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap-select.min.css"/>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css"/>
-	<link rel="stylesheet" type="text/css" href="css/panel.css"/>
+	<script type="text/javascript" charset="utf-8" >
+		localStorage.setItem('uri', 'http://expotachira.herokuapp.com/index.php');
+		// localStorage.setItem('uri', 'http://127.0.0.1/expotachira_api/index.php');
+		localStorage.setItem('client','0');
+		var xmlhttp = null;
+		token='?tokenid='+localStorage.getItem('token');
+		xmlhttp=(window.XMLHttpRequest)?new XMLHttpRequest():new ActiveXObject("Microsoft.XMLHTTP");
+		var url=localStorage.getItem('uri')+token;
+		xmlhttp.overrideMimeType("application/json");
+		xmlhttp.onload  = function() {
+			if (xmlhttp.status == 200) {
+				var data =  JSON.parse(xmlhttp.responseText);
+				verificarlogin(data.logout);
+			}
+		};
+		xmlhttp.open( "GET", url, false );
+		xmlhttp.send( null );
 
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-
-
-
-
-	<title>Panel Principal.</title>
-</head>
-<body >
-	<script type="text/javascript" src="js/jquery.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<div class="row" style="height:2em;">
-
+		function verificarlogin(login){
+			if(login!=undefined){
+				localStorage.setItem('token','0');
+				window.location.href="logout.html";
+			}
+			return false;
+		}
+	</script>
+	<div class="row" style="height:1em;">
 	</div>
 	<section class="row container">
-		<div class="col-md-6">
+		<div class="col-md-6" style="padding:0px;">
 			<div class="row">
 				<div class="col-md-6">
 					<div type="button" style="display: block; width: 100%; font-size:1.2em; padding:10px 0;" class="btn btn-info btnswitch" id="wrapclientes">Clientes Preventa</div>
@@ -68,8 +70,8 @@
 			<div class="row" style="margin-left:20px; " >
 				<section id="sectionclient" style="display:none;" >
 					<div class="row">
-						<header style="background: #5bc0de !important;border-bottom: 2px solid #0171a5 !important;color: #ffffff;;text-align:center;padding-top:10px;padding-bottom:10px;font-size:1.3em;">
-							Datos del Cliente
+						<header style="background: #5bc0de !important;border-bottom: 2px solid #0171a5 !important;color: #ffffff;;text-align:center;padding-top:10px;padding-bottom:10px;font-size:1.3em;font-weight:bold;">
+							INFORMACIÓN DE CLIENTE EN PREVENTA
 						</header>
 						<section style="background-color:#e8e8e8; padding:10px">
 							<form class="form-horizontal" role="form" style="font-size:1.2em;">
@@ -144,9 +146,9 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header" style="padding:0px;">
-					<button type="button" class="close" style="margin-top:30px;margin-right:20px;" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+					<button type="button" class="close" style="margin-top:15px;margin-right:20px;" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
 					<header class="infotitulo modal-title" id="myModalLabel">
-						<h2 style="margin-left:20px;font-size:1.85em;font-weight: bold;" class="namewrap">
+						<h2 style="margin:5px 0px 0px 20px;font-size:1.85em;font-weight: bold;" class="namewrap">
 							AGREGAR TAREA
 						</h2>
 					</header>
@@ -223,9 +225,9 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header" style="padding:0px;">
-					<button type="button" class="close" style="margin-top:30px;margin-right:20px;" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
-					<header class="infotitulo modal-title" id="myModalLabel3">
-						<h2 style="margin-left:20px;font-size:1.85em;font-weight: bold;" class="namewrap">
+					<button type="button" class="close" style="margin-top:15px;margin-right:20px;" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+					<header class="infotitulo modal-title" id="myModalLabel">
+						<h2 style="margin:5px 0px 0px 20px;font-size:1.85em;font-weight: bold;" class="namewrap">
 							MODIFICAR TAREA
 						</h2>
 					</header>
@@ -343,9 +345,9 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header" style="padding:0px;">
-					<button type="button" class="close" style="margin-top:30px;margin-right:20px;" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
-					<header class="infotitulo modal-title" id="myModalLabel4">
-						<h2 style="margin-left:20px;font-size:1.85em;font-weight: bold;" class="namewrap">
+					<button type="button" class="close" style="margin-top:15px;margin-right:20px;" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+					<header class="infotitulo modal-title" id="myModalLabel">
+						<h2 style="margin:5px 0px 0px 20px;font-size:1.85em;font-weight: bold;" class="namewrap">
 							MODIFICAR CLIENTE
 						</h2>
 					</header>
@@ -413,12 +415,3 @@
 			</div>
 		</div>
 	</div> <!-- Modal -->
-
-
-	<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap-select.min.js"></script>
-	<script type="text/javascript" src="js/moment.js"></script>
-	<script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
-	<script type="text/javascript" src="js/panel.js"></script>
-</body>
-</html>

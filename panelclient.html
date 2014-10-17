@@ -1,23 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta content='registro stands feria san sebastian expoferia' name='description'/>
-	<meta content='Feria Sebastian expoferia laexpoferia' name='keywords'/>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
-	<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css"/>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap-select.min.css"/>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css"/>
-	<link rel="stylesheet" type="text/css" href="css/panelclient.css"/>
+	<script type="text/javascript" charset="utf-8" >
+		localStorage.setItem('uri', 'http://expotachira.herokuapp.com/index.php');
+		// localStorage.setItem('uri', 'http://127.0.0.1/expotachira_api/index.php');
+		localStorage.setItem('client','0');
+		var xmlhttp = null;
+		token='?tokenid='+localStorage.getItem('token');
+		postoken=localStorage.getItem('token');
+		xmlhttp=(window.XMLHttpRequest)?new XMLHttpRequest():new ActiveXObject("Microsoft.XMLHTTP");
+		var url=localStorage.getItem('uri')+token;
+		xmlhttp.overrideMimeType("application/json");
+		xmlhttp.onload  = function() {
+			if (xmlhttp.status == 200) {
+				var data =  JSON.parse(xmlhttp.responseText);
+				verificarlogin(data.logout);
+			}
+		};
+		xmlhttp.open( "GET", url, false );
+		xmlhttp.send( null );
 
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-	<title>Panel del Cliente.</title>
-</head>
-<body>
-	<script type="text/javascript" src="js/jquery.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<div class="row" style="height:2em;">
+		function verificarlogin(login){
+			if(login!=undefined){
+				localStorage.setItem('token','0');
+				window.location.href="logout.html";
+			}
+			return false;
+		}
+	</script>
+	<div class="row" style="height:1em;">
 	</div>
 	<section class="row container">
 		<div class="col-md-6">
@@ -31,7 +39,7 @@
 			</div>
 			<hr>
 			<div class="row" >
-				<table class="table table-hover" id="tab1" >
+				<table class="table table-hover" id="tab1tx" >
 					<thead >
 						<tr>
 							<th>RIF</th>
@@ -141,18 +149,19 @@
 							</div>
 						</div>
 						<br>
+						<div style="display:none;" class="alert alert-success" role="alert" id="alertmsgtx">
+							Se ha guardado exitosamente.
+						</div>
+						<div style="display:none;" class="alert alert-danger" role="alert" id="alerterrortx">
+							Ha ocurrido un error, verifique si el cliente ya se encuentra registrado.
+						</div>
 						<div class="row form-group">
 							<div class="col-sm-12">
 								<a  class="btn btn-nigga pull-right submit" id="regbuttom" >REGISTRAR CLIENTE </a>
 							</div>
 							<div class="col-sm-12" style="font-size:11px;">Campos obligatorios <span style="color:red;">*</span></div>
 						</div>
-						<div style="display:none;" class="alert alert-success" role="alert" id="alertmsg">
-							Se ha guardado exitosamente.
-						</div>
-						<div style="display:none;" class="alert alert-danger" role="alert" id="alerterror">
-							Ha ocurrido un error, verifique si el cliente ya se encuentra registrado.
-						</div>
+
 					</section>
 					<br>
 				</form>
@@ -162,10 +171,3 @@
 
 		</div>
 	</section>
-	<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap-select.min.js"></script>
-	<script type="text/javascript" src="js/moment.js"></script>
-	<script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
-	<script type="text/javascript" src="js/panelclient.js"></script>
-</body>
-</html>

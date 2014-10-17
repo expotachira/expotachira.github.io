@@ -45,3 +45,7 @@ font-size: 13px !important;
 .form-group{
 	margin-bottom: 5px;
 }
+
+#tab1 tbody>tr,#tab2 tbody>tr,#tab3 tbody>tr{
+	cursor:pointer;
+}

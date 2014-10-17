@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="text/javascript" charset="utf-8" >
+		localStorage.setItem('uri', 'http://expotachira.herokuapp.com/index.php');
+		// localStorage.setItem('uri', 'http://127.0.0.1/expotachira_api/index.php');
+		localStorage.setItem('client','0');
+		var xmlhttp = null;
+		token='?tokenid='+localStorage.getItem('token');
+		postoken=localStorage.getItem('token');
+		xmlhttp=(window.XMLHttpRequest)?new XMLHttpRequest():new ActiveXObject("Microsoft.XMLHTTP");
+		var url=localStorage.getItem('uri')+token;
+		xmlhttp.overrideMimeType("application/json");
+		xmlhttp.onload  = function() {
+			if (xmlhttp.status == 200) {
+				var data =  JSON.parse(xmlhttp.responseText);
+				verificarlogin(data.logout);
+			}
+		};
+		xmlhttp.open( "GET", url, false );
+		xmlhttp.send( null );
+
+		function verificarlogin(login){
+			if(login!=undefined){
+				localStorage.setItem('token','0');
+				window.location.href="logout.html";
+			}
+			return false;
+		}
+	</script>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css"/>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-select.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/panel.css"/>
+	<link rel="stylesheet" type="text/css" href="css/panelclient.css"/>
+	<link rel="stylesheet" type="text/css" href="css/admin.css"/>
+	<title>Panel Administrativo</title>
+</head>
+<body style="background-color:#efefef;">
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<section style="background-color:#FFFFFF">
+
+	<header class="container" style="margin-top:1em;padding:0px;">
+		<nav class="navbar nav-pills" role="navigation">
+			<div class="container-fluid" style="padding:0px;">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsable">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<figure class="brand">
+						<img src="images/expo/et.png" width="150" height="50">
+					</figure>
+				</div>
+				<div class="collapse navbar-collapse" id="collapsable" style="padding:0px;">
+					<ul class="nav nav-tabs " >
+						<li class="operador active"><a data-target="inicio.html">INICIO</a></li>
+						<li class="operador"><a data-target="panel.html">PREVENTA</a></li>
+						<li class="operador "><a data-target="panelclient.html">VENTA</a></li>
+						<div class="nav pull-right"  style="margin-top:10px;">
+							<li class="divider-vertical"><button id="salir" type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-off" style="color:red;"></span> Salir</button></li>
+						</div>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<section id="contenedor">
+
+	</section>
+	</section>
+	<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap-select.min.js"></script>
+	<script type="text/javascript" src="js/moment.js"></script>
+	<script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript" src="js/admin.js"></script>
+	<script type="text/javascript" src="js/panel.js"></script>
+	<script type="text/javascript" src="js/panelclient.js"></script>
+
+</body>
+</html>
