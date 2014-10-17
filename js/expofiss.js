@@ -90,7 +90,7 @@ $(document).on('blur','[data-required=true]',function(e){
 	}
 });
 
-$.getJSON( localStorage.getItem('uri')+'/tipoempresa', function( data ) {
+$.getJSON( 'rama.json', function( data ) {
 	var select=$('.infobody .selectpicker');
 	$.each(data, function(index, val) {
 		var option=document.createElement('option');
