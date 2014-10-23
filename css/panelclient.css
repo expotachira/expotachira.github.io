@@ -49,3 +49,6 @@ font-size: 13px !important;
 	border: 1px solid #CC0000;
 }
 
+#tab1tx tbody>tr, #tab2tx tbody>tr{
+	cursor:pointer;
+}

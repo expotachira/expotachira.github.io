@@ -2,6 +2,7 @@ $(function() {
 	stipo = GetURLParameter('stype')|0;
 	sid = GetURLParameter('sid')|0;
 	localStorage.setItem('uri', 'http://expotachira.herokuapp.com/index.php');
+	//localStorage.setItem('uri', 'http://127.0.0.1/expotachira_api/index.php');
 
 	$(document).keyup(function(e) {
 		if (e.keyCode == 27) {

@@ -62,7 +62,7 @@ $(document).on('click','#modiclie',function(evt){
 		}
 		modicliente.removeAttribute('disabled');
 
-	}, "json").fail(function(){
+	}, "json").fail(function(e){
 		modicliente.removeAttribute('disabled');
 		$("#alertmsg3").hide();
 		$("#alertmsg3").html("Ha ocurrido un error intente nuevamente.");
@@ -145,8 +145,7 @@ $(document).on('click','#addtask',function(evt){
 		});
 	}
 });
-est={0:"Nuevo",1:"Revisado",2:"Contactado",3:"Rechazado",4:"Finalizado"};
-inte={0:"Pabellón Colombia",1:"Pabellón Venezuela"};
+
 $(document).on('click','#wrapclientes',function(evt){
 	taskusr=true;
 	localStorage.setItem('client','0');
@@ -158,7 +157,7 @@ $(document).on('click','#wrapclientes',function(evt){
 	$.getJSON(uri+token, function( data ) {
 		verificarlogin(data.logout);
 		var body=$("#tab1 tbody");
-		var ruta={1:"Google",2:"Facebook",3:"Directo",4:"Sistema"};
+		var ruta={1:"Google",2:"Facebook",3:"La Nacion",4:"Sistema"};
 	// $("#tab2_wrapper").hide();
 	$('#tab1').dataTable().fnDestroy();
 	body.html("");

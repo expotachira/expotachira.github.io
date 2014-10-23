@@ -32,7 +32,7 @@
 		<div class="col-md-6">
 			<div class="row">
 				<div class="col-md-6">
-					<div type="button" style="display: block; width: 100%; font-size:1.2em; padding:10px 0;" class="btn btn-info btnswitch" id="wrapclientes">Clientes Registrados</div>
+					<div type="button" style="display: block; width: 100%; font-size:1.2em; padding:10px 0;" class="btn btn-info btnswitch" id="wrapclientestx">Clientes Registrados</div>
 				</div>
 				<div class="col-md-6">
 					<button type="button" style="display: block; width: 100%;font-size:1.2em; padding:10px 0;" class="btn btn-info btnswitch" id="wrapadd">Nuevo Cliente</button>
@@ -54,7 +54,7 @@
 			</div>
 			<section id="newclient" style="display:none;">
 				<form id="addform" class="form-horizontal" role="form">
-					<header class="infotitulo modal-title" id="myModalLabel4">
+					<header class="infotitulo modal-title" style="padding-bottom:0px;" id="myModalLabel4">
 						<h2 style="margin-top:0px;margin-left:0px;font-size:1.85em;;" class="namewrap">
 							NUEVO CLIENTE
 						</h2>
@@ -105,51 +105,6 @@
 							</div>
 						</div>
 						<br>
-						<div class="row">
-							<div class="col-md-4 rigth">
-								<label for="nombre" class="textRequired">Condición Stand</label>
-							</div>
-							<div class="col-md-8">
-								<select data-required="true" class="selectpicker" id="st_condi" name="st_condi" data-width="100%" >
-									<option value="3">Compra</option>
-									<option value="2">Reserva</option>
-								</select>
-							</div>
-						</div>
-						<br>
-						<div class="row">
-							<div class="col-md-4 rigth">
-								<label for="nombre" class="textRequired">Zona de Pabellón</label>
-							</div>
-							<div class="col-md-8">
-								<select data-required="true" class="selectpicker" id="st_zona" name="st_zona" data-width="100%" >
-									<option value="0">Seleccione</option>
-								</select>
-							</div>
-						</div>
-						<br>
-						<div class="row">
-							<div class="col-md-4 rigth">
-								<label for="nombre" class="textRequired">Metros  m<sup>2</sup></label>
-							</div>
-							<div class="col-md-8">
-								<select data-required="true" class="selectpicker" id="st_mts" name="st_mts" data-width="100%" data-placement="right" data-trigger="manual" data-container="body" data-content="Seleccione una opción">
-									<option value="0">Seleccione</option>
-								</select>
-							</div>
-						</div>
-						<br>
-						<div class="row">
-							<div class="col-md-4 rigth">
-								<label for="nombre" class="textRequired">Stands</label>
-							</div>
-							<div class="col-md-8">
-								<select data-required="true" class="selectpicker" id="st_stand" name="st_stand" data-width="100%" data-placement="right" data-trigger="manual" data-container="body" data-content="Seleccione una opción">
-									<option value="0">Seleccione</option>
-								</select>
-							</div>
-						</div>
-						<br>
 						<div style="display:none;" class="alert alert-success" role="alert" id="alertmsgtx">
 							Se ha guardado exitosamente.
 						</div>
@@ -169,6 +124,293 @@
 			</section>
 		</div>
 		<div class="col-md-6">
-
+			<section id="infoclient" style="display:none;margin-left:15px;">
+				<!-- Modificar la información del cliente en venta -->
+				<div class="row">
+					<header style="background: #5bc0de !important;border-bottom: 2px solid #0171a5 !important;color: #ffffff;;text-align:center;padding-top:10px;padding-bottom:10px;font-size:1.3em;font-weight:bold;">
+						INFORMACIÓN DE CLIENTE EN VENTA
+					</header>
+					<section style="background-color:#e8e8e8; padding:10px">
+						<form class="form-horizontal" role="form" style="font-size:1.2em;text-align:left;">
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Contácto</label>
+								<div class="col-sm-9">
+									<p class="form-control-static contacto"></p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Teléfono</label>
+								<div class="col-sm-9">
+									<p class="form-control-static telefono"></p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Correo</label>
+								<div class="col-sm-9">
+									<p class="form-control-static correo"></p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label" >Razón</label>
+								<div class="col-sm-9">
+									<p class="form-control-static razon" ></p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">RIF</label>
+								<div class="col-sm-9">
+									<p class="form-control-static rif"></p>
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col-sm-12">
+									<a  class="btn btn-nigga pull-right submit" id="editinfoclient" >MODIFICAR CLIENTE</a>
+								</div>
+							</div>
+						</form>
+					</section>
+				</div> <!-- row -->
+				<div class="row" style="margin-top:20px;">
+					<table class="table table-hover" id="tab2tx"  >
+						<thead>
+							<tr>
+								<th>Lugar</th>
+								<th style="text-align:center;">Nro.</th>
+								<th style="text-align:center;">Condición</th>
+								<th style="text-align:center;">m<sup>2</sup></th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</div> <!-- row -->
+			</section>
+			<section id="infostand" style="display:none;">
+				<!-- por ahora inutilizado -->
+			</section>
 		</div>
 	</section>
+
+	<div class="modal fade" id="modal5" data-backdrop='static' tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header" style="padding:0px;">
+					<button type="button" class="close" style="margin-top:15px;margin-right:20px;" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+					<header class="infotitulo modal-title" id="myModalLabel">
+						<h2 style="margin:5px 0px 0px 20px;font-size:1.85em;font-weight: bold;" class="namewrap">
+							MODIFICAR CLIENTE
+						</h2>
+					</header>
+				</div>
+				<div class="modal-body" style="padding-top:0px;">
+					<section  style="background-color:#ececec;padding: 10px 10px 1px 30px;">
+						<form  class="form-horizontal" role="form" id="edittaskformx" style="font-size:1.2em;">
+							<div class="row">
+								<div class="col-md-4 rigth" >
+									<label for="rif" class="textRequired">RIF</label>
+								</div>
+								<div class="col-md-8">
+									<input data-required="true" type="text" class="form-control rif"  name="rif" placeholder="Ej. J11223344550" data-placement="right" data-trigger="manual" data-container="body" data-content="" data-fun="ValidateRIF" data-msgfun="Formato de RIF inválido, Ej. V11223344, E11223311, " maxlength="15" >
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								<div class="col-md-4 rigth">
+									<label for="razon" class="textRequired">Razón Social</label>
+								</div>
+								<div class="col-md-8">
+									<input data-required="true" type="text" class="form-control razon"  name="razon"  data-placement="right" data-trigger="manual" data-container="body" data-content="">
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								<div class="col-md-4 rigth">
+									<label for="contacto" class="textRequired">Persona Contacto</label>
+								</div>
+								<div class="col-md-8">
+									<input data-required="true" type="text" class="form-control contacto"  name="contacto"  data-placement="right" data-trigger="manual" data-container="body" data-content="">
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								<div class="col-md-4 rigth">
+									<label for="telefono" class="textRequired">Teléfono </label>
+								</div>
+								<div class="col-md-8">
+									<input data-required="true" type="text" class="form-control telefono" name="telefono" placeholder="Ej. 04161122334" data-placement="right" data-trigger="manual" data-container="body" data-content="" data-fun="ValidatePhone" data-msgfun="Formato de Teléfono inválido, ingrese sólo números de 11 dígitos Ejm. 02764433221, 04121122334" placeholder="Ej: 04161234321" maxlength="11">
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								<div class="col-md-4 rigth">
+									<label for="correo" class="textRequired">Correo </label>
+								</div>
+								<div class="col-md-8">
+									<input data-required="true" type="text" class="form-control correo"  name="correo"  data-placement="right" data-trigger="manual" data-container="body" data-content="" data-fun="ValidateEmail" data-msgfun="Formato de correo electríco erroneo, Ejm. admin@dominio.com" placeholder="empresa@dominio.com">
+								</div>
+							</div>
+
+
+							<br>
+							<div class="row form-group">
+								<div class="col-sm-12">
+									<a  class="btn btn-nigga pull-right submit" id="modiclietx" >MODIFICAR CLIENTE</a>
+								</div>
+							</div>
+
+							<div style="display:none;" class="alert alert-danger" role="alert" id="alertmsg5">
+							</div>
+						</form>
+
+					</section>
+				</div>
+
+			</div>
+		</div>
+	</div> <!-- Modal -->
+	<div class="modal fade" id="modal6" data-backdrop='static' tabindex="-1" role="dialog" aria-labelledby="myModalLabel4" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header" style="padding:0px;">
+					<button type="button" class="close" style="margin-top:15px;margin-right:20px;" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+					<header class="infotitulo modal-title" id="myModalLabel">
+						<h2 style="margin:5px 0px 0px 20px;font-size:1.85em;font-weight: bold;" class="namewrap">
+							MODIFICAR STAND
+						</h2>
+					</header>
+				</div>
+				<div class="modal-body" style="padding-top:0px;">
+					<section  style="background-color:#ececec;padding: 10px 10px 1px 30px;">
+						<form  class="form-horizontal" role="form" id="editstandform" style="font-size:1.2em;">
+							<div class="row" style="margin-bottom:5px;">
+								<label class="col-md-4 control-label" style="text-align:right;">Condición</label>
+								<div class="col-md-6">
+									<select  class="form-control selectpicker condi" id="estadostand" name="estadostand" data-width="100%">
+										<option value="3">Compra</option>
+										<option value="2">Reserva</option>
+									</select>
+								</div>
+								<div class="col-md-2"></div>
+							</div>
+							<div class="row" style="margin-bottom:5px;">
+								<label class="col-md-4 control-label" style="text-align:right;">Lugar de Stand</label>
+								<div class="col-md-6">
+									<p class="form-control-static lugar" ></p>
+								</div>
+								<div class="col-md-2"></div>
+
+							</div>
+							<div class="row" style="margin-bottom:5px;">
+								<label class="col-md-4 control-label" style="text-align:right;">Número de Stand</label>
+								<div class="col-md-6">
+									<p class="form-control-static numero" ></p>
+								</div>
+								<div class="col-md-2"></div>
+							</div>
+							<div class="row" style="margin-bottom:5px;">
+								<label class="col-md-4 control-label" style="text-align:right;">Metros Cuadrados</label>
+								<div class="col-md-6">
+									<p class="form-control-static metros" > </p>
+								</div>
+								<div class="col-md-2"></div>
+							</div>
+
+							<br>
+							<div class="row form-group">
+								<div class="col-sm-6">
+									<a  class="btn btn-info pull-left submit" id="libestand" >LIBERAR STAND</a>
+								</div>
+								<div class="col-sm-6">
+									<a  class="btn btn-nigga pull-right submit" id="modistand" >MODIFICAR CONDICIÓN</a>
+								</div>
+							</div>
+
+							<div style="display:none;" class="alert alert-danger" role="alert" id="alertmsg2tx">No se realizaron modificaciones.
+							</div>
+						</form>
+
+					</section>
+				</div>
+
+			</div>
+		</div>
+	</div> <!-- Modal -->
+	<div class="modal fade" id="modal7" data-backdrop='static' tabindex="-1" role="dialog" aria-labelledby="myModalLabel4" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header" style="padding:0px;">
+					<button type="button" class="close" style="margin-top:15px;margin-right:20px;" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+					<header class="infotitulo modal-title" id="myModalLabel">
+						<h2 style="margin:5px 0px 0px 20px;font-size:1.85em;font-weight: bold;" class="namewrap">
+							AGREGAR STAND
+						</h2>
+					</header>
+				</div>
+				<div class="modal-body" style="padding-top:0px;">
+					<section  style="background-color:#ececec;padding: 10px 10px 1px 30px;">
+						<form  class="form-horizontal" role="form" id="addstandform" style="font-size:1.2em;">
+						<br>
+							<div class="row">
+								<div class="col-md-4 rigth">
+									<label for="nombre" class="textRequired">Condición Stand</label>
+								</div>
+								<div class="col-md-8">
+									<select data-required="true" class="selectpicker" id="st_condi" name="st_condi" data-width="100%" >
+										<option value="0">Seleccione</option>
+										<option value="3">Compra</option>
+										<option value="2">Reserva</option>
+									</select>
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								<div class="col-md-4 rigth">
+									<label for="nombre" class="textRequired">Zona de Pabellón</label>
+								</div>
+								<div class="col-md-8">
+									<select data-required="true" class="selectpicker" id="st_zona" name="st_zona" data-width="100%" >
+										<option value="0">Seleccione</option>
+									</select>
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								<div class="col-md-4 rigth">
+									<label for="nombre" class="textRequired">Metros  m<sup>2</sup></label>
+								</div>
+								<div class="col-md-8">
+									<select data-required="true" class="selectpicker" id="st_mts" name="st_mts" data-width="100%" data-placement="right" data-trigger="manual" data-content="Seleccione una opción" >
+										<option value="0">Seleccione</option>
+									</select>
+								</div>
+							</div>
+							<br>
+							<div class="row">
+								<div class="col-md-4 rigth">
+									<label for="nombre" class="textRequired">Stands</label>
+								</div>
+								<div class="col-md-8">
+									<select data-required="true" class="selectpicker" id="st_stand" name="st_stand" data-width="100%" data-placement="right" data-trigger="manual"  data-content="Seleccione una opción">
+										<option value="0">Seleccione</option>
+									</select>
+								</div>
+							</div>
+							<br>
+
+
+							<div class="row form-group">
+								<div class="col-sm-12">
+									<a  class="btn btn-nigga pull-right submit" id="addstand" >AGREGAR STAND</a>
+								</div>
+							</div>
+
+							<div style="display:none;" class="alert alert-danger" role="alert" id="alertmsg3tx">No se realizaron modificaciones.
+							</div>
+						</form>
+
+					</section>
+				</div>
+
+			</div>
+		</div>
+	</div> <!-- Modal -->

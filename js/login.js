@@ -1,6 +1,6 @@
 $(function(){
- localStorage.setItem('uri', 'http://expotachira.herokuapp.com/index.php');
-// localStorage.setItem('uri', 'http://127.0.0.1/expotachira_api/index.php');
+  localStorage.setItem('uri', 'http://expotachira.herokuapp.com/index.php');
+  //localStorage.setItem('uri', 'http://127.0.0.1/expotachira_api/index.php');
 $(document).on('keypress',"input[name='passwd']",function(e) {
     if(e.which == 13) {
         $("#submit").trigger('click');
