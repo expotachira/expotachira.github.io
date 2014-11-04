@@ -1,3 +1,22 @@
+.portafolio{
+	margin-left: -20px;
+	padding:10px 0px 10px 0px;
+	background-color: #ff6c4c;
+	font-size: 1.2em;
+	text-align: center;
+	-webkit-transition: .1s ease-in-out;
+    -moz-transition: .1s ease-in-out;
+    -o-transition: .1s ease-in-out;
+    transition: .1s ease-in-out;
+}
+.portafolio:hover{
+	-webkit-transform: scale(1.1);
+	-moz-transform: scale(1.1);
+	-o-transform: scale(1.1);
+	-ms-transform: scale(1.1);
+	transform: scale(1.1);
+}
+
 header.container h1{
 	display: none;
 }
@@ -39,8 +58,8 @@ section.socials img:hover{
 }
 
 .thumb h3{
-margin:0px;
-font-family: 'Open Sans Condensed', sans-serif;
+	margin:0px;
+	font-family: 'Open Sans Condensed', sans-serif;
 }
 .thumbnail{
 	border:none;

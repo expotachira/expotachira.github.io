@@ -46,9 +46,9 @@ $(function() {
 			$.post( localStorage.getItem('uri')+'/savenew',data, function( data ) {
 				if(data.estatus){
 					$('.infobody').hide().css('padding','20px 20px');
-					var html="<div class='alert alert-success' style='background-color:transparent;'><header style='text-align: center;' ><strong style='font-size:1.5em;'>Enviado Exitosamente </strong> <span class='glyphicon glyphicon-ok'></span></header><hr class='message-inner-separator'><p style='font-size:1.2em;'>Su información fue recibida, en breve, será contactado por nuestro equipo de ventas.</p></div>";
-					$('.infobody').html(html);
-					$('.infobody').show('fast');
+					$('.infobody').load("result.html",function() {
+  						$('.infobody').show('fast');
+					});
 				}
 				else{
 					$.each(data.error,function(key,val){
