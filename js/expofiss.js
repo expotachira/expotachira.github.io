@@ -47,7 +47,7 @@ $(function() {
 				if(data.estatus){
 					$('.infobody').hide().css('padding','20px 20px');
 					$('.infobody').load("result.html",function() {
-  						$('.infobody').show('fast');
+						$('.infobody').show('fast');
 					});
 				}
 				else{
