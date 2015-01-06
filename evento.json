@@ -1,0 +1,52 @@
+{
+  "items": [
+    {
+      "id": "1",
+      "nombre": "Concierto 1",
+      "tipo": "1",
+      "urlflayer": "images/picture2.jpg",
+      "descripcion": "descripcion",
+      "fini": "Jan Dec 01 2015 11:46:57 GMT-0430 (VET)",
+      "ffin": "Jan Dec 01 2015 11:46:57 GMT-0430 (VET)"
+    },
+    {
+      "id": "2",
+      "nombre": "Concierto 2",
+      "tipo": "1",
+      "urlflayer": "images/picture3.jpg",
+      "descripcion": "descripcion",
+      "fini": "Jan Dec 02 2015 11:46:57 GMT-0430 (VET)",
+      "ffin": "Jan Dec 02 2015 11:46:57 GMT-0430 (VET)"
+    }
+     ,
+    {
+      "id": "4",
+      "nombre": "Concierto 4",
+      "tipo": "1",
+      "urlflayer": "images/picture4.jpg",
+      "descripcion": "descripcion",
+      "fini": "Jan Dec 03 2015 11:46:57 GMT-0430 (VET)",
+      "ffin": "Jan Dec 03 2015 11:46:57 GMT-0430 (VET)"
+    }
+     ,
+    {
+      "id": "5",
+      "nombre": "Concierto 5",
+      "tipo": "1",
+      "urlflayer": "images/picture5.jpg",
+      "descripcion": "descripcion",
+      "fini": "Jan Dec 04 2015 11:46:57 GMT-0430 (VET)",
+      "ffin": "Jan Dec 04 2015 11:46:57 GMT-0430 (VET)"
+    }
+     ,
+    {
+      "id": "5",
+      "nombre": "Concierto 5",
+      "tipo": "1",
+      "urlflayer": "images/picture6.jpg",
+      "descripcion": "descripcion",
+      "fini": "Jan Dec 05 2015 11:46:57 GMT-0430 (VET)",
+      "ffin": "Jan Dec 05 2015 11:46:57 GMT-0430 (VET)"
+    }
+  ]
+}

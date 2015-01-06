@@ -85,6 +85,7 @@ section.socials img:hover{
     height:2em;
     display:inline;
 }
+
 .formname{
 	margin:0px;
 	font-size: 1.3em;
@@ -94,12 +95,326 @@ section.socials img:hover{
     display:inline;
 }
 
+
+.boton_mostrar1{
+	background: #D23659;
+    display: block;
+    margin: 0 auto;
+    margin-top: -10px; 
+    margin-right: -10px;
+    width: 50px;
+    height: 48px;
+    position: relative;
+    float: right;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    line-height: 50px;
+    text-decoration: none;
+    font-size: 35px;
+}
+
+.boton_mostrar1:hover{
+	color: white;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.boton_ocultar1{
+	background: #D23659;
+    display: block;
+    margin: 0 auto;
+    margin-top: -10px; 
+    margin-right: -10px;
+    width: 50px;
+    height: 48px;
+    position: relative;
+    float: right;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    line-height: 50px;
+    text-decoration: none;
+    font-size: 35px;
+}
+
+.boton_ocultar1:hover{
+	color: white;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+
+.boton_mostrar2{
+	background: #3C59A4;
+    display: block;
+    margin: 0 auto;
+    margin-top: -9px; 
+    margin-right: -10px;
+    width: 50px;
+    height: 50px;
+    position: relative;
+    float: right;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    line-height: 50px;
+    text-decoration: none;
+    font-size: 35px;
+}
+
+.boton_mostrar2:hover{
+	color: white;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.boton_ocultar2{
+	background: #3C59A4;
+    display: block;
+    margin: 0 auto;
+    margin-top: -9px; 
+    margin-right: -10px;
+    width: 50px;
+    height: 50px;
+    position: relative;
+    float: right;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    line-height: 50px;
+    text-decoration: none;
+    font-size: 35px;
+}
+
+.boton_ocultar2:hover{
+	color: white;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+
+.boton_mostrar3{
+	background: #DC5745;
+    display: block;
+    margin: 0 auto;
+    margin-top: -10px; 
+    margin-right: -9px;
+    width: 49px;
+    height: 50px;
+    position: relative;
+    float: right;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    line-height: 53px;
+    text-decoration: none;
+    font-size: 35px;
+}
+
+.boton_mostrar3:hover{
+	color: white;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.boton_ocultar3{
+	background: #DC5745;
+    display: block;
+    margin: 0 auto;
+    margin-top: -10px; 
+    margin-right: -9px;
+    width: 49px;
+    height: 50px;
+    position: relative;
+    float: right;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    line-height: 50px;
+    text-decoration: none;
+    font-size: 35px;
+}
+
+.boton_ocultar3:hover{
+	color: white;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.boton_mostrar4{
+	background: #E68000;
+    display: block;
+    margin: 0 auto;
+    margin-top: -10px; 
+    margin-right: -9px;
+    width: 49px;
+    height: 50px;
+    position: relative;
+    float: right;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    line-height: 50px;
+    text-decoration: none;
+    font-size: 35px;
+}
+
+.boton_mostrar4:hover{
+	color: white;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.boton_ocultar4{
+	background: #E68000;
+    display: block;
+    margin: 0 auto;
+    margin-top: -10px; 
+    margin-right: -9px;
+    width: 49px;
+    height: 50px;
+    position: relative;
+    float: right;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    line-height: 50px;
+    text-decoration: none;
+    font-size: 35px;
+}
+
+.boton_ocultar4:hover{
+	color: white;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+
 .infotitulo {
 	padding: 0.7em !important;
 	background-color: #e73659 !important  ;
 	color: white !important;
-	border-bottom: solid 3px #921e35  !important;
+	border-bottom: solid 3px #871E35  !important;
+	font-size: 13px;
+
 }
+
+.infotitulo2 {
+	margin: 0 auto;
+	max-width: 1024px;
+	margin-right:auto;margin-left:auto;
+	padding: 0.7em !important;
+	background-color: #e73659 !important  ;
+	color: white !important;
+	border-bottom: solid 3px #D23659 !important;
+	text-align: center;
+}
+
+.infotitulo2 h2{
+	font-size: 1.85em;
+	margin-left: -5px;
+}
+
+.infotitulo3 {
+	max-width: 1024px;
+	margin-right:auto;margin-left:auto;
+	padding: 0.7em !important;
+	background-color: #5b59a4 !important  ;
+	color: white !important;
+	border-bottom: solid 3px #3C59A4 !important;
+	text-align: center;
+	opacity: 0.9;
+	border-top: 
+}
+
+.infotitulo4 {
+	max-width: 1024px;
+	height: 49px;
+	margin-right:auto;margin-left:auto;
+	padding: 0.7em !important;
+	background-color: #f05745 !important  ;
+	color: white !important;
+	opacity: 0.9;	
+}
+
+.infotitulo4 h2 {
+	position: relative;
+	top: 3px;
+}
+
+.infotitulo4 input
+{
+  width: 95%;
+}
+
+.infotitulo5 {
+	max-width: 1024px;
+	margin-right:auto;margin-left:auto;
+	padding: 0.7em !important;
+	background-color: #FF8000  !important  ;
+	color: white !important;
+	border-bottom: solid 3px #E68000 !important;
+	text-align: center;
+	opacity: 0.95;
+}
+
+.infotitulo5 h2{
+	margin-left: -40px;
+}
+
+
+#seccion1{
+	margin: 0 auto;
+	margin-bottom: 15px;
+	width: 93%;
+}
+
+.contenedor{
+	margin: 0 auto;
+	
+}
+
+.contenedor img{
+	width: 87%;
+}
+
+
+.barra{
+	margin: 0 auto;
+	background-color: #f05745;
+	border-bottom: solid 3px #DC5745 !important;
+}
+
+.busquedaimg img{
+	width: 90%;
+	height: 220px;
+	border: 1px solid black;
+	margin-top: 50px;
+	margin-left: 5%;
+}
+
+.descripcion{
+	margin: 0 auto;
+	padding: 0;
+	background-color: white;
+	margin-bottom: 30px;
+	margin-top: 5px;
+	width: 90%;	
+}
+
+.des_detalle1{
+	text-transform: uppercase;
+	margin-left: 5px;
+}
+
+.des_detalle2{
+	text-transform: uppercase;
+	font-style: italic;
+	color: red;
+	margin-left: 30px;
+}
+
 .infobody .row{
 	margin-top:1.3em;
 
@@ -109,7 +424,7 @@ section.socials img:hover{
 }
 .infobody label{
 	margin-bottom: 0px;
-	font-size: 1.2em;
+	font-size: 1.1em;
 }
 
 .btn-nigga{
@@ -166,7 +481,7 @@ div.product-chooser div.product-chooser-item{
 	border: 1px solid #efefef;
 	margin-bottom: 10px;
 	margin-left: 10px;
-	margin-right: 10x;
+	margin-right: 10px;
 }
 
 div.product-chooser div.product-chooser-item.selected{
@@ -202,10 +517,8 @@ div.product-chooser div.product-chooser-item input{
 }
 
 footer.fin {
-	margin-top: 40px;
 	border-top: 1px solid #eee;
 	border-top-width: 3px;
-
 	padding-left: 3em;
 	padding-right: 3em;
 	-moz-opacity:0.7;
@@ -214,3 +527,205 @@ footer.fin {
 	filter:alpha(opacity=80);
 	background: #EFF3F4;
 }
+
+.product-chooser-item img{
+	width: 12em;
+	height: 10em;
+	border-radius: 5px;
+	margin-left: 8%
+}
+
+.description{
+	text-align: justify;
+}
+
+.parrafo{
+	margin-left: 0%;
+	
+}
+
+.title{
+	position: relative;
+	left: -4%;
+	
+}
+
+.imagenes_not img{
+	width: 100%;
+	
+}
+
+
+
+/*************************************************************************
+MEDIAS QUERYS
+*************************************************************************/
+
+@media (max-width: 1199px) {
+
+
+
+.namewrap
+{
+   margin-left: 20px;
+}
+
+.infotitulo4 input
+{
+  width: 95%;
+}
+
+.infotitulo4 
+{
+ border-bottom: solid 0px #F03366  !important;
+}
+
+
+.boton_ocultar3
+{
+
+ position: relative;
+
+
+}
+
+.boton_mostrar3
+{
+
+ position: relative;
+
+}
+
+
+}
+
+
+@media (max-width: 991px) {
+
+
+.infotitulo4 input
+{
+  width: 80%;
+}
+
+
+.product-chooser-item img{
+	width: 50em;
+	height: 20em;
+	margin-left: 0%;
+}
+
+.description{
+	text-align: justify;
+}
+
+.parrafo{
+	margin-left: 0%;
+	width: 100%;
+	
+}
+
+.title{
+	position: relative;
+	left: 0%;
+	
+}
+
+}
+
+
+
+@media (max-width: 620px) {
+
+
+.infotitulo4 input
+{
+  width: 65%;
+}
+
+}
+
+
+@media (max-width: 600px) {
+
+
+.flech{
+	display: none;
+}
+
+.infotitulo2{
+	height: 50px;
+}
+
+.boton_ocultar1
+{
+	position: relative;
+	top: 0px;
+	height: 49px;
+}
+
+.boton_mostrar1
+{
+	position: relative;
+	top: 0px;
+	height: 49px;
+}
+
+
+.boton_ocultar2
+{	
+    margin-top: -10px; 
+    margin-right: -10px;
+    height: 48px;
+}
+
+.boton_mostrar2
+{
+	margin-top: -10px; 
+    margin-right: -10px;
+    height: 48px;
+}
+
+
+.boton_ocultar4
+{
+	position: relative;
+	top: 1px;
+	height: 49px;
+}
+
+.boton_mostrar4
+{
+	position: relative;
+	top: 1px;
+	height: 49px;
+}
+
+}
+
+
+@media (max-width: 570px) {
+
+.infotitulo2 h2{
+	
+	position: relative;
+	top: 5px;
+}
+
+}
+
+
+
+@media (max-width: 391px) {
+
+
+.infotitulo4 h2{
+	
+	margin-left: -34%;
+}
+
+
+}
+
+
+
