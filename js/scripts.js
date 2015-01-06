@@ -72,14 +72,14 @@ function evento2() {
     $(window).resize(function() {
         var x = $(document).width();
         //console.log(x);
-        if (x > 977) {
+        if (x >= 978) {
             $("#loc").css("margin-left", "-6%");
         }
-        if (x < 977) {
-            $("#loc").css("margin-left", "-14%");
+        if (x <= 977) {
+            $("#loc").css("margin-left", "-15%");
         }
         if (x < 694) {
-            $("#loc").css("margin-left", "-19%");
+            $("#loc").css("margin-left", "-18%");
 
         }
 
@@ -386,15 +386,15 @@ function evento4() {
     $(window).ready(function() {
         var x = $(document).width();
         //console.log(x);
-        if (x > 977) {
+         if (x >= 978) {
             $("#loc").css("margin-left", "-6%");
         }
-        if (x < 977) {
-            $("#loc").css("margin-left", "-14%");
+        if (x <= 977) {
+            $("#loc").css("margin-left", "-15%");
         }
 
         if (x < 694) {
-            $("#loc").css("margin-left", "-19%");
+            $("#loc").css("margin-left", "-18%");
         }
 
         if (x < 596) {
@@ -450,7 +450,7 @@ function evento5() {
      $(window).resize(function() {
 
     var y = $(document).width();
-    console.log(y);
+   // console.log(y);
     
     if(y<977){
 

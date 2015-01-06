@@ -555,6 +555,10 @@ footer.fin {
 	
 }
 
+.cont_not{
+	 margin-left:7px;
+}
+
 
 
 /*************************************************************************
@@ -564,10 +568,9 @@ MEDIAS QUERYS
 @media (max-width: 1199px) {
 
 
-
 .namewrap
 {
-   margin-left: 20px;
+   margin-left: -50px;
 }
 
 .infotitulo4 input
@@ -596,18 +599,19 @@ MEDIAS QUERYS
 
 }
 
-
 }
 
 
 @media (max-width: 991px) {
 
+.cont_not{
+	 margin-left:-2px;
+}
 
 .infotitulo4 input
 {
   width: 80%;
 }
-
 
 .product-chooser-item img{
 	width: 50em;
@@ -631,6 +635,15 @@ MEDIAS QUERYS
 	
 }
 
+}
+
+@media (max-width: 992px) and (min-width: 992px) {
+
+
+.infotitulo4 h2
+{
+ 	position:relative;
+ 	left: 36px;
 }
 
 
@@ -726,6 +739,4 @@ MEDIAS QUERYS
 
 
 }
-
-
 

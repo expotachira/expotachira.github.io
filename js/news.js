@@ -59,7 +59,7 @@ var router = Router(routes);
 router.init();
 
 $('#newsmodal').on('hidden.bs.modal', function(e) {
-    history.pushState({}, '', '/');
+    history.pushState({}, '', '/expotach2/');
 })
 
 
@@ -86,7 +86,7 @@ Handlebars.registerHelper('ifimg', function(str) {
     try {
         url = Handlebars.Utils.escapeExpression(str);
         if (str.length > 0) {
-            var result = '<img src="' + url + '" alt="">';
+            var result = '<img style="height: 420px;" src="' + url + '" alt="">';
             return new Handlebars.SafeString(result);
         }
     } catch (e) {
