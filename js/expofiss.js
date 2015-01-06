@@ -91,14 +91,9 @@ $(document).on('blur','[data-required=true]',function(e){
 	}
 });
 
-$.getJSON( 'rama.json', function( data ) {
-	var select=$('.infobody .selectpicker');
+$.getJSON( 'rama.json', function( data ) {	
 	$.each(data, function(index, val) {
-		var option=document.createElement('option');
-		var text=document.createTextNode(val.tipo_des);
-		option.appendChild(text);
-		option.setAttribute('value',val.tipo_id);
-		select.append(option);
+		$('.infobody .selectpicker').append($("<option></option>").attr("value", val.tipo_id).text(val.tipo_des));		
 	});
 	$('.selectpicker').selectpicker();
 	$('.selectpicker.btn').css('border','none');

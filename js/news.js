@@ -1,13 +1,18 @@
+function output(data) {
+    //console.log(data);
+}
+
+
 var template = Handlebars.templates['mainPost'];
 Parse.initialize("Lms9wcmgrtdlh3Xx2U1eAcOYc58j51I01asnjLdJ", "4GFJGXCj83lyvScyKT33IRgchYISxtLlkK5Xg7Yt");
 var Post = Parse.Object.extend("Post");
 var query = new Parse.Query(Post);
-query.descending('createdAt');
+query.ascending('createdAt');
 query.limit(3);
 query.find().then(function(results) {
         for (var i = 0; i < results.length; i++) {
             var object = results[i];
-            ////console.log(object.get('thumbnail'))
+            ////console(object.get('thumbnail'))
             var html = template({
                 id: object.id,
                 postName: object.get('postname'),
@@ -19,9 +24,19 @@ query.find().then(function(results) {
         }
     },
     function() {
-        //console.log('Failed loading posts');
+        //console('Failed loading posts');
     });
-
+var step = 0;
+var limit;
+query.count({
+    success: function(count) {
+        // The count request succeeded. Show the count        
+        limit = count;
+    },
+    error: function(error) {
+        // The request failed
+    }
+});
 
 var viewPost = function(postname) {
 
@@ -31,7 +46,7 @@ var viewPost = function(postname) {
     query.equalTo("postname", postname);
     query.first({
         success: function(fullpost) {
-            //console.log(fullpost.get('title'));
+            //console(fullpost.get('title'));
             var postM = postTemplate({
                 id: fullpost.id,
                 photo: fullpost.get('photos')[1][0],
@@ -59,7 +74,7 @@ var router = Router(routes);
 router.init();
 
 $('#newsmodal').on('hidden.bs.modal', function(e) {
-    history.pushState({}, '', '/expotach2/');
+    history.pushState({}, '', '/');
 })
 
 
@@ -75,7 +90,7 @@ Handlebars.registerHelper('truncate', function(str, len) {
         }
     } catch (e) {
         // statements to handle any exceptions
-        //console.log(e); // pass exception object to error handler
+        //console(e); // pass exception object to error handler
     }
 
     return str;
@@ -86,11 +101,97 @@ Handlebars.registerHelper('ifimg', function(str) {
     try {
         url = Handlebars.Utils.escapeExpression(str);
         if (str.length > 0) {
-            var result = '<img style="height: 420px;" src="' + url + '" alt="">';
+            var result = '<img src="' + url + '" alt="">';
             return new Handlebars.SafeString(result);
         }
     } catch (e) {
         return;
 
     }
+});
+
+
+
+
+
+$("#ff").click(function() {
+    output(step);
+
+    function steps(steps, limit) {
+        current = steps - 1;
+        if ((current > 0) && (current <= limit)) {
+            output(current);
+            return current;
+        } else {
+            return 0
+        }
+    }
+
+    query.ascending('createdAt');
+    query.skip(steps(step, limit));
+    query.limit(3);
+    query.find().then(function(results) {
+            $("#newsPost").html("");
+            for (var i = 0; i < results.length; i++) {
+                var object = results[i];
+                ////console(object.get('thumbnail'))
+                var html = template({
+                    id: object.id,
+                    postName: object.get('postname'),
+                    title: object.get('title'),
+                    description: object.get('content'),
+                    thumbnail: object.get('thumbnail').thumbnail.replace("http://", "http://i1.wp.com/")
+                });
+                $("#newsPost").append(html);
+            }
+        },
+        function() {
+            //console('Failed loading posts');
+        });
+    if (step < 0) {
+        step = 0;
+    } else {
+        step = step - 1;
+    }
+
+
+});
+
+$("#rw").click(function() {
+    output(step);
+
+    function steps(steps, limit) {
+        current = steps + 1;
+        currentLimit = current + 2;
+        if ((current > 0) && (currentLimit < limit)) {
+            output("rw current: " + current);
+            return current;
+        } else {
+            return
+        }
+    }
+
+    query.ascending('createdAt');
+    query.skip(steps(step, limit));
+    query.limit(3);
+    query.find().then(function(results) {
+            $("#newsPost").html("");
+            for (var i = 0; i < results.length; i++) {
+                var object = results[i];
+                ////console(object.get('thumbnail'))
+                var html = template({
+                    id: object.id,
+                    postName: object.get('postname'),
+                    title: object.get('title'),
+                    description: object.get('content'),
+                    thumbnail: object.get('thumbnail').thumbnail.replace("http://", "http://i1.wp.com/")
+                });
+                $("#newsPost").append(html);
+            }
+        },
+        function() {
+            //console('Failed loading posts');
+        });
+    step = step + 1;
+
 });
