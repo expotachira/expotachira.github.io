@@ -10,7 +10,7 @@ function evento() {
         .done(function(data) {
 
 
-            // Carga de imagenes en La lista     
+            // Carga de imagenes en La lista
             $.each(data.items, function(i, item) {
 
                 var date = new Date(item.fini);
@@ -57,56 +57,23 @@ function evento() {
 function evento2() {
 
 
-     //OCULTA LOS BOTONES 
+     //OCULTA LOS BOTONES
     $("#input_locatario").css("display", "none");
     $("#boton_mostrar1").css("display", "none");
     $("#boton_mostrar2").css("display", "none");
-    $("#boton_mostrar3").css("display", "none");
+    $("#boton_mostrar3").css("display", "inline");
+    $("#boton_ocultar3").css("display", "none");
     $("#boton_mostrar4").css("display", "none");
     $("#boton_ocultar4").css("display", "none");
     $("#seccion3").css("display", "none");
     $("#slider1").css("display", "none");
 
-
-
-    $(window).resize(function() {
-        var x = $(document).width();
-        //console.log(x);
-        if (x >= 978) {
-            $("#loc").css("margin-left", "-6%");
-        }
-        if (x <= 977) {
-            $("#loc").css("margin-left", "-15%");
-        }
-        if (x < 694) {
-            $("#loc").css("margin-left", "-18%");
-
-        }
-
-        if (x < 596) {
-            $("#loc").css("margin-left", "-23%");
-
-        }
-        if (x < 559) {
-            $("#loc").css("margin-left", "-24%");
-        }
-        if (x < 528) {
-            $("#loc").css("margin-left", "-26%");
-        }
-        if (x < 494) {
-            $("#loc").css("margin-left", "-28%");
-        }
-        if (x < 455) {
-            $("#loc").css("margin-left", "-34%");
-        }
-        if (x < 407) {
-            $("#loc").css("margin-left", "-36%");
-        }
-
-
-    });
-
-
+    //OCULTA LOS BOTONES DE NAVEGACION DE NOTICIAS
+    // $("#cont_input").removeClass("col-xs-5");;
+    // $("#locatarios").removeClass("col-xs-7");
+    // $("#locatarios").addClass("col-lg-12");
+    // $("#loc").css("margin-left","40%");
+    //REMUEVE LAS CLASES DE LOS BOTONES
 
 }
 
@@ -216,7 +183,7 @@ function evento3() {
     //MOVIMIENTO VERTICAL, OCULTA EL BOTON OCULTAR Y SE MUESTRA EL BOTON MOSTRAR
     $("#boton_ocultar3").click(function() {
         $(this).css("color", "white");
-        $("#seccion3").slideToggle(1000);
+        $("#seccion3").slideToggle(300);
         $(this).css("display", "none");
         $("#boton_mostrar3").css("display", "inline");
         $("#busqueda").css("display", "none");
@@ -266,16 +233,16 @@ function evento3() {
     //MOVIMIENTO VERTICAL, OCULTA EL BOTON MOSTRAR Y SE MUESTRA EL BOTON OCULTAR
     $("#boton_mostrar3").click(function() {
         $(this).css("color", "white");
-        $("#seccion3").slideToggle(1000);
+        $("#seccion3").slideToggle(300);
         $(this).css("display", "none");
         $("#boton_ocultar3").css("display", "inline");
         $("#busqueda").css("display", "inline");
         var x = $(document).width();
         //console.log(x);
-        if (x > 977)
-            if (x > 977) {
-                $("#loc").css("margin-left", "-6%");
-            }
+        if (x > 977) {
+             $("#loc").css("margin-left", "-6%");
+        }
+
         if (x < 977) {
             $("#loc").css("margin-left", "-14%");
         }
@@ -382,43 +349,6 @@ function evento3() {
 
 function evento4() {
 
-
-    $(window).ready(function() {
-        var x = $(document).width();
-        //console.log(x);
-         if (x >= 978) {
-            $("#loc").css("margin-left", "-6%");
-        }
-        if (x <= 977) {
-            $("#loc").css("margin-left", "-15%");
-        }
-
-        if (x < 694) {
-            $("#loc").css("margin-left", "-18%");
-        }
-
-        if (x < 596) {
-            $("#loc").css("margin-left", "-23%");
-        }
-        if (x < 559) {
-            $("#loc").css("margin-left", "-24%");
-        }
-        if (x < 528) {
-            $("#loc").css("margin-left", "-26%");
-        }
-        if (x < 494) {
-            $("#loc").css("margin-left", "-28%");
-        }
-        if (x < 455) {
-            $("#loc").css("margin-left", "-34%");
-        }
-        if (x < 407) {
-            $("#loc").css("margin-left", "-36%");
-        }
-
-
-    });
-
 }
 
 
@@ -429,7 +359,7 @@ function evento5() {
 
     var x = $(document).width();
     //console.log(x);
-    
+
     if(x<977){
 
     //OCULTA LOS BOTONES DE NAVEGACION DE NOTICIAS
@@ -444,14 +374,14 @@ function evento5() {
 
     }
 
-    
+
     });
 
      $(window).resize(function() {
 
     var y = $(document).width();
    // console.log(y);
-    
+
     if(y<977){
 
   //OCULTA LOS BOTONES DE NAVEGACION DE NOTICIAS
@@ -479,7 +409,7 @@ function evento5() {
 
     }
 
-    
+
     });
 
 
@@ -494,5 +424,12 @@ function evento5() {
         evento3();
         evento4();
         evento5();
+
+        $(document).on("submit","#tokenform",function(evt){
+           evt.preventDefault();
+            var concat=$("#token").val();
+            window.location = 'form.html?sclient='+concat;
+        });
+
 
     });

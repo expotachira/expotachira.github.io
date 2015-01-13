@@ -2,6 +2,23 @@ function output(data) {
     //console.log(data);
 }
 
+function getImage(data) {
+
+    var patt = new RegExp(/i2.wp/g);
+    var res = patt.test(data);
+  
+    if (res)
+    {
+        return data
+
+    }
+    else
+    {
+        return data.replace("http://", "http://i1.wp.com/")
+    }
+}
+
+
 
 var template = Handlebars.templates['mainPost'];
 Parse.initialize("Lms9wcmgrtdlh3Xx2U1eAcOYc58j51I01asnjLdJ", "4GFJGXCj83lyvScyKT33IRgchYISxtLlkK5Xg7Yt");
@@ -12,13 +29,13 @@ query.limit(3);
 query.find().then(function(results) {
         for (var i = 0; i < results.length; i++) {
             var object = results[i];
-            
             var html = template({
                 id: object.id,
                 postName: object.get('postname'),
                 title: object.get('title'),
                 description: object.get('content'),
-                thumbnail: object.get('thumbnail').thumbnail.replace("http://", "http://i1.wp.com/")
+                thumbnail: getImage(object.get('thumbnail').thumbnail)
+                //.replace("http://", "http://i1.wp.com/")
             });
             $("#newsPost").append(html);
         }
@@ -139,7 +156,8 @@ $("#ff").click(function() {
                     postName: object.get('postname'),
                     title: object.get('title'),
                     description: object.get('content'),
-                    thumbnail: object.get('thumbnail').thumbnail.replace("http://", "http://i1.wp.com/")
+                    thumbnail:  getImage(object.get('thumbnail').thumbnail)
+                    //.replace("http://", "http://i1.wp.com/")
                 });
                 $("#newsPost").append(html);
             }
@@ -181,7 +199,8 @@ $("#rw").click(function() {
                     postName: object.get('postname'),
                     title: object.get('title'),
                     description: object.get('content'),
-                    thumbnail: object.get('thumbnail').thumbnail.replace("http://", "http://i1.wp.com/")
+                    thumbnail:  getImage(object.get('thumbnail').thumbnail)
+                    //
                 });
                 $("#newsPost").append(html);
             }

@@ -100,7 +100,7 @@ section.socials img:hover{
 	background: #D23659;
     display: block;
     margin: 0 auto;
-    margin-top: -10px; 
+    margin-top: -10px;
     margin-right: -10px;
     width: 50px;
     height: 48px;
@@ -124,7 +124,7 @@ section.socials img:hover{
 	background: #D23659;
     display: block;
     margin: 0 auto;
-    margin-top: -10px; 
+    margin-top: -10px;
     margin-right: -10px;
     width: 50px;
     height: 48px;
@@ -149,7 +149,7 @@ section.socials img:hover{
 	background: #3C59A4;
     display: block;
     margin: 0 auto;
-    margin-top: -9px; 
+    margin-top: -9px;
     margin-right: -10px;
     width: 50px;
     height: 50px;
@@ -173,7 +173,7 @@ section.socials img:hover{
 	background: #3C59A4;
     display: block;
     margin: 0 auto;
-    margin-top: -9px; 
+    margin-top: -9px;
     margin-right: -10px;
     width: 50px;
     height: 50px;
@@ -198,7 +198,7 @@ section.socials img:hover{
 	background: #DC5745;
     display: block;
     margin: 0 auto;
-    margin-top: -10px; 
+    margin-top: -10px;
     margin-right: -9px;
     width: 49px;
     height: 50px;
@@ -222,7 +222,7 @@ section.socials img:hover{
 	background: #DC5745;
     display: block;
     margin: 0 auto;
-    margin-top: -10px; 
+    margin-top: -10px;
     margin-right: -9px;
     width: 49px;
     height: 50px;
@@ -246,7 +246,7 @@ section.socials img:hover{
 	background: #E68000;
     display: block;
     margin: 0 auto;
-    margin-top: -10px; 
+    margin-top: -10px;
     margin-right: -9px;
     width: 49px;
     height: 50px;
@@ -270,7 +270,7 @@ section.socials img:hover{
 	background: #E68000;
     display: block;
     margin: 0 auto;
-    margin-top: -10px; 
+    margin-top: -10px;
     margin-right: -9px;
     width: 49px;
     height: 50px;
@@ -325,7 +325,7 @@ section.socials img:hover{
 	border-bottom: solid 3px #3C59A4 !important;
 	text-align: center;
 	opacity: 0.9;
-	border-top: 
+	border-top:
 }
 
 .infotitulo4 {
@@ -335,13 +335,14 @@ section.socials img:hover{
 	padding: 0.7em !important;
 	background-color: #f05745 !important  ;
 	color: white !important;
-	opacity: 0.9;	
+	opacity: 0.9;
 }
 
 .infotitulo4 h2 {
-	position: relative;
-	top: 3px;
+	text-align: center;
+	margin-left: 40%;
 }
+
 
 .infotitulo4 input
 {
@@ -372,7 +373,6 @@ section.socials img:hover{
 
 .contenedor{
 	margin: 0 auto;
-	
 }
 
 .contenedor img{
@@ -389,9 +389,13 @@ section.socials img:hover{
 .busquedaimg img{
 	width: 90%;
 	height: 220px;
-	border: 1px solid black;
-	margin-top: 50px;
+/*	border: 1px solid black;
+*/	margin-top: 50px;
 	margin-left: 5%;
+
+}
+.busquedaimg{
+	cursor: pointer;
 }
 
 .descripcion{
@@ -400,18 +404,19 @@ section.socials img:hover{
 	background-color: white;
 	margin-bottom: 30px;
 	margin-top: 5px;
-	width: 90%;	
+	width: 90%;
 }
 
 .des_detalle1{
-	text-transform: uppercase;
+	/*text-transform: uppercase;*/
 	margin-left: 5px;
+	color : #505050;
 }
 
 .des_detalle2{
-	text-transform: uppercase;
+	/*text-transform: uppercase;*/
 	font-style: italic;
-	color: red;
+	color: #f05745;
 	margin-left: 30px;
 }
 
@@ -541,19 +546,15 @@ footer.fin {
 
 .parrafo{
 	margin-left: 0%;
-	
+
 }
 
 .title{
 	position: relative;
 	left: -4%;
-	
+
 }
 
-.imagenes_not img{
-	width: 100%;
-	
-}
 
 .cont_not{
 	 margin-left:7px;
@@ -567,10 +568,10 @@ MEDIAS QUERYS
 
 @media (max-width: 1199px) {
 
-
-.namewrap
+.infotitulo4 h2
 {
-   margin-left: -50px;
+  position: relative;
+  left: -1%;
 }
 
 .infotitulo4 input
@@ -578,7 +579,7 @@ MEDIAS QUERYS
   width: 95%;
 }
 
-.infotitulo4 
+.infotitulo4
 {
  border-bottom: solid 0px #F03366  !important;
 }
@@ -604,6 +605,14 @@ MEDIAS QUERYS
 
 @media (max-width: 991px) {
 
+.infotitulo4 h2
+{
+  position: relative;
+  left: -5%;
+}
+
+
+
 .cont_not{
 	 margin-left:-2px;
 }
@@ -626,30 +635,31 @@ MEDIAS QUERYS
 .parrafo{
 	margin-left: 0%;
 	width: 100%;
-	
+
 }
 
 .title{
 	position: relative;
 	left: 0%;
-	
-}
 
 }
 
-@media (max-width: 992px) and (min-width: 992px) {
+}
 
+
+
+@media (max-width: 700px) {
 
 .infotitulo4 h2
 {
- 	position:relative;
- 	left: 36px;
+  position: relative;
+  left: -7%;
+}
+
 }
 
 
-
 @media (max-width: 620px) {
-
 
 .infotitulo4 input
 {
@@ -661,6 +671,12 @@ MEDIAS QUERYS
 
 @media (max-width: 600px) {
 
+
+.infotitulo4 h2
+{
+  position: relative;
+  left: -9%;
+}
 
 .flech{
 	display: none;
@@ -686,15 +702,15 @@ MEDIAS QUERYS
 
 
 .boton_ocultar2
-{	
-    margin-top: -10px; 
+{
+    margin-top: -10px;
     margin-right: -10px;
     height: 48px;
 }
 
 .boton_mostrar2
 {
-	margin-top: -10px; 
+	margin-top: -10px;
     margin-right: -10px;
     height: 48px;
 }
@@ -716,27 +732,56 @@ MEDIAS QUERYS
 
 }
 
+@media (max-width: 540px) {
 
-@media (max-width: 570px) {
+.infotitulo4 h2
+{
+  position: relative;
+  left: -12%;
+}
 
-.infotitulo2 h2{
-	
-	position: relative;
-	top: 5px;
+}
+
+
+@media (max-width: 475px) {
+
+.infotitulo4 h2
+{
+ position: relative;
+ left: -14%;
+}
+
+}
+
+
+@media (max-width: 440px) {
+
+.infotitulo4 h2
+{
+ position: relative;
+ left: -17%;
+}
+
+}
+
+@media (max-width: 400px) {
+
+.infotitulo4 h2
+{
+ position: relative;
+ left: -19%;
 }
 
 }
 
 
 
-@media (max-width: 391px) {
 
 
-.infotitulo4 h2{
-	
-	margin-left: -34%;
-}
 
 
-}
+
+
+
+
 
