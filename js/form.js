@@ -1,5 +1,5 @@
-	// base='http://expotachira.herokuapp.com/locatarios/index.php';
-	base='http://127.0.0.1/expotachira_apisite/index.php';
+	base='http://expotachira.herokuapp.com/locatarios/index.php';
+	//base='http://127.0.0.1/expotachira_apisite/index.php';
 	sclient = GetURLParameter('sclient')||0;
 
 	var spanish = {

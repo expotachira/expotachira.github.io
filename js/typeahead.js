@@ -1,6 +1,6 @@
 
 $(function(){
-    base='http://127.0.0.1/expotachira_apisite/index.php';
+    base='http://expotachira.herokuapp.com/locatarios/index.php';
     var url=base+'/typeahead';
     var segmentos=new Array();
     var palabras=new Array();
