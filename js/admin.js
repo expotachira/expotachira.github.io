@@ -64,7 +64,7 @@ $(function() {
 
 
 function credenciales() {
-    $.getJSON( localStorage.getItem('uri')+"/index.php/comercios", function( data ) {   
+    $.getJSON( "http://expotachira.herokuapp.com/locatarios/index.php/comercios", function( data ) {   
         var items = [];
         $.each(data, function(key, val) {
             items.push("<tr><td>" + val.nombre + "</td><td>" + val.stand + "</td><td>" + val.pabellon + "</td><td data-pk=" +val.ids+" class='editable'><a href=''>"+ val.credencial +"</a></td></tr>");
@@ -77,7 +77,7 @@ function credenciales() {
         $('.editable').editable({
             url: function(params) {            	
                 var d = new $.Deferred;
-                $.post( localStorage.getItem('uri')+"/index.php/update/comercios/"+ params.pk, { numero: params.value } );
+                $.post( "http://expotachira.herokuapp.com/locatarios/index.php/update/comercios/"+ params.pk, { numero: params.value } );
                 if (params.value === 0) {
                     return d.reject('error message'); 
                 } else {
