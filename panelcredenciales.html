@@ -1,0 +1,49 @@
+<script type="text/javascript" charset="utf-8">
+history.replaceState({}, '', 'login.html');
+localStorage.setItem('uri', 'http://expotachira.herokuapp.com/index.php');
+// localStorage.setItem('uri', 'http://127.0.0.1/expotachira_api/index.php');
+localStorage.setItem('client', '0');
+var xmlhttp = null;
+token = '?tokenid=' + localStorage.getItem('token');
+postoken = localStorage.getItem('token');
+xmlhttp = (window.XMLHttpRequest) ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
+var url = localStorage.getItem('uri') + token;
+xmlhttp.overrideMimeType("application/json");
+xmlhttp.onload = function() {
+    if (xmlhttp.status == 200) {
+        var data = JSON.parse(xmlhttp.responseText);
+        verificarlogin(data.logout);
+    }
+};
+xmlhttp.open("GET", url, false);
+xmlhttp.send(null);
+
+function verificarlogin(login) {
+    if (login != undefined) {
+        localStorage.setItem('token', '0');
+        window.location.href = "logout.html";
+    }
+    return false;
+}
+</script>
+<div class="row" style="height:1em;">
+</div>
+<section class="row container">
+    <div class="col-md-12">
+		 <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Stand</th>
+                        <th>Pabellon</th>
+                        <th>Credenciales</th>                       
+                    </tr>
+                </thead>
+                <tbody id="comerciosCre">
+                                     
+                </tbody>
+            </table>
+    </div>
+    <div class="col-md-6">
+
+    </div>
