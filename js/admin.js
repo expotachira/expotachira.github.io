@@ -67,7 +67,15 @@ function credenciales() {
     $.getJSON( "http://expotachira.herokuapp.com/locatarios/index.php/comercios", function( data ) {   
         var items = [];
         $.each(data, function(key, val) {
-            items.push("<tr><td>" + val.nombre + "</td><td>" + val.stand + "</td><td>" + val.pabellon + "</td><td data-pk=" +val.ids+" class='editable'><a href=''>"+ val.credencial +"</a></td></tr>");
+            var clases = "";
+            if (parseInt(val.status) > 0){
+                clases = "<td data-pk=" +val.ids+" class='"+clases+"'>"+ val.credencial +"</td>";
+            }
+            else
+            {
+                clases = "<td data-pk=" +val.ids+" class='"+clases+"'><a href=''>"+ val.credencial +"</a></td>";
+            }
+            items.push("<tr><td>" + val.nombre + "</td><td>" + val.stand + "</td><td>" + val.pabellon + "</td>"+clases+"</tr>");
         });
 
 
