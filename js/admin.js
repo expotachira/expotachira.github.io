@@ -73,7 +73,7 @@ function credenciales() {
             }
             else
             {
-                clases = "<td>" +val.ids+"</td>";
+                clases = "<td>" +val.credencial+"</td>";
             }
             items.push("<tr><td>" + val.nombre + "</td><td>" + val.stand + "</td><td>" + val.pabellon + "</td>"+clases+"</tr>");
         });
