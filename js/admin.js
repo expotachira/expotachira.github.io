@@ -69,11 +69,11 @@ function credenciales() {
         $.each(data, function(key, val) {
             var clases = "";
             if (parseInt(val.status) > 0){
-                clases = "<td data-pk=" +val.ids+" class='"+clases+"'>"+ val.credencial +"</td>";
+                clases = "<td data-pk=" +val.ids+" class='editable'><a href=''>"+ val.credencial +"</a></td>";
             }
             else
             {
-                clases = "<td data-pk=" +val.ids+" class='"+clases+"'><a href=''>"+ val.credencial +"</a></td>";
+                clases = "<td>" +val.ids+"></td>";
             }
             items.push("<tr><td>" + val.nombre + "</td><td>" + val.stand + "</td><td>" + val.pabellon + "</td>"+clases+"</tr>");
         });
