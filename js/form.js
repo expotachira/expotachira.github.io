@@ -104,8 +104,7 @@
 						$("#paso1").show();
 					}
 					else{
-						$("#paso1,#paso2").hide();
-						fillpaso3();
+						$("#paso1,#paso2").hide();						
 						$("#paso3").show();
 					}
 				}
@@ -219,7 +218,7 @@
 		}
 			$("#showprint").html(html);
 		},"json");
-
+				
 	}
 	$("#form1").submit(function(data){
 		form1={
