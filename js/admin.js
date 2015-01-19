@@ -68,7 +68,7 @@ function credenciales() {
         var items = [];
         $.each(data, function(key, val) {
             var clases = "";
-            if (parseInt(val.status) > 0){
+            if (parseInt(val.status) < 0){
                 clases = "<td data-pk=" +val.ids+" class='editable'><a href=''>"+ val.credencial +"</a></td>";
             }
             else
