@@ -64,32 +64,35 @@ $(function() {
 
 
 function credenciales() {
-    $.getJSON( "http://expotachira.herokuapp.com/locatarios/index.php/comercios", function( data ) {   
+    var a;
+    $.getJSON("http://expotachira.herokuapp.com/locatarios/index.php/comercios", function(data) {
         var items = [];
         $.each(data, function(key, val) {
             var clases = "";
-            if (parseInt(val.status) < 0){
-                clases = "<td data-pk=" +val.ids+" class='editable'><a href=''>"+ val.credencial +"</a></td>";
+            if (val.status == null) {
+                clases = "<td data-pk=" + val.ids + " class='editable'><a href=''>" + val.credencial + "</a></td>";
+            } else {
+                clases = "<td>" + val.credencial + "</td>";
             }
-            else
-            {
-                clases = "<td>" +val.credencial+"</td>";
-            }
-            items.push("<tr><td>" + val.nombre + "</td><td>" + val.stand + "</td><td>" + val.pabellon + "</td>"+clases+"</tr>");
+
+       
+            items.push("<tr><td>" + val.nombre + "</td><td>" + val.stand + "</td><td>" + val.pabellon + "</td>" + clases + "</tr>");
         });
 
 
 
-        var html = items.join("")        
+        var html = items.join("")
         $("#comerciosCre").append(html);
         $('.editable').editable({
-            url: function(params) {            	
+            url: function(params) {
                 var d = new $.Deferred;
-                $.post( "http://expotachira.herokuapp.com/locatarios/index.php/update/comercios/"+ params.pk, { numero: params.value } );
+                $.post("http://expotachira.herokuapp.com/locatarios/index.php/update/comercios/" + params.pk, {
+                    numero: params.value
+                });
                 if (params.value === 0) {
-                    return d.reject('error message'); 
+                    return d.reject('error message');
                 } else {
-                     d.resolve();
+                    d.resolve();
                     return d.promise();
                 }
             },

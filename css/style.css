@@ -785,3 +785,27 @@ MEDIAS QUERYS
 
 
 
+
+
+.imageMainPost {
+
+		display: inline-block;
+		margin: 4px;
+		border: 1px solid #CCCCCC;
+		background-position: center center;
+		background-repeat: no-repeat;
+	}
+
+
+	.imageMainPost.size-fixed {
+			width: 200px;
+			height: 200px;
+		}
+	
+	
+		.imageMainPost.scale-fill {
+			background-size: cover;
+		}
+		.imageMainPost img {
+			display: none;
+		}
