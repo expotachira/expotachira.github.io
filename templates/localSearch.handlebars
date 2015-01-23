@@ -1,24 +1,17 @@
     <div class="row" >
         {{#each items}}
         <div class="col-lg-4 busquedaimg" data-info='{{#stringify this}}{{/stringify}}'>
-         <h3 class="ellipsis" title="{{nombre}}">{{nombre}}</h3>
-         {{#if urllocal}}
-         <img src="{{urllocal}}" class="img-responsive" style="margin-top:0px;">
+         <h3 class="ellipsis" style="font-size:1.2em;" title="{{nombre}}">{{nombre}}</h3>
+         {{#if urllogo}}
+            <img src="{{urllogo}}" class="img-responsive" style="margin-top:0px;" >
         {{else}}
-            <img src="images/et.png" class="img-responsive" style="margin-top:0px;">
+            <img src="images/et.png" class="img-responsive"  style="margin-top:0px;">
         {{/if}}
             <div class="descripcion">
                 <div class="row">
                     <div class="col-sm-12">
-                        <label class="des_detalle1">Pabellon</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-4">
-                    <label class="des_detalle1">{{pabellon}}</label>
-                    </div>
-                    <div class="col-sm-8">
-                        <label class="des_detalle2">Local(s):{{stand}}</label>
+                        <label class="des_detalle1" for="pabe1">Pabellon</label>
+                         <label class="des_detalle1" name="pabe1">{{pabellon}}</label>
                     </div>
                 </div>
             </div>

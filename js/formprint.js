@@ -1,4 +1,4 @@
-	base='http://expotachira.herokuapp.com/locatarios/index.php';
+	base='http://expotachira.herokuapp.com/index.php';
 	var spanish = {
 		errorTitle: 'No se pudo guardar!',
 		requiredFields: 'Debes llenar este campo.',

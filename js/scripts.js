@@ -9,6 +9,7 @@ function evento() {
         })
         .done(function(data) {
 
+            sessionStorage.setItem('eventos', JSON.stringify(data.items));
 
             // Carga de imagenes en La lista
             $.each(data.items, function(i, item) {
@@ -20,13 +21,11 @@ function evento() {
                 };
                 i++;
 
-
-
                 //$("#into ul").append('<li><img src="'+item.urlflayer+'" alt="image 2" data-toggle="modal" data-target="#myModal"></li>');
 
                 //$("#into ul").append('<div class="liImagen "> <img src="'+item.urlflayer+'" alt="image 2" data-toggle="modal" data-target="#myModal"> </div> <div class="lifecha"> 28 </div> <div class="liTitulo"> Texto </div>');
 
-                $("#into ul").append('<li><div class="liImagen"> <img src="' + item.urlflayer + '" alt="image 2" data-toggle="modal" data-target="#myModal" class="img-responsive"> </div> <div class="lifecha"> ' + dia + ' </div> <div class="liTitulo"> Texto informacion que va en el borde inferior de la pagina</div> </li>');
+                $("#into ul").append('<li><div class="liImagen"> <a href="#/eventos/'+item.id+'"><img src="' + item.urlflayer + '" alt="image 2" class="img-responsive"> </a></div> <div class="lifecha"> ' + dia + ' </div> <div class="liTitulo"> ' + item.nombre + '  </div> </li>');
 
             });
 
@@ -44,7 +43,7 @@ function evento() {
             // Carrusel Inicio
             $("#slider1").tinycarousel({
                 bullets: true,
-                interval: true,
+                // interval: true,
             });
             $("#hoy").click();
         });
@@ -62,11 +61,12 @@ function evento2() {
     $("#boton_mostrar1").css("display", "none");
     $("#boton_mostrar2").css("display", "none");
     $("#boton_mostrar3").css("display", "inline");
-    $("#boton_ocultar3").css("display", "none");
     $("#boton_mostrar4").css("display", "none");
-    $("#boton_ocultar4").css("display", "none");
-    $("#seccion3").css("display", "none");
-    $("#slider1").css("display", "none");
+
+    $("#boton_ocultar3").css("display", "none");
+    $("#boton_ocultar4").css("display", "inline");
+    // $("#seccion3").css("display", "none");
+    // $("#slider1").css("display", "none");
 
     //OCULTA LOS BOTONES DE NAVEGACION DE NOTICIAS
     // $("#cont_input").removeClass("col-xs-5");;
@@ -79,55 +79,6 @@ function evento2() {
 
 
 function evento3() {
-
-
-    /*********************************
-            BOTON1
-      *********************************/
-
-    //MOVIMIENTO VERTICAL, OCULTA EL BOTON OCULTAR Y SE MUESTRA EL BOTON MOSTRAR
-    $("#boton_ocultar1").click(function() {
-        $(this).css("color", "white");
-        $("#seccion1").slideToggle(1000);
-        $(this).css("display", "none");
-        $("#boton_mostrar1").css("display", "inline");
-    });
-
-    //AL SALIR EL MAUSE DEL BOTON OCULTAR NO SE MUESTRA LA DECORACION DEL BOTON
-    $("#boton_ocultar1").mouseout(function() {
-        $(this).css("text-decoration", "none");
-    });
-
-
-    //MOVIMIENTO VERTICAL, OCULTA EL BOTON MOSTRAR Y SE MUESTRA EL BOTON OCULTAR
-    $("#boton_mostrar1").click(function() {
-        $(this).css("color", "white");
-        $("#seccion1").slideToggle(1000);
-        $(this).css("display", "none");
-        $("#boton_ocultar1").css("display", "inline");
-
-    });
-
-    //SE DIRIGE A LA SECCION DEL ELEMENTO BOTON OCULTAR
-    $("#boton_ocultar1").click(function(event) {
-        event.stopPropagation();
-        var Position = jQuery('[id="seccion1"]').offset().top;
-        jQuery('html, body').animate({
-            scrollTop: Position
-        }, 1100);
-        return false;
-    });
-
-    //SE DIRIGE A LA SECCION DEL ELEMENTO BOTON MOSTRAR
-    $("#boton_mostrar1").click(function(event) {
-        event.stopPropagation();
-        var Position = jQuery('[id="seccion1"]').offset().top;
-        jQuery('html, body').animate({
-            scrollTop: Position
-        }, 1100);
-        return false;
-    });
-
     /*********************************
         BOTON2
   *********************************/

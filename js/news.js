@@ -6,14 +6,11 @@ function getImage(data) {
 
     var patt = new RegExp(/i2.wp/g);
     var res = patt.test(data);
-  
-    if (res)
-    {
+
+    if (res) {
         return data
 
-    }
-    else
-    {
+    } else {
         return data.replace("http://", "http://i1.wp.com/")
     }
 }
@@ -35,19 +32,19 @@ query.find().then(function(results) {
                 title: object.get('title'),
                 description: object.get('content'),
                 thumbnail: getImage(object.get('thumbnail').thumbnail)
-                //.replace("http://", "http://i1.wp.com/")
+                    //.replace("http://", "http://i1.wp.com/")
             });
             $("#newsPost").append(html);
         }
     },
     function() {
-        
+
     });
 var step = 0;
 var limit;
 query.count({
     success: function(count) {
-        // The count request succeeded. Show the count        
+        // The count request succeeded. Show the count
         limit = count;
     },
     error: function(error) {
@@ -57,14 +54,14 @@ query.count({
 
 var viewPost = function(postname) {
 
-     
+
     var postTemplate = Handlebars.templates['postModal'];
     var Post = Parse.Object.extend("Post");
     var query = new Parse.Query(Post);
     query.equalTo("postname", postname);
     query.first({
         success: function(fullpost) {
-            
+
             var postM = postTemplate({
                 id: fullpost.id,
                 photo: fullpost.get('photos')[1][0],
@@ -83,8 +80,36 @@ var viewPost = function(postname) {
     });
 };
 
+
+
+var viewEvent = function(id) {
+
+
+    var eventTemplate = Handlebars.templates['eventosModal'];
+
+    $.getJSON("evento.json", function(data) {
+        var evento = _.where(data.items, {
+            id: id
+        })
+
+        var eventM = eventTemplate({
+            nombre: evento[0].nombre,
+            descripcion: evento[0].descripcion,
+            banner:evento[0].urlflayer,
+            inicio:evento[0].fini,
+            fin:evento[0].ffin
+        });
+        $("#eventModal").html(eventM);
+       
+    });
+    $('#eventModal').modal('show');
+
+};
+
+
 var routes = {
-    '/noticias/:postName': viewPost
+    '/noticias/:postName': viewPost,
+    '/eventos/:id': viewEvent,
 };
 
 var router = Router(routes);
@@ -92,6 +117,9 @@ var router = Router(routes);
 router.init();
 
 $('#newsmodal').on('hidden.bs.modal', function(e) {
+    history.pushState({}, '', '/');
+})
+$('#eventModal').on('hidden.bs.modal', function(e) {
     history.pushState({}, '', '/');
 })
 
@@ -107,7 +135,7 @@ Handlebars.registerHelper('truncate', function(str, len) {
             return new Handlebars.SafeString(new_str + '...');
         }
     } catch (e) {
-        
+
     }
 
     return str;
@@ -156,14 +184,13 @@ $("#ff").click(function() {
                     postName: object.get('postname'),
                     title: object.get('title'),
                     description: object.get('content'),
-                    thumbnail:  getImage(object.get('thumbnail').thumbnail)
-                    //.replace("http://", "http://i1.wp.com/")
+                    thumbnail: getImage(object.get('thumbnail').thumbnail)
+                        //.replace("http://", "http://i1.wp.com/")
                 });
                 $("#newsPost").append(html);
             }
         },
-        function() {
-        });
+        function() {});
     if (step < 0) {
         step = 0;
     } else {
@@ -199,14 +226,13 @@ $("#rw").click(function() {
                     postName: object.get('postname'),
                     title: object.get('title'),
                     description: object.get('content'),
-                    thumbnail:  getImage(object.get('thumbnail').thumbnail)
-                    //
+                    thumbnail: getImage(object.get('thumbnail').thumbnail)
+                        //
                 });
                 $("#newsPost").append(html);
             }
         },
-        function() {
-        });
+        function() {});
     step = step + 1;
 
 });

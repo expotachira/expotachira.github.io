@@ -2,51 +2,101 @@
   "items": [
     {
       "id": "1",
-      "nombre": "Concierto 1",
+      "nombre": "IV Gala Expotalento",
       "tipo": "1",
-      "urlflayer": "images/picture2.jpg",
-      "descripcion": "descripcion",
-      "fini": "Jan Dec 01 2015 11:46:57 GMT-0430 (VET)",
-      "ffin": "Jan Dec 01 2015 11:46:57 GMT-0430 (VET)"
+      "urlflayer": "images/22.png",
+      "descripcion": "Continuación del evento, contará con la participación de cinco (5) de los finalistas seleccionados por los expertos y el público. Hora: 6:00 Pm",
+      "fini": "Jan Dec 22 2015 11:46:57 GMT-0430 (VET)",
+      "ffin": "Jan Dec 22 2015 11:46:57 GMT-0430 (VET)"
     },
     {
       "id": "2",
-      "nombre": "Concierto 2",
+      "nombre": "V Gala Expotalento",
       "tipo": "1",
-      "urlflayer": "images/picture3.jpg",
-      "descripcion": "descripcion",
-      "fini": "Jan Dec 02 2015 11:46:57 GMT-0430 (VET)",
-      "ffin": "Jan Dec 02 2015 11:46:57 GMT-0430 (VET)"
+      "urlflayer": "images/23.png",
+      "descripcion": ": Continuación del evento, contará con la participación de cinco (5) de los finalistas seleccionados por los expertos y el público. Hora: 6:00 Pm",
+      "fini": "Jan Dec 23 2015 11:46:57 GMT-0430 (VET)",
+      "ffin": "Jan Dec 23 2015 11:46:57 GMT-0430 (VET)"
+    }
+     ,
+    {
+      "id": "3",
+      "nombre": "VI Gala Expotalento",
+      "tipo": "1",
+      "urlflayer": "images/24.png",
+      "descripcion": "Continuación del evento, contará con la participación de cinco (5) de los finalistas seleccionados por los expertos y el público. Hora: 6:00 Pm",
+      "fini": "Jan Dec 24 2015 11:46:57 GMT-0430 (VET)",
+      "ffin": "Jan Dec 24 2015 11:46:57 GMT-0430 (VET)"
     }
      ,
     {
       "id": "4",
-      "nombre": "Concierto 4",
+      "nombre": "VII Gala Expotalento",
       "tipo": "1",
-      "urlflayer": "images/picture4.jpg",
-      "descripcion": "descripcion",
-      "fini": "Jan Dec 03 2015 11:46:57 GMT-0430 (VET)",
-      "ffin": "Jan Dec 03 2015 11:46:57 GMT-0430 (VET)"
+      "urlflayer": "images/25.png",
+      "descripcion": "Continuación del evento, contará con la participación de cinco (5) de los finalistas seleccionados por los expertos y el público. Hora: 6:00 Pm",
+      "fini": "Jan Dec 25 2015 11:46:57 GMT-0430 (VET)",
+      "ffin": "Jan Dec 25 2015 11:46:57 GMT-0430 (VET)"
     }
      ,
     {
       "id": "5",
-      "nombre": "Concierto 5",
+      "nombre": "Lunes de Moda",
       "tipo": "1",
-      "urlflayer": "images/picture5.jpg",
-      "descripcion": "descripcion",
-      "fini": "Jan Dec 04 2015 11:46:57 GMT-0430 (VET)",
-      "ffin": "Jan Dec 04 2015 11:46:57 GMT-0430 (VET)"
+      "urlflayer": "images/26.png",
+      "descripcion": "Presentación de Desfile de Moda de las diferentes academias de modelaje de los Municipios San Cristóbal (Comité Regional de la Belleza / Runwey Model´s / Grado 33 Producciones), Cárdenas (Siluetas) y Junín (White Model´s). Hora: 4:00 Pm",
+      "fini": "Jan Dec 26 2015 11:46:57 GMT-0430 (VET)",
+      "ffin": "Jan Dec 26 2015 11:46:57 GMT-0430 (VET)"
     }
      ,
     {
-      "id": "5",
-      "nombre": "Concierto 5",
+      "id": "6",
+      "nombre": "VIII Gala Expotalento",
       "tipo": "1",
-      "urlflayer": "images/picture6.jpg",
-      "descripcion": "descripcion",
-      "fini": "Jan Dec 05 2015 11:46:57 GMT-0430 (VET)",
-      "ffin": "Jan Dec 05 2015 11:46:57 GMT-0430 (VET)"
+      "urlflayer": "images/27.png",
+      "descripcion": "Continuación del evento, contará con la participación de tres (3) de los finalistas seleccionados por los expertos y el público. Invitado especial (Grupo Musical). Hora: 6:00 Pm",
+      "fini": "Jan Dec 27 2015 11:46:57 GMT-0430 (VET)",
+      "ffin": "Jan Dec 27 2015 11:46:57 GMT-0430 (VET)"
+    }
+     ,
+    {
+      "id": "7",
+      "nombre": "IX Gala Expotalento",
+      "tipo": "1",
+      "urlflayer": "images/28.png",
+      "descripcion": "Continuación del evento, contará con la participación de tres (3) de los finalistas seleccionados por los expertos y el público. Invitado especial (Grupo Musical). Hora: 6:00 Pm",
+      "fini": "Jan Dec 28 2015 11:46:57 GMT-0430 (VET)",
+      "ffin": "Jan Dec 28 2015 11:46:57 GMT-0430 (VET)"
+    }
+    ,
+    {
+      "id": "8",
+      "nombre": "X Gala Expotalento",
+      "tipo": "1",
+      "urlflayer": "images/29.png",
+      "descripcion": "Continuación del evento, contará con la participación de tres (3) de los finalistas seleccionados por los expertos y el público. Invitado especial (Grupo Musical). Hora: 6:00 Pm",
+      "fini": "Jan Dec 29 2015 11:46:57 GMT-0430 (VET)",
+      "ffin": "Jan Dec 29 2015 11:46:57 GMT-0430 (VET)"
+    }
+    ,
+    {
+      "id": "9",
+      "nombre": "Noche Bailable",
+      "tipo": "1",
+      "urlflayer": "images/30.png",
+      "descripcion": "Presentación de grupos artísticos de la región, representando diferentes géneros musicales. Hora: 7:00 Pm",
+      "fini": "Jan Dec 30 2015 11:46:57 GMT-0430 (VET)",
+      "ffin": "Jan Dec 30 2015 11:46:57 GMT-0430 (VET)"
+    }
+    ,
+    {
+      "id": "10",
+      "nombre": "XI Gala Expotalento",
+      "tipo": "1",
+      "urlflayer": "images/31.png",
+      "descripcion": "Cierre del evento, contará con la participación de los cinco (5) finalistas que se disputarán los tres (3) primeros lugares. Entrega de premios. Participación especial de un grupo musical (por definir). Hora: 6:00 Pm",
+      "fini": "Jan Dec 31 2015 11:46:57 GMT-0430 (VET)",
+      "ffin": "Jan Dec 31 2015 11:46:57 GMT-0430 (VET)"
     }
   ]
 }

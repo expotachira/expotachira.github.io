@@ -1,3 +1,12 @@
+
+.capitalize {
+    text-transform: lowercase;
+}
+
+.capitalize:first-letter {
+    text-transform: uppercase !important;
+}
+
 .portafolio{
 	margin-left: -20px;
 	padding:10px 0px 10px 0px;
@@ -195,7 +204,7 @@ section.socials img:hover{
 
 
 .boton_mostrar3{
-	background: #DC5745;
+	background: #E68000;
     display: block;
     margin: 0 auto;
     margin-top: -10px;
@@ -219,7 +228,7 @@ section.socials img:hover{
 }
 
 .boton_ocultar3{
-	background: #DC5745;
+	background: #E68000;
     display: block;
     margin: 0 auto;
     margin-top: -10px;
@@ -243,7 +252,7 @@ section.socials img:hover{
 }
 
 .boton_mostrar4{
-	background: #E68000;
+	background: #DC5745;
     display: block;
     margin: 0 auto;
     margin-top: -10px;
@@ -267,7 +276,7 @@ section.socials img:hover{
 }
 
 .boton_ocultar4{
-	background: #E68000;
+	background: #DC5745;
     display: block;
     margin: 0 auto;
     margin-top: -10px;
@@ -333,7 +342,7 @@ section.socials img:hover{
 	height: 49px;
 	margin-right:auto;margin-left:auto;
 	padding: 0.7em !important;
-	background-color: #f05745 !important  ;
+	background-color: #FF8000  !important  ;
 	color: white !important;
 	opacity: 0.9;
 }
@@ -353,9 +362,9 @@ section.socials img:hover{
 	max-width: 1024px;
 	margin-right:auto;margin-left:auto;
 	padding: 0.7em !important;
-	background-color: #FF8000  !important  ;
+	background-color: #f05745;
+	border-bottom: solid 3px #DC5745 !important;
 	color: white !important;
-	border-bottom: solid 3px #E68000 !important;
 	text-align: center;
 	opacity: 0.95;
 }
@@ -382,8 +391,9 @@ section.socials img:hover{
 
 .barra{
 	margin: 0 auto;
-	background-color: #f05745;
-	border-bottom: solid 3px #DC5745 !important;
+		background-color: #FF8000  !important  ;
+	color: white !important;
+	border-bottom: solid 3px #E68000 !important;
 }
 
 .busquedaimg img{
@@ -785,27 +795,3 @@ MEDIAS QUERYS
 
 
 
-
-
-.imageMainPost {
-
-		display: inline-block;
-		margin: 4px;
-		border: 1px solid #CCCCCC;
-		background-position: center center;
-		background-repeat: no-repeat;
-	}
-
-
-	.imageMainPost.size-fixed {
-			width: 200px;
-			height: 200px;
-		}
-	
-	
-		.imageMainPost.scale-fill {
-			background-size: cover;
-		}
-		.imageMainPost img {
-			display: none;
-		}

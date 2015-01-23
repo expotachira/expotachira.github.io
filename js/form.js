@@ -1,4 +1,4 @@
-	base='http://expotachira.herokuapp.com/locatarios/index.php';
+	base='http://expotachira.herokuapp.com/index.php';
 	sclient = GetURLParameter('sclient')||0;
 
 	var spanish = {
@@ -213,7 +213,7 @@
 				var html='<div class="list-group">';
 				$.each(data.items, function(index, val) {
 					var link='imprimir.html'+val;
-  						html=html+'<a href='+link+' target="_blank" class="list-group-item">Imprimir Página. '+(index+1)+'</a>';
+  						html=html+'<a href='+link+' target="_blank" class="list-group-item">Pg. '+(index+1)+'</a>';
 				});
 				html=html+'</div>';
 		}

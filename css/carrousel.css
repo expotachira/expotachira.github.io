@@ -42,7 +42,7 @@
 
 }
 
-#slider1 .disable { visibility: hidden; }
+#slider1 .disable { visibility: display; }
 #slider1 .overview { list-style: none; position: absolute; padding: 0; margin: 0; width: 240px; left: 0; top: 0; }
 #slider1 .overview li { float: left; margin: 0 20px 0 0; padding: 0px; height: 150px;  width: 236px; }
 
@@ -70,7 +70,7 @@
 .lifecha{
 	margin: 0 auto;
 	background: #eeeeee;
-	color: 989089;	
+	color: 989089;
 	width: 30px;
 	text-align: center;
 	height: 58px;
@@ -98,7 +98,7 @@
 	margin-left: 10px;
 	font-weight: bold;
 	border-bottom: 4px solid #989089;
-	
+
 }
 
 
@@ -144,21 +144,21 @@
 
 @media (max-width: 1199px) {
 
-#slider1 .viewport { 
-	width: 95%; 
+#slider1 .viewport {
+	width: 95%;
 }
 
 
 @media (max-width: 991px) {
 
-#slider1 .viewport { 
-	width: 83%; 
+#slider1 .viewport {
+	width: 83%;
 }
 
 @media (max-width: 757px) {
 
-#slider1 .viewport { 
-	width: 83%; 
+#slider1 .viewport {
+	width: 83%;
 }
 
 
@@ -185,8 +185,8 @@
 @media (max-width: 727px) {
 
 
-#slider1 .viewport { 
-	width: 80%; 
+#slider1 .viewport {
+	width: 80%;
 }
 
 
@@ -213,16 +213,16 @@
 @media (max-width: 711px) {
 
 
-#slider1 .viewport { 
-	width: 90%; 
+#slider1 .viewport {
+	width: 90%;
 }
 
-#slider1 .viewport li{ 
+#slider1 .viewport li{
 	margin: 0;
 	padding: 0;
 }
 
-#slider1 .viewport ul{ 
+#slider1 .viewport ul{
 	margin-left: 4%;
 }
 

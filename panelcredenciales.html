@@ -1,7 +1,7 @@
 <script type="text/javascript" charset="utf-8">
 history.replaceState({}, '', 'login.html');
 localStorage.setItem('uri', 'http://expotachira.herokuapp.com/index.php');
-// localStorage.setItem('uri', 'http://127.0.0.1/expotachira_api/index.php');
+// localStorage.setItem('uri', 'http://expotachira.herokuapp.com/index.php');
 localStorage.setItem('client', '0');
 var xmlhttp = null;
 token = '?tokenid=' + localStorage.getItem('token');
@@ -36,11 +36,11 @@ function verificarlogin(login) {
                         <th>Nombre</th>
                         <th>Stand</th>
                         <th>Pabellon</th>
-                        <th>Credenciales</th>                       
+                        <th>Credenciales</th>
                     </tr>
                 </thead>
                 <tbody id="comerciosCre">
-                                     
+
                 </tbody>
             </table>
     </div>

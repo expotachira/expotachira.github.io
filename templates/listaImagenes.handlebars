@@ -1,0 +1,16 @@
+{{#each items}}
+	<tr class="row">
+		<td class="col-md-4 ellipsis"title="{{nombre}}">{{nombre}}</td>
+		<td class="col-md-1" >{{pabellon}}</td>
+		<td class="col-md-1" >{{stand}}</td>
+		<td class="col-md-6 data-client="{{id}}">
+			<label class="sr-only" for="foto[{{@index}}]">Foto</label>
+			<input style="display:inline" type="file" name="foto[{{@index}}]"  class="uploadimage" data-validation="size" data-validation-max-size="1M" value="{{id}}">
+			{{#if urllogo}}
+			 <img  class="sucessajax" style="float:right;display:inline;" width="32" height="32">
+			{{else}}
+	         <img style="display:none;float:right;"  class="" width="32" height="32">
+	        {{/if}}
+		 </td>
+	</tr>
+{{/each}}
