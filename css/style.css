@@ -789,7 +789,9 @@ MEDIAS QUERYS
 
 
 
-
+.removedot{
+    list-style-type: none;
+}
 
 
 

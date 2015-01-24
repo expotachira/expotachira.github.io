@@ -6,7 +6,7 @@ function getImage(data) {
 
     var patt = new RegExp(/i2.wp/g);
     var res = patt.test(data);
-
+    console.log(res);
     if (res) {
         return data
 
@@ -95,12 +95,12 @@ var viewEvent = function(id) {
         var eventM = eventTemplate({
             nombre: evento[0].nombre,
             descripcion: evento[0].descripcion,
-            banner:evento[0].urlflayer,
-            inicio:evento[0].fini,
-            fin:evento[0].ffin
+            banner: evento[0].urlflayer,
+            inicio: evento[0].fini,
+            fin: evento[0].ffin
         });
         $("#eventModal").html(eventM);
-       
+
     });
     $('#eventModal').modal('show');
 
@@ -236,3 +236,30 @@ $("#rw").click(function() {
     step = step + 1;
 
 });
+$.getJSON("http://expotachira.herokuapp.com/twitter/", function(data) {
+
+    var items = [];
+    $.each(data, function(key, val) {
+        items.push("<li class='tw' id='" + key + "'>" + val.text + "</li>");
+    });
+
+    $("<ul/>", {
+        "class": "removedot",
+        html: items.join("")
+    }).appendTo("#tweets");
+
+    $(function() {
+        $('#tweets').vTicker();
+    });
+     $('.tw').each(function() {
+        // Get the content
+        var str = $(this).html();
+        // Set the regex string
+        var regex = /(https?:\/\/([-\w\.]+)+(:\d+)?(\/([\w\/_\.]*(\?\S+)?)?)?)/ig
+            // Replace plain text links by hyperlinks
+        var replaced_text = str.replace(regex, "<a href='$1' target='_blank'>$1</a>");
+        // Echo link
+        $(this).html(replaced_text);
+    });
+});
+

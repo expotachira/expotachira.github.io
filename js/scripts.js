@@ -60,10 +60,10 @@ function evento2() {
     $("#input_locatario").css("display", "none");
     $("#boton_mostrar1").css("display", "none");
     $("#boton_mostrar2").css("display", "none");
-    $("#boton_mostrar3").css("display", "inline");
+    $("#boton_mostrar3").css("display", "none");
     $("#boton_mostrar4").css("display", "none");
 
-    $("#boton_ocultar3").css("display", "none");
+    $("#boton_ocultar3").css("display", "inline");
     $("#boton_ocultar4").css("display", "inline");
     // $("#seccion3").css("display", "none");
     // $("#slider1").css("display", "none");

@@ -36,8 +36,9 @@ $(function(){
                 var templateSearch=Handlebars.templates['localSearch'];
                 var htmlsearch=templateSearch(data);
                 sectionbody.html(htmlsearch);
-                if(sectionbody.css('display')=='none')
-                    $("#boton_mostrar3").trigger('click');
+                sectionbody.css('display','inline');
+               // if(sectionbody.css('display')=='none')
+               //     $("#boton_mostrar3").trigger('click');
             }
             else{
                 sectionbody.hide();
